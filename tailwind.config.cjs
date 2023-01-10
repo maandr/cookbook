@@ -7,7 +7,16 @@ module.exports = {
       mono: ['Source Code Pro', 'monospace'],
       handwriting: ['Kalam', 'cursive']
     },
-    extend: {}
+    extend: {
+      colors: {
+        colorPrimary: '#A63A50',
+        colorPrimaryAccent: '#BA6E6E',
+        colorBackground: '#A63A50',
+        colorBackgroundAccent: '#AB9B96',
+        colorSecondary: '#A1674A',
+        colorSecondaryAccent: '#1C120D'
+      }
+    }
   },
   plugins: []
 }
