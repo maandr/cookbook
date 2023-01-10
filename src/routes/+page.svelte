@@ -2,5 +2,5 @@
   import '../app.css'
 </script>
 
-<h1>Mats Cookbook</h1>
-<p class="font-bold p-3">Hello Joe</p>
+<h1 class="flex p-3 text-base font-bold underline">Mats Cookbook</h1>
+<p class="flex p-3 font-bold">Hello Joe</p>
