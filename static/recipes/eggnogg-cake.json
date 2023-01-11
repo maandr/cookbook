@@ -1,0 +1,94 @@
+{
+  "slug": "eggnog-cake",
+  "title": "Eierlikör Torte",
+  "isVegan": false,
+  "isVegetarian": true,
+  "isGlutenFree": true,
+  "amountOfServings": 12,
+  "ingrediences": [
+    {
+      "quantity": {
+        "amount": 3,
+        "unit": ""
+      },
+      "name": "Eier",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 150,
+        "unit": "g"
+      },
+      "name": "Zucker",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 100,
+        "unit": "g"
+      },
+      "name": "gemahlene Mandeln",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 100,
+        "unit": "g"
+      },
+      "name": "gemahlene Haselnüsse",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 3,
+        "unit": "TL"
+      },
+      "name": "Backpulver",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": "EL"
+      },
+      "name": "Kakaopulver",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": "Becher"
+      },
+      "name": "Sahne",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 120,
+        "unit": "ml"
+      },
+      "name": "Eierlikör",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 2,
+        "unit": "cl"
+      },
+      "name": "Rum",
+      "required": false
+    },
+    {
+      "name": "Schokoladenstreußel",
+      "required": false
+    }
+  ],
+  "instructions": [
+    "Die Eier trennen und anschließend das Eiweiß zu Eischnee schlagen. Eigelb mit 3 EL Wasser schlagen, Zucker, Mandeln, Haselnüsse, Backpulver, Kakao und Rum dazugeben und verquirrlen. Anschließend Eischnee unterheben.",
+    "Kuchenform einfetten und den Teig darin gleichmäßig verteilen.",
+    "Im Backofen bei 175 °C 20 Minuten lang backen.",
+    "Nach dem Backen den Boden abkühlen lassen.",
+    "Die Sahne zu Schlagsahne schlagen.",
+    "Abgekühlten Boden mit Schlagsahne bestreichen und mit einem Spritzbeutel verzieren. Am besten einen Kranz aus Sahneröschen bilden damit der Eierlikör nicht an den Seiten herabläuft. Im Anschluss die Zwischenräume mit Eierlikör ausfüllen und mit Schokoladenstreußeln bestreuen."
+  ]
+}

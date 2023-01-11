@@ -1,0 +1,102 @@
+{
+  "slug": "spagetti-bolognese-sin-carne",
+  "title": "Spagetti Bolognese sin Carne ",
+  "amountOfServings": 4,
+  "isVegan": false,
+  "isVegetarian": true,
+  "isGlutenFree": false,
+  "ingrediences": [
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": ""
+      },
+      "name": "Zwiebel",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 2,
+        "unit": ""
+      },
+      "name": "Möhren",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": "Zehe"
+      },
+      "name": "Knoblauch",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 2,
+        "unit": "Stangen"
+      },
+      "name": "Sellerie",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 75,
+        "unit": "ml"
+      },
+      "name": "Rotwein",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 300,
+        "unit": "g"
+      },
+      "name": "Tomaten (geschält oder passiert)",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 500,
+        "unit": "g"
+      },
+      "name": "Spagetti",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": "TL"
+      },
+      "name": "Oregano",
+      "required": false
+    },
+    {
+      "name": "Olivenöl oder Butter",
+      "required": true
+    },
+    {
+      "name": "Salz",
+      "required": true
+    },
+    {
+      "name": "Pfeffer",
+      "required": true
+    },
+    {
+      "name": "Parmesan",
+      "required": false
+    },
+    {
+      "name": "frische Oregano Blätter",
+      "required": false
+    }
+  ],
+  "instructions": [
+    "Zwiebel, Knoblauch und Möhre schälen und in feine Würfel schneiden. Sellerie waschen und ebenfalls in feine Stücke schneiden.",
+    "Zwiebel in der Pfanne bei mittlerer Hitze anschwitzen. Dann Möhren und Sellerie hinzugeben und anbraten. Zum Schluss Knoblauch hinzu geben.",
+    "Geschälte Tomaten in eine Schüssel geben und mit den Händen gleichmäßig zerdrücken bis keine groben Stücke mehr vorhanden sind. Bolognese nit Rotwein ablöschen, dann Tomaten unterrühren und ca. 30 Minuten bei geringer Hitze abgedeckt köcheln lassen.",
+    "Etwa 15 Minuten vor Ablauf der Zeit Salzwasser in einem Topf zum kochen bringen.",
+    "Die Spagetti in das kochende Wasser geben und bissfest kochen.",
+    "Anrichten und mit firsch geriebenen Parmesan und Oregano-Blättern garnieren."
+  ]
+}
