@@ -2,13 +2,18 @@
   import type { Recipe } from '$types/recipe'
 
   export let data: { recipes: Recipe[] }
+
+  let mustBeVegetarian = false
+  let mustBeVegan = false
+  let mustBeGlutenFree = false
 </script>
 
 <div>
   <h2>Filter</h2>
-  <input type="checkbox" /> Vegetarisch
-  <input type="checkbox" /> Vegan
-  <input type="checkbox" /> Glutenfrei
+  <input type="checkbox" bind:value={mustBeVegetarian} />
+  Vegetarisch
+  <input type="checkbox" bind:value={mustBeVegan} /> Vegan
+  <input type="checkbox" bind:value={mustBeGlutenFree} /> Glutenfrei
 </div>
 
 <div class="mt-8">
