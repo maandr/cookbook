@@ -1,7 +1,7 @@
-import type { Recipe } from 'src/types/recipe'
+import type { Recipe } from '$types/Recipe'
 import fs, { Dirent } from 'fs'
 import { error } from '@sveltejs/kit'
-import type { Ingredience } from '$types/ingredience'
+import type { Ingredience } from '$types/Ingredience'
 
 export type RecipeDictionary = {
   [id: string]: Recipe

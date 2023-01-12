@@ -15,6 +15,10 @@ module.exports = {
         colorBackgroundAccent: '#AB9B96',
         colorSecondary: '#A1674A',
         colorSecondaryAccent: '#1C120D'
+      },
+      zIndex: {
+        navBar: 90,
+        navBarToggle: 91
       }
     }
   },

@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit'
-import type { Recipe } from '$types/recipe'
+import type { Recipe } from '$types/Recipe'
 import { RecipeRepository } from '$lib/RecipeRepository'
 
 export function load({ params }): Recipe {

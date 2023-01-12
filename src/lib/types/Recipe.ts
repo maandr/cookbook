@@ -1,4 +1,4 @@
-import type { Ingredience } from './ingredience'
+import type { Ingredience } from '$types/Ingredience'
 
 export interface Recipe {
   slug: string
