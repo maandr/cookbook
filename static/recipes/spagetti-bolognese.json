@@ -1,9 +1,11 @@
 {
   "slug": "spagetti-bolognese",
   "title": "Spagetti Bolognese",
-  "isVegan": false,
-  "isVegetarian": false,
-  "isGlutenFree": false,
+  "containsGluten": true,
+  "containsMeat": true,
+  "containsLactose": true,
+  "containsFish": false,
+  "containsOnlyPlants": false,
   "amountOfServings": 4,
   "ingrediences": [
     {

@@ -5,9 +5,11 @@ export interface Recipe {
   title: string
   imagePath: string
   amountOfServings: number
-  isVegan: boolean
-  isVegetarian: boolean
-  isGlutenFree: boolean
+  containsGluten: boolean
+  containsMeat: boolean
+  containsLactose: boolean
+  containsFish: boolean
+  containsOnlyPlants: boolean
   ingrediences: Ingredience[]
   instructions: string[]
 }

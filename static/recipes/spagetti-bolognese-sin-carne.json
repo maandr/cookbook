@@ -2,9 +2,11 @@
   "slug": "spagetti-bolognese-sin-carne",
   "title": "Spagetti Bolognese sin Carne ",
   "amountOfServings": 4,
-  "isVegan": false,
-  "isVegetarian": true,
-  "isGlutenFree": false,
+  "containsGluten": true,
+  "containsMeat": false,
+  "containsLactose": true,
+  "containsFish": false,
+  "containsOnlyPlants": false,
   "ingrediences": [
     {
       "quantity": {

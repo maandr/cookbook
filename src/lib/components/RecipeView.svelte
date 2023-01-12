@@ -1,5 +1,6 @@
 <script lang="ts">
-  import type { Recipe } from '$types/recipe'
+  import type { Recipe } from '$types/Recipe'
+  import NutritionalConcept from '$components/NutritionalConcept.svelte'
 
   export let recipe: Recipe
 </script>
@@ -7,6 +8,8 @@
 <img src={recipe.imagePath} title={recipe.title} alt={recipe.title} />
 
 <h1 class="my-6 font-handwriting text-3xl text-colorSecondaryAccent">{recipe.title}</h1>
+
+<NutritionalConcept {recipe} />
 
 <h2>Zutaten</h2>
 <table>

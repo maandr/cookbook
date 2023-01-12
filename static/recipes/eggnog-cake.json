@@ -1,9 +1,11 @@
 {
   "slug": "eggnog-cake",
   "title": "Eierlikör Torte",
-  "isVegan": false,
-  "isVegetarian": true,
-  "isGlutenFree": true,
+  "containsGluten": false,
+  "containsMeat": false,
+  "containsLactose": true,
+  "containsFish": false,
+  "containsOnlyPlants": false,
   "amountOfServings": 12,
   "ingrediences": [
     {

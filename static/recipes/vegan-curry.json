@@ -1,19 +1,19 @@
 {
-  "slug": "chicken-curry",
-  "title": "Chicken Curry",
+  "slug": "vegan-curry",
+  "title": "Veganes Curry",
   "containsGluten": false,
-  "containsMeat": true,
+  "containsMeat": false,
   "containsLactose": false,
   "containsFish": false,
-  "containsOnlyPlants": false,
+  "containsOnlyPlants": true,
   "amountOfServings": 4,
   "ingrediences": [
     {
       "quantity": {
-        "amount": 500,
-        "unit": "g"
+        "amount": 1,
+        "unit": ""
       },
-      "name": "Hähnchenbrust-Filet",
+      "name": "Süßkartoffel",
       "required": true
     },
     {
