@@ -4,7 +4,7 @@
   export let recipe: Recipe
 </script>
 
-<img src="/images/{recipe.slug}.jpg" title={recipe.title} alt={recipe.title} />
+<img src={recipe.imagePath} title={recipe.title} alt={recipe.title} />
 
 <h1 class="my-6 font-handwriting text-3xl text-colorSecondaryAccent">{recipe.title}</h1>
 

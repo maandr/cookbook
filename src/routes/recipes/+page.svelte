@@ -10,7 +10,7 @@
       <a href="/recipe/{recipe.slug}" title={recipe.title}
         ><li
           class="relative h-96 bg-cover bg-center bg-no-repeat text-center align-bottom shadow-xl transition-all hover:scale-105"
-          style="background-image: url('/images/{recipe.slug}.jpg')"
+          style="background-image: url('{recipe.imagePath}')"
         >
           <div class="absolute bottom-0 left-0 h-16 w-full">
             <div class="relative flex h-full items-center justify-center">
