@@ -1,0 +1,99 @@
+{
+  "slug": "mushroom-risotto",
+  "title": "Pilz Risotto",
+  "containsGluten": false,
+  "containsMeat": false,
+  "containsLactose": true,
+  "containsFish": false,
+  "containsOnlyPlants": false,
+  "amountOfServings": 4,
+  "ingrediences": [
+    {
+      "quantity": {
+        "amount": 2,
+        "unit": ""
+      },
+      "name": "Charlotten oder Zwiebeln",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 2,
+        "unit": "Zehen"
+      },
+      "name": "Knoblauch",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 250,
+        "unit": "g"
+      },
+      "name": "Pilze (Champignons oder Pfifferlinge)",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 250,
+        "unit": "g"
+      },
+      "name": "Risotto Reis",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 800,
+        "unit": "ml"
+      },
+      "name": "Gemüsebrühe",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 200,
+        "unit": "ml"
+      },
+      "name": "Weißwein",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 150,
+        "unit": "g"
+      },
+      "name": "Parmesan",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": "TL"
+      },
+      "name": "Salz",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": "TL"
+      },
+      "name": "Schwarzer Pfeffer",
+      "required": true
+    },
+    {
+      "name": "Olivenöl",
+      "required": true
+    },
+    {
+      "name": "Petersilie",
+      "required": false
+    }
+  ],
+  "instructions": [
+    "Charlotten oder Zwiebeln und Knoblauch in feine Würfel schneiden. Pilze in Mungerechte Stücke schneiden.",
+    "Olivenöl in einem großen Topf oder Pfanne erhitzen. Charlotten oder Zwiebeln zusammen mit Koblauch bei mittlerer Hitzestufe langsam glasig dünsten. Anschließend Champignons hinzugeben und kurz mit anbraten.",
+    "Risotto-Reis hinzufügen und anbraten, bis der Reis glasig wird. Dann mit Weißwein ablöschen.",
+    "Gemüsebrühe unter ständigem Rühren nach und nach hinzugeben. Sobald der Reis die Flüssigkeit im Topf weitgehend aufgenommen hat nachgießen. Solange wiederholen bis der Reis gar ist. Mit Salz und Pfeffer abschmecken und Parmesan unterrühren.",
+    "Servieren mit Parmesan, schwarzem Pfeffer und gehackter Petersilie."
+  ]
+}
