@@ -11,7 +11,7 @@
     class="recipe-card relative h-96 bg-cover bg-center bg-no-repeat text-center align-bottom shadow-xl transition-all hover:scale-105"
     style="background-image: url('{recipe.imagePath}')"
   >
-    <div class="nutrional-concept absolute top-0 left-0 z-20 w-full p-3 text-colorSecondaryAccent">
+    <div class="nutrional-concept absolute top-0 left-0 z-20 w-full p-3">
       <NutritionalConcept {recipe} size={16} />
     </div>
 
