@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Recipe } from '$types/Recipe'
   import NutritionalConcept from '$components/NutritionalConcept.svelte'
+  import IngredienceList from '$components/IngredienceList.svelte'
 
   export let recipe: Recipe
 </script>
@@ -12,19 +13,7 @@
 <NutritionalConcept {recipe} />
 
 <h2>Zutaten</h2>
-<table>
-  {#each recipe.ingrediences as ingredience}
-    <tr>
-      <td class="pr-4 text-right text-colorSecondaryAccent"
-        >{#if ingredience.quantity}{ingredience.quantity.amount}
-          {ingredience.quantity.unit}{/if}</td
-      >
-      <td class:italic={!ingredience.required} class:text-colorPrimary={!ingredience.required}
-        >{ingredience.name}</td
-      >
-    </tr>
-  {/each}
-</table>
+<IngredienceList {recipe} />
 
 <h2>Anleitung</h2>
 <ol class="list-outside list-decimal pl-7">

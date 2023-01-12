@@ -38,7 +38,7 @@
   ul li {
     @apply bg-colorPrimaryAccent;
     @apply text-colorBackground;
-    @apply rounded-xl;
-    @apply p-3;
+    @apply rounded-3xl;
+    @apply p-2;
   }
 </style>
