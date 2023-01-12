@@ -6,11 +6,12 @@
   import Logo from '$components/Logo.svelte'
 
   export let entries: MenuEntry[]
+  let selectedEntry: MenuEntry
   let isMenuShowing = false
 </script>
 
-<!-- svelte-ignore empty-block-->
 <svelte:head>
+  <!-- svelte-ignore empty-block -->
   {#if isMenuShowing}
     <style lang="postcss">
       body {
@@ -18,6 +19,8 @@
       }
     </style>
   {/if}
+
+  <title>{selectedEntry ? `${selectedEntry.title} | Cookbook` : 'Cookbook'}</title>
 </svelte:head>
 
 <div class="md:hidden">
@@ -42,7 +45,13 @@
     <ul>
       {#each entries as entry}
         <li class="py-4 text-colorSecondaryAccent" class:active={$page.url.pathname === entry.href}>
-          <a href={entry.href} on:click={() => (isMenuShowing = false)}>{entry.title}</a>
+          <a
+            href={entry.href}
+            on:click={() => {
+              isMenuShowing = false
+              selectedEntry = entry
+            }}>{entry.title}</a
+          >
         </li>
       {/each}
     </ul>
