@@ -6,65 +6,33 @@
 
 <img src="/images/{recipe.slug}.jpg" title={recipe.title} alt={recipe.title} />
 
-<h1>{recipe.title}</h1>
+<h1 class="my-6 font-handwriting text-3xl text-colorSecondaryAccent">{recipe.title}</h1>
 
 <h2>Zutaten</h2>
-<ul>
+<table>
   {#each recipe.ingrediences as ingredience}
-    <li>
-      <span
+    <tr>
+      <td class="pr-4 text-right text-colorSecondaryAccent"
         >{#if ingredience.quantity}{ingredience.quantity.amount}
-          {ingredience.quantity.unit}{/if}</span
-      ><span>{ingredience.name}</span>
-    </li>
+          {ingredience.quantity.unit}{/if}</td
+      >
+      <td class:italic={!ingredience.required} class:text-colorPrimary={!ingredience.required}
+        >{ingredience.name}</td
+      >
+    </tr>
   {/each}
-</ul>
+</table>
 
 <h2>Anleitung</h2>
-<ol>
+<ol class="list-outside list-decimal pl-7">
   {#each recipe.instructions as instruction}
-    <li>{instruction}</li>
+    <li class="py-2 pl-4">{instruction}</li>
   {/each}
 </ol>
 
 <style lang="postcss">
-  h1 {
-    @apply my-6 font-handwriting text-3xl text-colorPrimary;
-  }
-
   h2 {
     @apply my-4;
     @apply font-bold;
-  }
-
-  ul {
-    @apply list-none;
-    @apply pl-4;
-  }
-
-  ul li {
-    @apply flex;
-    @apply flex-row;
-    @apply gap-4;
-  }
-
-  ul li span:first-child {
-    @apply text-right;
-    @apply w-20;
-  }
-
-  ul li span:last-child {
-    @apply flex-grow;
-  }
-
-  ol {
-    @apply list-decimal;
-    @apply list-outside;
-    @apply pl-7;
-  }
-
-  ol li {
-    @apply pl-4;
-    @apply py-2;
   }
 </style>

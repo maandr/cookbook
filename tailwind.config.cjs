@@ -9,12 +9,12 @@ module.exports = {
     },
     extend: {
       colors: {
-        colorPrimary: '#A63A50',
-        colorPrimaryAccent: '#BA6E6E',
-        colorBackground: '#f0e7d8',
-        colorBackgroundAccent: '#AB9B96',
-        colorSecondary: '#A1674A',
-        colorSecondaryAccent: '#1C120D'
+        colorPrimary: '#1E000E',
+        colorPrimaryAccent: '#14000A',
+        colorBackground: '#F2E5D7',
+        colorBackgroundAccent: '#EBD7C1',
+        colorSecondary: '#FFBCB5',
+        colorSecondaryAccent: '#CC1400'
       },
       zIndex: {
         navBar: 90,

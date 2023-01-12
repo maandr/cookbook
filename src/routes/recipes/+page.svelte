@@ -2,54 +2,29 @@
   import type { Recipe } from '$types/recipe'
 
   export let data: { recipes: Recipe[] }
-
-  let mustBeVegetarian = false
-  let mustBeVegan = false
-  let mustBeGlutenFree = false
 </script>
 
-<div>
-  <h2>Filter</h2>
-  <input type="checkbox" bind:value={mustBeVegetarian} />
-  Vegetarisch
-  <input type="checkbox" bind:value={mustBeVegan} /> Vegan
-  <input type="checkbox" bind:value={mustBeGlutenFree} /> Glutenfrei
-</div>
-
 <div class="mt-8">
-  <ul class="grid list-none grid-cols-3 gap-5">
+  <ul class="grid list-none grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
     {#each data.recipes as recipe}
       <a href="/recipe/{recipe.slug}" title={recipe.title}
-        ><li style="background-image: url('/images/{recipe.slug}.jpg')">
-          <h3>{recipe.title}</h3>
+        ><li
+          class="relative h-96 bg-cover bg-center bg-no-repeat text-center align-bottom shadow-xl transition-all hover:scale-105"
+          style="background-image: url('/images/{recipe.slug}.jpg')"
+        >
+          <div class="absolute bottom-0 left-0 h-16 w-full">
+            <div class="relative flex h-full items-center justify-center">
+              <div
+                class="absolute top-0 bottom-0 left-0 right-0 z-10"
+                style="background: rgba(0,0,0, 0.4)"
+              />
+              <h3 class="z-20 w-full flex-grow font-handwriting text-xl text-white">
+                {recipe.title}
+              </h3>
+            </div>
+          </div>
         </li></a
       >
     {/each}
   </ul>
 </div>
-
-<style lang="postcss">
-  ul li {
-    @apply text-left;
-    @apply h-96;
-    @apply bg-cover;
-    @apply bg-no-repeat;
-    @apply bg-center;
-    @apply align-bottom;
-    @apply opacity-100;
-    @apply hover:opacity-90;
-    @apply transition-all;
-    @apply hover:scale-105;
-  }
-
-  ul li h3 {
-    @apply font-handwriting;
-    @apply text-colorPrimary;
-    @apply bg-white;
-    @apply text-2xl;
-    @apply w-full;
-    @apply px-6;
-    @apply inline;
-    @apply shadow-xl;
-  }
-</style>

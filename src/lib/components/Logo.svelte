@@ -1,5 +1,5 @@
-<div class="my-10">
+<div class="my-10 flex items-center justify-center">
   <a href="/" title="Cookbook">
-    <img src="" alt="Logo" />
+    <img src="/Logo.png" alt="Logo" />
   </a>
 </div>

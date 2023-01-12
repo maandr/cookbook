@@ -37,14 +37,15 @@
 </div>
 
 <header
-  class="fixed z-navBar h-screen w-full -translate-x-full bg-colorPrimary p-8 text-center transition-transform md:relative md:col-span-3 md:h-full md:translate-x-0"
+  class="fixed z-navBar h-screen w-full border-colorSecondary bg-colorSecondaryAccent p-8 text-center transition-transform md:relative md:col-span-3 md:h-full md:translate-x-0 md:border-r-[12px]"
+  class:-translate-x-full={!isMenuShowing}
   class:translate-x-0={isMenuShowing}
 >
   <Logo />
   <nav class="list-none font-handwriting text-2xl font-bold">
     <ul>
       {#each entries as entry}
-        <li class="py-4 text-colorSecondaryAccent" class:active={$page.url.pathname === entry.href}>
+        <li class="py-4 text-colorPrimary" class:active={$page.url.pathname === entry.href}>
           <a
             href={entry.href}
             on:click={() => {
@@ -60,11 +61,12 @@
 
 <style lang="postcss">
   li:hover {
-    @apply text-colorBackground;
+    @apply text-colorSecondary;
+    @apply scale-110;
   }
 
   li.active {
-    @apply text-colorBackgroundAccent;
+    @apply text-colorPrimaryAccent;
     @apply underline;
   }
 </style>
