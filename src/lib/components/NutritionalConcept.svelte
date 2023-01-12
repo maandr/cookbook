@@ -10,7 +10,7 @@
   export let size = 16
 </script>
 
-<ul class="flex flex-row gap-2 md:float-right">
+<ul class="float-right flex flex-row gap-2">
   {#if recipe.containsMeat}
     <li>
       <Meat width={size} height={size} />

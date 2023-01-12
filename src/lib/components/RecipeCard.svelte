@@ -8,7 +8,7 @@
 
 <a href="/recipe/{recipe.slug}" title={recipe.title}>
   <div
-    class="recipe-card relative h-96 bg-cover bg-center bg-no-repeat text-center align-bottom shadow-xl transition-all hover:scale-105"
+    class="recipe-card relative h-96 bg-cover bg-center bg-no-repeat text-center align-bottom transition-all hover:scale-105 hover:shadow-xl"
     style="background-image: url('{recipe.imagePath}')"
   >
     <div class="nutrional-concept absolute top-0 left-0 z-20 w-full p-3">
