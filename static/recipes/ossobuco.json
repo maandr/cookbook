@@ -1,0 +1,145 @@
+{
+  "slug": "ossobuco",
+  "title": "Ossobuco",
+  "containsGluten": true,
+  "containsMeat": true,
+  "containsLactose": false,
+  "containsFish": false,
+  "containsOnlyPlants": false,
+  "amountOfServings": 6,
+  "amountOfMinutesRequired": 200,
+  "ingrediences": [
+    {
+      "quantity": {
+        "amount": 4,
+        "unit": ""
+      },
+      "name": "Beinscheiben vom Rind",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 4,
+        "unit": ""
+      },
+      "name": "Zwiebeln",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 4,
+        "unit": ""
+      },
+      "name": "Paprika",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": "Stange(n)"
+      },
+      "name": "Sellerie",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": "Stange(n)"
+      },
+      "name": "Porree",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 4,
+        "unit": "Karotten"
+      },
+      "name": "Knoblauch",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 4,
+        "unit": "Zehe(n)"
+      },
+      "name": "Knoblauch",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 2,
+        "unit": "EL"
+      },
+      "name": "Tomatenmark",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 500,
+        "unit": "ml"
+      },
+      "name": "Rotwein (trocken)",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 600,
+        "unit": "g"
+      },
+      "name": "Tomaten (passierte oder gehackte)",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 500,
+        "unit": "g"
+      },
+      "name": "Kartoffeln oder Reis",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": "TL"
+      },
+      "name": "Salz",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": "TL"
+      },
+      "name": "Pfeffer",
+      "required": true
+    },
+    {
+      "name": "Thymian",
+      "required": false
+    },
+    {
+      "name": "Estragon",
+      "required": false
+    },
+    {
+      "name": "Lorbeerblätter",
+      "required": false
+    },
+    {
+      "name": "Mehl",
+      "required": false
+    },
+    {
+      "name": "Petersilie",
+      "required": false
+    }
+  ],
+  "instructions": [
+    "Zwiebeln, Karotten, Paprika, Porree und Sellerie grob zerkleinern. Knoblauch in feine scheiben schneiden.",
+    "Beinschreiben salzen, pfeffern und in Mehl wenden und anschließend in einem großen Topf oder Bräter anbraten. Beinscheiben raus nehmen und das geschnittene Gemüse zusammen mit dem Tomatenmark kurz anbraten.",
+    "Mit Wein ablöschen und Tomaten und Kräuter (z.B. Thymian, Estragon, Lorbeerblätter) hinzugeben. Die Beinscheiben wieder in den Topf geben und darauf achten, dass es vollständig von Gemüse und Flüssigkeit bedeckt ist damit es schmoren kann.",
+    "Den Bratentopf bei 180°C für ca. 3 Stunden im Backofen.",
+    "Etwa 30 Minuten befor die Garzeit erreicht ist Kartoffeln oder Reis kochen und das Ossobuco mit Salz und Pfeffer abschmecken.",
+    "Ossobuco mit Reis oder Kartoffeln anrichten und mit frisch gehackter Petersilie garniert servieren."
+  ]
+}

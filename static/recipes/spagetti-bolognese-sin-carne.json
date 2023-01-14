@@ -7,6 +7,7 @@
   "containsLactose": true,
   "containsFish": false,
   "containsOnlyPlants": false,
+  "amountOfMinutesRequired": 30,
   "ingrediences": [
     {
       "quantity": {

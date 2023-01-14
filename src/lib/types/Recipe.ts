@@ -5,6 +5,7 @@ export interface Recipe {
   title: string
   imagePath: string
   amountOfServings: number
+  amountOfMinutesRequired: number
   containsGluten: boolean
   containsMeat: boolean
   containsLactose: boolean
