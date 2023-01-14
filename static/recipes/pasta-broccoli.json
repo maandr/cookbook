@@ -1,0 +1,59 @@
+{
+  "slug": "pasta-broccoli",
+  "title": "Pasta Broccoli",
+  "amountOfServings": 2,
+  "containsGluten": true,
+  "containsMeat": false,
+  "containsLactose": true,
+  "containsFish": false,
+  "containsOnlyPlants": false,
+  "amountOfMinutesRequired": 25,
+  "ingrediences": [
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": ""
+      },
+      "name": "Brokkoli",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": "Zehe(n)"
+      },
+      "name": "Knoblauch",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 300,
+        "unit": "g"
+      },
+      "name": "Pasta (Spagetti, Penne)",
+      "required": true
+    },
+    {
+      "name": "Salz",
+      "required": true
+    },
+    {
+      "name": "Pfeffer",
+      "required": true
+    },
+    {
+      "name": "Olivenöl",
+      "required": true
+    },
+    {
+      "name": "Parmesan",
+      "required": false
+    }
+  ],
+  "instructions": [
+    "Salzwasser in einem Topf zum kochen bringen. Den Brokkoli waschen und in gleichgroße Röschen zerteilen. Den Koblauch fein hacken.",
+    "Den Brokkoli im Salzwasser etwa 5 Minuten bissfest garen. Zeitgleich in einer großen Pfanne Olivenöl erhitzen und den Koblauch dazu geben. Den Brokkoli vom Salzwasser in die Pfanne geben sobald die Zeit verstrichen ist. Die Pfanne auf geringe Hitze stellen. Nun die Pasta in dem Wasser kochen in dem zuvor der Brokkoli garte. Brokkoli in der Pfanne im Olivenöl schwenken und dabei Salzen und Pfeffern.",
+    "Pasta aus dem kochenden Wasser direkt in die Pfanne geben und alles gründlich vermengen. Die Pfanne gut durchschwenken und bei Bedarf noch geriebenen Parmesan hinzugeben.",
+    "Pasta mit Parmesan anrichten und servieren."
+  ]
+}
