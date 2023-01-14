@@ -36,9 +36,6 @@
 
 <style lang="postcss">
   ul li {
-    @apply bg-colorPrimaryAccent;
-    @apply text-colorBackground;
-    @apply rounded-3xl;
-    @apply p-2;
+    @apply rounded-full bg-primaryAccent p-2 text-background;
   }
 </style>

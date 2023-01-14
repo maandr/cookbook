@@ -16,7 +16,7 @@
 
 <img src={data.imagePath} title={data.title} alt={data.title} />
 
-<h1 class="my-6 font-handwriting text-3xl text-colorSecondaryAccent">{data.title}</h1>
+<h1 class="my-6 font-handwriting text-3xl text-secondaryAccent">{data.title}</h1>
 
 <NutritionalConcept recipe={data} />
 
@@ -27,7 +27,7 @@
   min="1"
   max="15"
   step="1"
-  class="rounded border-2 border-colorBackground bg-colorSecondary p-1 text-center text-colorPrimaryAccent outline-none focus:border-colorSecondaryAccent"
+  class="rounded border-2 border-background bg-secondary p-1 text-center text-primaryAccent outline-none focus:border-secondaryAccent"
 />
 <input type="range" bind:value={amountOfServings} min="1" max="16" step="1" class="mx-4" />
 
@@ -39,7 +39,6 @@
 
 <style lang="postcss">
   h2 {
-    @apply my-4;
-    @apply font-bold;
+    @apply my-4 font-bold;
   }
 </style>

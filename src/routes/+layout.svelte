@@ -3,7 +3,7 @@
   import '../app.css'
 </script>
 
-<div class="grid min-h-screen grid-cols-12 gap-4 bg-colorBackground">
+<div class="grid min-h-screen grid-cols-12 gap-4 bg-background">
   <Navigation
     entries={[
       { title: 'Vorschlag', href: '/proposal' },
