@@ -1,0 +1,127 @@
+{
+  "slug": "bibimbap",
+  "title": "Bibimbap",
+  "containsGluten": false,
+  "containsMeat": true,
+  "containsLactose": false,
+  "containsFish": false,
+  "containsOnlyPlants": false,
+  "amountOfServings": 2,
+  "amountOfMinutesRequired": 30,
+  "ingrediences": [
+    {
+      "quantity": {
+        "amount": 200,
+        "unit": "g"
+      },
+      "name": "Reis (Rundkorn)",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 200,
+        "unit": "g"
+      },
+      "name": "Rindfleisch (Bavette, Hüftsteak, Rumpsteak)",
+      "required": false
+    },
+    {
+      "quantity": {
+        "amount": 6,
+        "unit": ""
+      },
+      "name": "Shiitake Pilze",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": ""
+      },
+      "name": "Karotte",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 0.5,
+        "unit": ""
+      },
+      "name": "Zuccini",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 200,
+        "unit": "g"
+      },
+      "name": "Blattspinat",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 50,
+        "unit": "g"
+      },
+      "name": "Mungosprossen oder Sojasprossen",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 2,
+        "unit": "Zehe(n)"
+      },
+      "name": "Knoblauch",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 2,
+        "unit": "EL"
+      },
+      "name": "Chilipaste (Gochujang, koreanische Chilipaste)",
+      "required": true
+    },
+    {
+      "name": "Sesamöl (geröstet)",
+      "required": true
+    },
+    {
+      "name": "Sojasoße",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 50,
+        "unit": "g"
+      },
+      "name": "Kimchi",
+      "required": false
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": ""
+      },
+      "name": "Ei",
+      "required": false
+    },
+    {
+      "name": "Sesamkörner",
+      "required": false
+    }
+  ],
+  "instructions": [
+    "Reis nach Packungsanweisung in Salzwasser garen. Dann abgedeckt warm halten.",
+    "Wasser in einem kleinen Kopftopf zum kochen bringen.",
+    "Karotte und Zuccini in feine streifen (Julienne) schneiden. Shiitake-Pilze waschen und ebenfalls in dünne streifen schneiden. Rindfleisch (falls gewünscht) in feine Stücke schneiden und mit 1 TL Knoblauchwürfeln und 1 EL Sojasoße und 1 EL Sesamöl marinieren.",
+    "Backofen auf 80°C vorheizen.",
+    "Soja- oder Mungosprossen im Wasser ca. 5 Minuten kochen. Anschließend abschöpfen und mit 1 TL Sesamöl marinieren. Im Ofen warmhalten.",
+    "1 EL Sesamöl in einer Pfanne erhitzen und darin den Spinat andünsten bis er komplett eingefallen ist. Mit 1 TL Sojasoße abschmecken. Im Ofen warmhalten.",
+    "1 EL Sesamöl in einer Pfanne erhitzen und darin die Möhren und Zuccini mit etwas Knoblauch anbraten bis sie weich werden. Im Ofen warmhalten.",
+    "1 EL Sesamöl in einer Pfanne erhitzen und darin die Shiitake-Pilze scharf anbraten. Mit 1 EL Sojasoße, etwas Salz und Pfeffer abschmecken. Im Ofen warmhalten.",
+    "Eine Pfanne erhitzen und das marinierte Rindfleisch darin scharf anbraten.",
+    "Wenn gewünscht pro Portion ein Spiegelei fürs topping braten.",
+    "In einer kleinen Schale Chilipaste (Gochujang) im Verhältnis 2:1:1 mit Sesamöl und Sojasoße anmischen.",
+    "Reis in eine tiefe Schale gebe darauf die übrigen Zutaten und falls vorhanden etwas Kimchi in kleinen Nestern anrichten. Mit Sesamkörner bestreut servieren. Die Zutaten erst beim Essen mischen."
+  ]
+}
