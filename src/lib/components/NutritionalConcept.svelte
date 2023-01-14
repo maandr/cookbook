@@ -4,7 +4,6 @@
   import Cheese from '$components/Icons/Cheese.svelte'
   import Fish from './Icons/Fish.svelte'
   import Plant from './Icons/Plant.svelte'
-  import type { Recipe } from '$types/Recipe'
 
   export let recipe: Recipe
   export let size = 16

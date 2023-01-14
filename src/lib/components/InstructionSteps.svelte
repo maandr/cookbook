@@ -1,6 +1,4 @@
 <script lang="ts">
-  import type { Recipe } from '$types/Recipe'
-
   export let recipe: Recipe
 </script>
 

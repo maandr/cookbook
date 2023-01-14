@@ -1,6 +1,5 @@
 <script lang="ts">
   import RecipeCard from '$components/RecipeCard.svelte'
-  import type { Recipe } from '$types/recipe'
 
   export let data: { recipes: Recipe[] }
 </script>

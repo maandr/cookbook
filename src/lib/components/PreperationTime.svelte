@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { Recipe } from '$types/Recipe'
   import Clock from './Icons/Clock.svelte'
 
   export let recipe: Recipe

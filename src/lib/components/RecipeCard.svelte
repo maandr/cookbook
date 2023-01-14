@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { Recipe } from '$types/recipe'
   import NutritionalConcept from '$components/NutritionalConcept.svelte'
   import IngredienceList from '$components/IngredienceList.svelte'
   import PreperationTime from './PreperationTime.svelte'

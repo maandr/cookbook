@@ -1,6 +1,5 @@
 <script lang="ts">
   import { page } from '$app/stores'
-  import type { MenuEntry } from '$types/MenuEntry'
   import Close from '$components/Icons/Close.svelte'
   import Menu from '$components/Icons/Menu.svelte'
   import Logo from '$components/Logo.svelte'

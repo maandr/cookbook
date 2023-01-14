@@ -1,6 +1,4 @@
-import type { Ingredience } from '$types/Ingredience'
-
-export interface Recipe {
+interface Recipe {
   slug: string
   title: string
   imagePath: string
@@ -13,4 +11,18 @@ export interface Recipe {
   containsOnlyPlants: boolean
   ingrediences: Ingredience[]
   instructions: string[]
+}
+
+interface Ingredience {
+  quantity?: {
+    amount: number
+    unit: string
+  }
+  name: string
+  required: boolean
+}
+
+interface MenuEntry {
+  title: string
+  href: string
 }

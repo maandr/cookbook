@@ -1,7 +1,5 @@
-import type { Recipe } from '$types/Recipe'
 import fs, { Dirent } from 'fs'
 import { error } from '@sveltejs/kit'
-import type { Ingredience } from '$types/Ingredience'
 
 export type RecipeDictionary = {
   [id: string]: Recipe
@@ -29,9 +27,9 @@ export abstract class RecipeRepository {
 
   public static findAllThatSuite(filter: RecipeFilter): Recipe[] {
     return Object.values(RECIPES)
-      .filter((recipe: Recipe) => (filter.mustBeVegetarian ? recipe.isVegetarian : true))
-      .filter((recipe: Recipe) => (filter.mustBeVegan ? recipe.isVegan : true))
-      .filter((recipe: Recipe) => (filter.musteBeGlutenFree ? recipe.isGlutenFree : true))
+      .filter((recipe: Recipe) => (filter.mustBeVegetarian ? !recipe.containsMeat : true))
+      .filter((recipe: Recipe) => (filter.mustBeVegan ? !recipe.containsOnlyPlants : true))
+      .filter((recipe: Recipe) => (filter.musteBeGlutenFree ? !recipe.containsGluten : true))
       .filter((recipe: Recipe) =>
         filter.mustContainIngrediences
           ? filter.mustContainIngrediences
