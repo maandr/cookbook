@@ -10,9 +10,9 @@
   export let size = 16
 </script>
 
-<ul class="float-right flex flex-row gap-2">
+<ul class="flex flex-row gap-2">
   {#if recipe.containsMeat}
-    <li>
+    <li class="text-[#F4ACB7]">
       <Meat width={size} height={size} />
     </li>
   {/if}
@@ -22,13 +22,13 @@
     </li>
   {/if}
   {#if recipe.containsGluten}
-    <li><Gluten width={size} height={size} /></li>
+    <li class="text-[#FFCD70]"><Gluten width={size} height={size} /></li>
   {/if}
   {#if recipe.containsLactose}
-    <li><Cheese width={size} height={size} /></li>
+    <li class="text-[#F3B700]"><Cheese width={size} height={size} /></li>
   {/if}
   {#if recipe.containsOnlyPlants}
-    <li>
+    <li class="text-[#058E3F]">
       <Plant width={size} height={size} />
     </li>
   {/if}
@@ -36,6 +36,6 @@
 
 <style lang="postcss">
   ul li {
-    @apply rounded-full bg-primaryAccent p-2 text-background;
+    @apply rounded bg-primaryAccent p-[6px];
   }
 </style>

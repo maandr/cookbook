@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Recipe } from '$types/Recipe'
+  import Clock from './Icons/Clock.svelte'
 
   export let recipe: Recipe
 
@@ -11,6 +12,9 @@
       : 'text-success'
 </script>
 
-<div class="float-left rounded bg-primaryAccent px-2 py-1 {textColor}">
+<div
+  class="float-left rounded bg-primaryAccent px-2 py-1 {textColor} flex items-center gap-2 text-sm"
+>
+  <Clock width={16} height={16} />
   {recipe.amountOfMinutesRequired} Minuten
 </div>

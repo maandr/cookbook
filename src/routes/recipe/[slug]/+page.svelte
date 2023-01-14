@@ -3,6 +3,7 @@
   import NutritionalConcept from '$components/NutritionalConcept.svelte'
   import IngredienceList from '$components/IngredienceList.svelte'
   import InstructionSteps from '$components/InstructionSteps.svelte'
+  import PreperationTime from '$components/PreperationTime.svelte'
 
   export let data: Recipe
   let amountOfServings: number = data.amountOfServings
@@ -14,11 +15,16 @@
   <title>{data.title} | Cookbook</title>
 </svelte:head>
 
-<img src={data.imagePath} title={data.title} alt={data.title} />
-
 <h1 class="my-6 font-handwriting text-3xl text-secondaryAccent">{data.title}</h1>
 
-<NutritionalConcept recipe={data} />
+<div class="xl:float-right xl:m-6">
+  <img src={data.imagePath} title={data.title} alt={data.title} class="mb-8 max-w-xl" />
+</div>
+
+<div class="flex gap-2">
+  <PreperationTime recipe={data} />
+  <NutritionalConcept recipe={data} />
+</div>
 
 <h2>Portionen</h2>
 <input

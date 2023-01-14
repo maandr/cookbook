@@ -14,11 +14,11 @@
   >
     <div
       class="flipside absolute top-0 left-0 bottom-16 flex w-full flex-col gap-3 overflow-hidden p-3 text-sm"
-      style="background-color: rgba(255, 255, 255, 0.35)"
+      style="background-color: rgba(255, 255, 255, 0.65)"
     >
       <div>
-        <PreperationTime {recipe} />
-        <NutritionalConcept {recipe} size={16} />
+        <div class="float-left"><PreperationTime {recipe} /></div>
+        <div class="float-right"><NutritionalConcept {recipe} size={16} /></div>
       </div>
       <IngredienceList {recipe} showOnlyRequired={true} showQuantities={false} />
     </div>
@@ -39,10 +39,10 @@
 
 <style lang="postcss">
   .recipe-card .flipside {
-    @apply translate-x-6 opacity-0 transition-all;
+    @apply max-h-0 translate-y-12 opacity-0 transition-all;
   }
 
   .recipe-card:hover .flipside {
-    @apply translate-x-0 opacity-100;
+    @apply max-h-full translate-y-0 opacity-100;
   }
 </style>
