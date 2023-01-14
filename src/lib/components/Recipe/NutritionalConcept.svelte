@@ -2,8 +2,8 @@
   import Meat from '$components/Icons/Meat.svelte'
   import Gluten from '$components/Icons/Gluten.svelte'
   import Cheese from '$components/Icons/Cheese.svelte'
-  import Fish from './Icons/Fish.svelte'
-  import Plant from './Icons/Plant.svelte'
+  import Fish from '../Icons/Fish.svelte'
+  import Plant from '../Icons/Plant.svelte'
 
   export let recipe: Recipe
   export let size = 16

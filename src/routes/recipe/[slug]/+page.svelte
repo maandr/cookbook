@@ -1,8 +1,8 @@
 <script lang="ts">
-  import NutritionalConcept from '$components/NutritionalConcept.svelte'
-  import IngredienceList from '$components/IngredienceList.svelte'
-  import InstructionSteps from '$components/InstructionSteps.svelte'
-  import PreperationTime from '$components/PreperationTime.svelte'
+  import NutritionalConcept from '$components/Recipe/NutritionalConcept.svelte'
+  import Ingrediences from '$components/Recipe/Ingrediencs.svelte'
+  import Instructions from '$components/Recipe/Instructions.svelte'
+  import PreperationTime from '$components/Recipe/PreperationTime.svelte'
 
   export let data: Recipe
   let amountOfServings: number = data.amountOfServings
@@ -37,10 +37,10 @@
 <input type="range" bind:value={amountOfServings} min="1" max="16" step="1" class="mx-4" />
 
 <h2>Zutaten</h2>
-<IngredienceList recipe={data} bind:factor />
+<Ingrediences recipe={data} bind:factor />
 
 <h2>Anleitung</h2>
-<InstructionSteps recipe={data} />
+<Instructions recipe={data} />
 
 <style lang="postcss">
   h2 {

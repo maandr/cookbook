@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Clock from './Icons/Clock.svelte'
+  import Clock from '../Icons/Clock.svelte'
 
   export let recipe: Recipe
 
