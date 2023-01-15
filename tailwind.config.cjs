@@ -21,7 +21,8 @@ module.exports = {
       },
       zIndex: {
         navBar: 90,
-        navBarToggle: 91
+        navBarToggle: 91,
+        loadingSpinner: 100
       }
     }
   },

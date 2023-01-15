@@ -5,7 +5,6 @@
   "containsMeat": true,
   "containsLactose": true,
   "containsFish": false,
-  "containsOnlyPlants": false,
   "amountOfServings": 4,
   "amountOfMinutesRequired": 30,
   "ingrediences": [
@@ -22,7 +21,7 @@
         "amount": 2,
         "unit": ""
       },
-      "name": "Möhren",
+      "name": "Karotte",
       "required": true
     },
     {

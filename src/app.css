@@ -5,6 +5,12 @@
 @tailwind utilities;
 
 @layer base {
+  /* fix jumping scrollbar */
+  html {
+    overflow-x: hidden;
+    margin-right: calc(-1 * (100vw - 100%));
+  }
+
   body {
     @apply font-sansSerif text-primary;
   }

@@ -6,7 +6,6 @@
   "containsMeat": false,
   "containsLactose": true,
   "containsFish": false,
-  "containsOnlyPlants": false,
   "amountOfMinutesRequired": 30,
   "ingrediences": [
     {
@@ -22,7 +21,7 @@
         "amount": 2,
         "unit": ""
       },
-      "name": "Möhren",
+      "name": "Karotte",
       "required": true
     },
     {

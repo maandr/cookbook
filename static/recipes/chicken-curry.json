@@ -5,7 +5,6 @@
   "containsMeat": true,
   "containsLactose": false,
   "containsFish": false,
-  "containsOnlyPlants": false,
   "amountOfServings": 4,
   "amountOfMinutesRequired": 30,
   "ingrediences": [

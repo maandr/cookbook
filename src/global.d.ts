@@ -8,7 +8,6 @@ interface Recipe {
   containsMeat: boolean
   containsLactose: boolean
   containsFish: boolean
-  containsOnlyPlants: boolean
   ingrediences: Ingredience[]
   instructions: string[]
 }
@@ -22,7 +21,24 @@ interface Ingredience {
   required: boolean
 }
 
+type RecipeDictionary = {
+  [id: string]: Recipe
+}
+
 interface MenuEntry {
   title: string
   href: string
+}
+
+interface RecipeFilter {
+  mustContainIngrediences: string[]
+  meatAllowed: boolean
+  glutenAllowed: boolean
+  lactoseAllowed: boolean
+  fishAllowed: boolean
+}
+
+type Pair<T> = {
+  key: T
+  value: T
 }

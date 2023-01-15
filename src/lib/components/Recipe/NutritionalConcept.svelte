@@ -3,7 +3,6 @@
   import Gluten from '$components/Icons/Gluten.svelte'
   import Cheese from '$components/Icons/Cheese.svelte'
   import Fish from '../Icons/Fish.svelte'
-  import Plant from '../Icons/Plant.svelte'
 
   export let recipe: Recipe
   export let size = 16
@@ -25,11 +24,6 @@
   {/if}
   {#if recipe.containsLactose}
     <li class="text-[#F3B700]"><Cheese width={size} height={size} /></li>
-  {/if}
-  {#if recipe.containsOnlyPlants}
-    <li class="text-[#058E3F]">
-      <Plant width={size} height={size} />
-    </li>
   {/if}
 </ul>
 

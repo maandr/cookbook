@@ -3,44 +3,62 @@
   import Ingrediences from '$components/Recipe/Ingrediencs.svelte'
   import Instructions from '$components/Recipe/Instructions.svelte'
   import PreperationTime from '$components/Recipe/PreperationTime.svelte'
+  import { recipesBySlug } from '$lib/stores'
+  import { onMount } from 'svelte'
+  import Portion from '$components/Icons/Portion.svelte'
 
-  export let data: Recipe
-  let amountOfServings: number = data.amountOfServings
+  export let data: { slug: string }
 
-  $: factor = amountOfServings / data.amountOfServings
+  let amountOfServings = 4
+
+  $: recipe = $recipesBySlug[data.slug]
+  $: factor = recipe ? amountOfServings / recipe.amountOfServings : 1
+
+  onMount(() => {
+    amountOfServings = recipe ? recipe.amountOfServings : 4
+  })
 </script>
 
 <svelte:head>
-  <title>{data.title} | Cookbook</title>
+  <title>{recipe.title} | Cookbook</title>
 </svelte:head>
 
-<h1 class="my-6 font-handwriting text-3xl text-secondaryAccent">{data.title}</h1>
+<h1 class="my-6 font-handwriting text-3xl text-secondaryAccent">{recipe.title}</h1>
 
 <div class="xl:float-right xl:m-6">
-  <img src={data.imagePath} title={data.title} alt={data.title} class="mb-8 max-w-xl" />
+  <img
+    src={recipe.imagePath}
+    title={recipe.title}
+    alt={recipe.title}
+    class="my-6 max-w-full md:m-8 md:max-w-lg"
+  />
 </div>
 
 <div class="flex gap-2">
-  <PreperationTime recipe={data} />
-  <NutritionalConcept recipe={data} />
+  <PreperationTime {recipe} />
+  <NutritionalConcept {recipe} />
 </div>
 
 <h2>Portionen</h2>
-<input
-  type="number"
-  bind:value={amountOfServings}
-  min="1"
-  max="15"
-  step="1"
-  class="rounded border-2 border-background bg-secondary p-1 text-center text-primaryAccent outline-none focus:border-secondaryAccent"
-/>
-<input type="range" bind:value={amountOfServings} min="1" max="16" step="1" class="mx-4" />
+<div class="rounde px- flex items-center gap-2 p-2">
+  <Portion width={20} height={20} />
+  <input
+    type="number"
+    bind:value={amountOfServings}
+    min="1"
+    max="15"
+    step="1"
+    title="Portionen"
+    class="bg-transparent p-1 text-center outline-none"
+  />
+  <input type="range" bind:value={amountOfServings} min="1" max="16" step="1" class="mx-2 w-40" />
+</div>
 
 <h2>Zutaten</h2>
-<Ingrediences recipe={data} bind:factor />
+<Ingrediences {recipe} bind:factor />
 
 <h2>Anleitung</h2>
-<Instructions recipe={data} />
+<Instructions {recipe} />
 
 <style lang="postcss">
   h2 {
