@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { page } from '$app/stores'
   import Close from '$components/Icons/Close.svelte'
   import Menu from '$components/Icons/Menu.svelte'
   import Logo from '$components/Logo.svelte'
@@ -44,14 +43,17 @@
   <nav class="list-none font-handwriting text-2xl font-bold">
     <ul>
       {#each entries as entry}
-        <li class="py-4 text-primary" class:active={$page.url.pathname === entry.href}>
+        <li class="py-4 text-primary" class:active={entry.isActive}>
           <a
             href={entry.href}
             on:click={() => {
               isMenuShowing = false
               selectedEntry = entry
-            }}>{entry.title}</a
+              entry.onClick && entry.onClick()
+            }}
           >
+            {entry.title}
+          </a>
         </li>
       {/each}
     </ul>
@@ -59,11 +61,11 @@
 </header>
 
 <style lang="postcss">
-  li:hover {
-    @apply scale-110 text-secondary;
-  }
-
   li.active {
     @apply text-primaryAccent underline;
+  }
+
+  li:hover {
+    @apply scale-125 text-secondary;
   }
 </style>

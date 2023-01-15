@@ -1,11 +1,13 @@
 {
   "slug": "spagetti-bolognese-sin-carne",
   "title": "Spagetti Bolognese sin Carne ",
+  "tags": ["meal"],
   "amountOfServings": 4,
   "containsGluten": true,
   "containsMeat": false,
   "containsLactose": true,
   "containsFish": false,
+  "containsAlcohol": false,
   "amountOfMinutesRequired": 30,
   "ingrediences": [
     {

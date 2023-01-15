@@ -1,10 +1,12 @@
 {
   "slug": "spagetti-bolognese",
   "title": "Spagetti Bolognese",
+  "tags": ["meal"],
   "containsGluten": true,
   "containsMeat": true,
   "containsLactose": true,
   "containsFish": false,
+  "containsAlcohol": false,
   "amountOfServings": 4,
   "amountOfMinutesRequired": 30,
   "ingrediences": [

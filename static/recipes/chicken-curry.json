@@ -1,10 +1,12 @@
 {
   "slug": "chicken-curry",
   "title": "Chicken Curry",
+  "tags": ["meal"],
   "containsGluten": false,
   "containsMeat": true,
   "containsLactose": false,
   "containsFish": false,
+  "containsAlcohol": false,
   "amountOfServings": 4,
   "amountOfMinutesRequired": 30,
   "ingrediences": [

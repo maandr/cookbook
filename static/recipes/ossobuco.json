@@ -1,10 +1,12 @@
 {
   "slug": "ossobuco",
   "title": "Ossobuco",
+  "tags": ["meal"],
   "containsGluten": true,
   "containsMeat": true,
   "containsLactose": false,
   "containsFish": false,
+  "containsAlcohol": true,
   "amountOfServings": 6,
   "amountOfMinutesRequired": 200,
   "ingrediences": [

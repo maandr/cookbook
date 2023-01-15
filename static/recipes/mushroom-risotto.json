@@ -1,10 +1,12 @@
 {
   "slug": "mushroom-risotto",
   "title": "Pilz Risotto",
+  "tags": ["meal"],
   "containsGluten": false,
   "containsMeat": false,
   "containsLactose": true,
   "containsFish": false,
+  "containsAlcohol": true,
   "amountOfServings": 4,
   "amountOfMinutesRequired": 45,
   "ingrediences": [

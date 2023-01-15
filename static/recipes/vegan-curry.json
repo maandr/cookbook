@@ -1,10 +1,12 @@
 {
   "slug": "vegan-curry",
   "title": "Veganes Curry",
+  "tags": ["meal"],
   "containsGluten": false,
   "containsMeat": false,
   "containsLactose": false,
   "containsFish": false,
+  "containsAlcohol": false,
   "amountOfServings": 4,
   "amountOfMinutesRequired": 30,
   "ingrediences": [

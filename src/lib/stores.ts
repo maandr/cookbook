@@ -3,10 +3,12 @@ import { derived, writable } from 'svelte/store'
 export const recipes = writable<Recipe[]>([])
 export const filter = writable<RecipeFilter>({
   mustContainIngrediences: [],
+  mustHaveTags: [],
   meatAllowed: true,
   glutenAllowed: true,
   lactoseAllowed: true,
-  fishAllowed: true
+  fishAllowed: true,
+  alcoholAllowed: true
 })
 export const recipesBySlug = derived(recipes, (recipes) =>
   Object.fromEntries(recipes.map((recipe) => [recipe.slug, recipe]))
@@ -21,6 +23,12 @@ function applyFilter(recipes: Recipe[], filter: RecipeFilter): Recipe[] {
     .filter((recipe) => (!filter.glutenAllowed ? !recipe.containsGluten : true))
     .filter((recipe) => (!filter.lactoseAllowed ? !recipe.containsLactose : true))
     .filter((recipe) => (!filter.fishAllowed ? !recipe.containsFish : true))
+    .filter((recipe) => (!filter.alcoholAllowed ? !recipe.containsAlcohol : true))
+    .filter((recipe) =>
+      filter.mustHaveTags.length === 0
+        ? true
+        : filter.mustHaveTags.every((x) => recipe.tags.join('').includes(x))
+    )
     .filter((recipe) =>
       filter.mustContainIngrediences.length == 0
         ? true

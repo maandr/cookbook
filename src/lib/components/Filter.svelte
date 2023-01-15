@@ -7,6 +7,7 @@
   import ToggleButton from '$components/ToggleButton.svelte'
   import { ingrediences } from '$lib/constants'
   import { filter } from '$lib/stores'
+  import Alcohol from './Icons/Alcohol.svelte'
 
   let ingredience: string
 
@@ -49,6 +50,9 @@
   </ToggleButton>
   <ToggleButton bind:value={$filter.lactoseAllowed}>
     <Cheese width={16} height={16} />
+  </ToggleButton>
+  <ToggleButton bind:value={$filter.alcoholAllowed}>
+    <Alcohol width={16} height={16} />
   </ToggleButton>
   <div class="flex flex-wrap gap-2">
     {#each $filter.mustContainIngrediences as ingredience}

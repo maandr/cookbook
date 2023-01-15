@@ -1,11 +1,13 @@
 {
   "slug": "pasta-broccoli",
   "title": "Pasta Broccoli",
+  "tags": ["meal"],
   "amountOfServings": 2,
   "containsGluten": true,
   "containsMeat": false,
   "containsLactose": true,
   "containsFish": false,
+  "containsAlcohol": false,
   "amountOfMinutesRequired": 25,
   "ingrediences": [
     {

@@ -1,0 +1,65 @@
+{
+  "slug": "moscow-mule",
+  "title": "Moscow Mule",
+  "tags": ["drink"],
+  "containsGluten": false,
+  "containsMeat": false,
+  "containsLactose": false,
+  "containsFish": false,
+  "containsAlcohol": true,
+  "amountOfServings": 1,
+  "amountOfMinutesRequired": 5,
+  "ingrediences": [
+    {
+      "quantity": {
+        "amount": 6,
+        "unit": "cl"
+      },
+      "name": "Vodka",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 12,
+        "unit": "cl"
+      },
+      "name": "Ginger Beer (Spicy Ginger)",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 1,
+        "unit": "cl"
+      },
+      "name": "Limettensaft",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 0.5,
+        "unit": ""
+      },
+      "name": "Limette",
+      "required": true
+    },
+    {
+      "name": "Eiswürfel",
+      "required": true
+    },
+    {
+      "quantity": {
+        "amount": 2,
+        "unit": ""
+      },
+      "name": "Gurkenschnitze",
+      "required": false
+    }
+  ],
+  "instructions": [
+    "Limette achteln und vier Viertel in ins Glas (Kupferbecher) geben und mit einem Stampfer zerquetschen.",
+    "Eiswürfel ins Glas geben.",
+    "Limettensaft und Vodka eingießen",
+    "Mit Ginger Beer auffüllen.",
+    "Mit Gurkenschnitze garnieren."
+  ]
+}

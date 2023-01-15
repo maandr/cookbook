@@ -14,10 +14,10 @@
             {ingredience.quantity.unit}{/if}</td
         >
       {/if}
-      <td
-        class:italic={!ingredience.required}
-        class:text-primary={!ingredience.required}
-        class="text-left">{ingredience.name}</td
+      <td class:text-primary={!ingredience.required} class="text-left"
+        >{ingredience.name}<span class="ml-1 italic"
+          >{ingredience.required ? '' : '(optional)'}</span
+        ></td
       >
     </tr>
   {/each}

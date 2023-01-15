@@ -1,10 +1,12 @@
 {
   "slug": "bibimbap",
   "title": "Bibimbap",
+  "tags": ["meal"],
   "containsGluten": false,
   "containsMeat": true,
   "containsLactose": false,
   "containsFish": false,
+  "containsAlcohol": false,
   "amountOfServings": 2,
   "amountOfMinutesRequired": 30,
   "ingrediences": [

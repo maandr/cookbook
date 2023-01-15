@@ -1,6 +1,7 @@
 interface Recipe {
   slug: string
   title: string
+  tags: string[]
   imagePath: string
   amountOfServings: number
   amountOfMinutesRequired: number
@@ -8,6 +9,7 @@ interface Recipe {
   containsMeat: boolean
   containsLactose: boolean
   containsFish: boolean
+  containsAlcohol: boolean
   ingrediences: Ingredience[]
   instructions: string[]
 }
@@ -26,16 +28,20 @@ type RecipeDictionary = {
 }
 
 interface MenuEntry {
+  isActive: boolean
   title: string
   href: string
+  onClick?: () => Void
 }
 
 interface RecipeFilter {
   mustContainIngrediences: string[]
+  mustHaveTags: string[]
   meatAllowed: boolean
   glutenAllowed: boolean
   lactoseAllowed: boolean
   fishAllowed: boolean
+  alcoholAllowed: boolean
 }
 
 type Pair<T> = {
