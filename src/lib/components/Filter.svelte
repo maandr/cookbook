@@ -28,7 +28,7 @@
     >
   {/each}
   <input
-    class="w-20 rounded bg-secondary p-2 px-3 text-secondaryAccent outline-none hover:scale-125 focus:w-40 focus:scale-100"
+    class="w-20 rounded bg-secondary p-2 px-3 text-primaryAccent outline-none placeholder:text-primary hover:scale-125 focus:w-40 focus:scale-100"
     type="text"
     placeholder="+ Zutat"
     bind:value={ingredience}

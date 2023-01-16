@@ -8,7 +8,7 @@
   "containsFish": false,
   "containsAlcohol": true,
   "amountOfServings": 8,
-  "amountOfMinutesRequired": 30,
+  "amountOfMinutesRequired": 60,
   "ingrediences": [
     {
       "quantity": {
