@@ -2,7 +2,7 @@
   import { onDestroy, onMount } from 'svelte'
   import Spinner from './Icons/Spinner.svelte'
 
-  let count = 0
+  let count = 3
   let interval: ReturnType<typeof setInterval>
 
   $: dots = '.'.repeat(count % 4)
@@ -10,7 +10,7 @@
   onMount(() => {
     interval = setInterval(() => {
       count++
-    }, 400)
+    }, 200)
   })
 
   onDestroy(() => {
