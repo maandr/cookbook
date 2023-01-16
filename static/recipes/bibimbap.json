@@ -3,7 +3,7 @@
   "title": "Bibimbap",
   "tags": ["meal"],
   "containsGluten": false,
-  "containsMeat": true,
+  "containsMeat": false,
   "containsLactose": false,
   "containsFish": false,
   "containsAlcohol": false,
