@@ -12,10 +12,10 @@
   let amountOfServings = 4
 
   $: recipe = $recipesBySlug[data.slug]
-  $: factor = recipe ? amountOfServings / recipe.amountOfServings : 1
+  $: factor = amountOfServings / recipe.amountOfServings
 
   onMount(() => {
-    amountOfServings = recipe ? recipe.amountOfServings : 4
+    amountOfServings = recipe.amountOfServings
   })
 </script>
 

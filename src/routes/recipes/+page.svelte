@@ -1,10 +1,17 @@
 <script lang="ts">
-  import Filter from '$components/Filter.svelte'
+  import AppliedIngredienceFilter from '$components/Filter/AppliedIngredienceFilter.svelte'
+  import IngredienceFilterInput from '$components/Filter/IngredienceFilterInput.svelte'
+  import NutritionalConceptToggles from '$components/Filter/NutritionalConceptToggles.svelte'
   import Card from '$components/Recipe/Card.svelte'
   import { filtered } from '$lib/stores'
 </script>
 
-<Filter />
+<IngredienceFilterInput />
+
+<div class="my-4 flex flex-wrap gap-2">
+  <NutritionalConceptToggles />
+  <AppliedIngredienceFilter />
+</div>
 
 <div class="mt-8">
   <div

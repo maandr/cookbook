@@ -1,4 +1,5 @@
 import { derived, writable } from 'svelte/store'
+import { containsAll, containsAllSubstrings } from './utils/arrayHelpers'
 
 export const recipes = writable<Recipe[]>([])
 export const filter = writable<RecipeFilter>({
@@ -24,19 +25,11 @@ function applyFilter(recipes: Recipe[], filter: RecipeFilter): Recipe[] {
     .filter((recipe) => (!filter.lactoseAllowed ? !recipe.containsLactose : true))
     .filter((recipe) => (!filter.fishAllowed ? !recipe.containsFish : true))
     .filter((recipe) => (!filter.alcoholAllowed ? !recipe.containsAlcohol : true))
+    .filter((recipe) => containsAll(recipe.tags, filter.mustHaveTags))
     .filter((recipe) =>
-      filter.mustHaveTags.length === 0
-        ? true
-        : filter.mustHaveTags.every((x) => recipe.tags.join('').includes(x))
-    )
-    .filter((recipe) =>
-      filter.mustContainIngrediences.length == 0
-        ? true
-        : filter.mustContainIngrediences.every((x) =>
-            recipe.ingrediences
-              .map((i) => i.name.toLocaleLowerCase())
-              .join('')
-              .includes(x.toLocaleLowerCase())
-          )
+      containsAllSubstrings(
+        recipe.ingrediences.map((i) => i.name),
+        filter.mustContainIngrediences
+      )
     )
 }

@@ -1,4 +1,4 @@
-export const ingrediences: Pair<string>[] = [
+export const ingrediencePrefabs: Pair<string>[] = [
   {
     key: '🍚',
     value: 'Reis'

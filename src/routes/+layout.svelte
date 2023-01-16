@@ -2,13 +2,14 @@
   import LoadingSpinner from '$components/LoadingSpinner.svelte'
   import Navigation from '$components/Navigation.svelte'
   import { filter, recipes } from '$lib/stores'
+  import { containsAll } from '$lib/utils/arrayHelpers'
   import { onMount } from 'svelte'
   import '../app.css'
 
   export let data: { recipes: Recipe[] }
 
   onMount(() => {
-    recipes.set(data.recipes)
+    recipes.set(data.recipes) // populate recipies store with recipes received from the server-side
   })
 
   function filterForTags(tags: string[]) {
@@ -28,7 +29,7 @@
         }
       },
       {
-        isActive: $filter.mustHaveTags.join('').includes('appetizer'),
+        isActive: containsAll($filter.mustHaveTags, ['appetizer']),
         title: 'Vorspeise',
         href: '/recipes',
         onClick: () => {
@@ -36,7 +37,7 @@
         }
       },
       {
-        isActive: $filter.mustHaveTags.join('').includes('meal'),
+        isActive: containsAll($filter.mustHaveTags, ['meal']),
         title: 'Hauptgang',
         href: '/recipes',
         onClick: () => {
@@ -44,7 +45,7 @@
         }
       },
       {
-        isActive: $filter.mustHaveTags.join('').includes('dessert'),
+        isActive: containsAll($filter.mustHaveTags, ['dessert']),
         title: 'Desserts',
         href: '/recipes',
         onClick: () => {
@@ -52,7 +53,7 @@
         }
       },
       {
-        isActive: $filter.mustHaveTags.join('').includes('baking'),
+        isActive: containsAll($filter.mustHaveTags, ['baking']),
         title: 'Kuchen',
         href: '/recipes',
         onClick: () => {
@@ -60,7 +61,7 @@
         }
       },
       {
-        isActive: $filter.mustHaveTags.join('').includes('snack'),
+        isActive: containsAll($filter.mustHaveTags, ['snack']),
         title: 'Snacks',
         href: '/recipes',
         onClick: () => {
@@ -68,7 +69,7 @@
         }
       },
       {
-        isActive: $filter.mustHaveTags.join('').includes('drink'),
+        isActive: containsAll($filter.mustHaveTags, ['drink']),
         title: 'Drinks',
         href: '/recipes',
         onClick: () => {
