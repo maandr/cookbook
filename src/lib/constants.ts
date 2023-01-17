@@ -152,7 +152,7 @@ export const UNITS: string[] = [
   'cl',
   'TL',
   'EL',
-  'Tasse(n)',
+  'Tasse',
   'Tropfen',
   'Prise'
 ]

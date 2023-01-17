@@ -39,7 +39,7 @@
         "amount": 1,
         "unit": "Stck."
       },
-      "name": "Sellerie Stange(n)",
+      "name": "Sellerie Stange",
       "required": true
     },
     {
@@ -63,7 +63,7 @@
         "amount": 4,
         "unit": "Stck."
       },
-      "name": "Knoblauch Zehe(n)",
+      "name": "Knoblauch Zehe",
       "required": true
     },
     {
