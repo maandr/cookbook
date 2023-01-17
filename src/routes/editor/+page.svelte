@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { DEFAULT_INGREDIENCE } from '$lib/constants'
   import { toSlug } from '$lib/utils/stringHelpers'
   import Document from './Document.svelte'
   import Editor from './Editor.svelte'
@@ -19,7 +18,9 @@
   let containsFish = false
   let containsLactose = false
   let containsAlcohol = false
-  let ingrediences: Ingredience[] = [DEFAULT_INGREDIENCE]
+  let ingrediences: Ingredience[] = [
+    { name: '', quantity: { amount: 0, unit: '' }, required: true }
+  ]
   let instructions: string[] = ['']
 
   $: slug = toSlug(title) // TODO: make sure its always unique
