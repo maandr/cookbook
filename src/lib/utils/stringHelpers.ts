@@ -1,3 +1,5 @@
+import { SLUG_TRANSFORMATIONS } from '$lib/constants'
+
 export function isEqualTo(
   x: string,
   y: string,
@@ -12,4 +14,12 @@ export function contains(
   options: { ignoreCase: boolean } = { ignoreCase: false }
 ): boolean {
   return options.ignoreCase ? x.toLocaleLowerCase().includes(y.toLocaleLowerCase()) : x.includes(y)
+}
+
+export function toSlug(input: string): string {
+  return SLUG_TRANSFORMATIONS.reduce(
+    (text, transformation) =>
+      text.replace(new RegExp(transformation.key, 'g'), transformation.value),
+    input.toLocaleLowerCase()
+  )
 }

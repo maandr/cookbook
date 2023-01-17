@@ -29,7 +29,7 @@
     {
       "quantity": {
         "amount": 6,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "Shiitake Pilze",
       "required": true
@@ -37,7 +37,7 @@
     {
       "quantity": {
         "amount": 1,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "Karotte",
       "required": true
@@ -45,7 +45,7 @@
     {
       "quantity": {
         "amount": 0.5,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "Zuccini",
       "required": true
@@ -69,9 +69,9 @@
     {
       "quantity": {
         "amount": 2,
-        "unit": "Zehe(n)"
+        "unit": "Stck."
       },
-      "name": "Knoblauch",
+      "name": "Knoblauch Zehe(n)",
       "required": true
     },
     {
@@ -83,10 +83,18 @@
       "required": true
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Sesamöl (geröstet)",
       "required": true
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Sojasoße",
       "required": true
     },
@@ -107,6 +115,10 @@
       "required": false
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Sesamkörner",
       "required": false
     }

@@ -10,7 +10,7 @@
     <tr>
       {#if showQuantities}
         <td class="pr-4 text-right text-secondaryAccent"
-          >{#if ingredience.quantity}{ingredience.quantity.amount * factor}
+          >{#if ingredience.quantity.amount > 0}{ingredience.quantity.amount * factor}
             {ingredience.quantity.unit}{/if}</td
         >
       {/if}

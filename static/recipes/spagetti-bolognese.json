@@ -13,7 +13,7 @@
     {
       "quantity": {
         "amount": 1,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "Zwiebel",
       "required": true
@@ -21,7 +21,7 @@
     {
       "quantity": {
         "amount": 2,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "Karotte",
       "required": true
@@ -29,17 +29,17 @@
     {
       "quantity": {
         "amount": 1,
-        "unit": "Zehe"
+        "unit": "Stck."
       },
-      "name": "Knoblauch",
+      "name": "Knoblauch Zehe(n)",
       "required": true
     },
     {
       "quantity": {
         "amount": 2,
-        "unit": "Stangen"
+        "unit": "Stck."
       },
-      "name": "Sellerie",
+      "name": "Sellerie Stange(n)",
       "required": true
     },
     {
@@ -83,22 +83,42 @@
       "required": false
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Olivenöl oder Butter",
       "required": true
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Salz",
       "required": true
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Pfeffer",
       "required": true
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Parmesan",
       "required": false
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "frische Oregano Blätter",
       "required": false
     }

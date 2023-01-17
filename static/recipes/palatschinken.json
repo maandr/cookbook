@@ -21,7 +21,7 @@
     {
       "quantity": {
         "amount": 2,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "Ei",
       "required": true
@@ -35,30 +35,58 @@
       "required": true
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Salz",
       "required": true
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Butter (oder Öl)",
       "required": true
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Apfelmuß",
       "required": false
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Marmelade",
       "required": false
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Zimt",
       "required": false
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Zucker",
       "required": false
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Nuss-Nougat-Creme",
       "required": false
     }

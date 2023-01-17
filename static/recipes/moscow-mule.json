@@ -37,19 +37,23 @@
     {
       "quantity": {
         "amount": 0.5,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "Limette",
       "required": true
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Eiswürfel",
       "required": true
     },
     {
       "quantity": {
         "amount": 2,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "Gurkenschnitze",
       "required": false

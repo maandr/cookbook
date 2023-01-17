@@ -13,7 +13,7 @@
     {
       "quantity": {
         "amount": 2,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "Charlotten oder Zwiebeln",
       "required": true
@@ -21,9 +21,9 @@
     {
       "quantity": {
         "amount": 2,
-        "unit": "Zehe(n)"
+        "unit": "Stck."
       },
-      "name": "Knoblauch",
+      "name": "Knoblauch Zehe(n)",
       "required": true
     },
     {
@@ -83,10 +83,18 @@
       "required": true
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Olivenöl",
       "required": true
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Petersilie",
       "required": false
     }

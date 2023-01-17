@@ -22,6 +22,11 @@ module.exports = {
         navBar: 90,
         navBarToggle: 91,
         loadingSpinner: 100
+      },
+      gridTemplateColumns: {
+        crafterIngredience: '1fr 220px 80px 64px',
+        crafterInstructions: '1fr 48px',
+        formsQuantityInput: '1fr 1fr'
       }
     }
   },

@@ -13,7 +13,7 @@
     {
       "quantity": {
         "amount": 4,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "Beinscheiben vom Rind",
       "required": true
@@ -21,7 +21,7 @@
     {
       "quantity": {
         "amount": 4,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "Zwiebeln",
       "required": true
@@ -29,7 +29,7 @@
     {
       "quantity": {
         "amount": 4,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "Paprika",
       "required": true
@@ -37,15 +37,15 @@
     {
       "quantity": {
         "amount": 1,
-        "unit": "Stange(n)"
+        "unit": "Stck."
       },
-      "name": "Sellerie",
+      "name": "Sellerie Stange(n)",
       "required": true
     },
     {
       "quantity": {
         "amount": 1,
-        "unit": "Stange(n)"
+        "unit": "Stck."
       },
       "name": "Porree",
       "required": true
@@ -53,17 +53,17 @@
     {
       "quantity": {
         "amount": 4,
-        "unit": "Karotten"
+        "unit": "Stck."
       },
-      "name": "Knoblauch",
+      "name": "Karotten",
       "required": true
     },
     {
       "quantity": {
         "amount": 4,
-        "unit": "Zehe(n)"
+        "unit": "Stck."
       },
-      "name": "Knoblauch",
+      "name": "Knoblauch Zehe(n)",
       "required": true
     },
     {
@@ -115,22 +115,42 @@
       "required": true
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Thymian",
       "required": false
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Estragon",
       "required": false
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Lorbeerblätter",
       "required": false
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Mehl",
       "required": false
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Petersilie",
       "required": false
     }

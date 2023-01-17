@@ -15,12 +15,14 @@ interface Recipe {
 }
 
 interface Ingredience {
-  quantity?: {
-    amount: number
-    unit: string
-  }
+  quantity: Quantity
   name: string
   required: boolean
+}
+
+interface Quantity {
+  amount: number
+  unit: string
 }
 
 type RecipeDictionary = {
@@ -47,4 +49,14 @@ interface RecipeFilter {
 type Pair<T> = {
   key: T
   value: T
+}
+
+type Tab = any // eslint-disable-line @typescript-eslint/no-explicit-any
+type Panel = any // eslint-disable-line @typescript-eslint/no-explicit-any
+interface TabsContext {
+  registerTab(tab: Tab)
+  registerPanel(panel: Panel)
+  selectTab(tab: Tab)
+  selectedTab: Writable<Tab>
+  selectedPanel: Writable<Panel>
 }

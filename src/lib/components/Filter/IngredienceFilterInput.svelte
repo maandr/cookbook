@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ingrediencePrefabs } from '$lib/constants'
+  import { INGREDIENCE_PREFABS } from '$lib/constants'
   import { filter } from '$lib/stores'
   import { isEqualTo } from '$lib/utils/stringHelpers'
 
@@ -18,7 +18,7 @@
 </script>
 
 <div class="mb-4 flex flex-wrap gap-2 border-b-2 border-primary pb-4">
-  {#each ingrediencePrefabs as prefab}
+  {#each INGREDIENCE_PREFABS as prefab}
     <button
       on:click={() => addIngredienceFilter(prefab.value)}
       title={prefab.value}

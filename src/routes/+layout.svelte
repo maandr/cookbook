@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { page } from '$app/stores'
   import LoadingSpinner from '$components/LoadingSpinner.svelte'
   import Navigation from '$components/Navigation.svelte'
   import { filter, recipes } from '$lib/stores'
@@ -21,7 +22,7 @@
   <Navigation
     entries={[
       {
-        isActive: $filter.mustHaveTags.length === 0,
+        isActive: $page.url.pathname === '/recipes' && $filter.mustHaveTags.length === 0,
         title: 'Alle',
         href: '/recipes',
         onClick: () => {
@@ -29,7 +30,8 @@
         }
       },
       {
-        isActive: containsAll($filter.mustHaveTags, ['appetizer']),
+        isActive:
+          $page.url.pathname === '/recipes' && containsAll($filter.mustHaveTags, ['appetizer']),
         title: 'Vorspeise',
         href: '/recipes',
         onClick: () => {
@@ -45,7 +47,8 @@
         }
       },
       {
-        isActive: containsAll($filter.mustHaveTags, ['dessert']),
+        isActive:
+          $page.url.pathname === '/recipes' && containsAll($filter.mustHaveTags, ['dessert']),
         title: 'Desserts',
         href: '/recipes',
         onClick: () => {
@@ -53,7 +56,8 @@
         }
       },
       {
-        isActive: containsAll($filter.mustHaveTags, ['baking']),
+        isActive:
+          $page.url.pathname === '/recipes' && containsAll($filter.mustHaveTags, ['baking']),
         title: 'Kuchen',
         href: '/recipes',
         onClick: () => {
@@ -61,7 +65,7 @@
         }
       },
       {
-        isActive: containsAll($filter.mustHaveTags, ['snack']),
+        isActive: $page.url.pathname === '/recipes' && containsAll($filter.mustHaveTags, ['snack']),
         title: 'Snacks',
         href: '/recipes',
         onClick: () => {
@@ -69,11 +73,19 @@
         }
       },
       {
-        isActive: containsAll($filter.mustHaveTags, ['drink']),
+        isActive: $page.url.pathname === '/recipes' && containsAll($filter.mustHaveTags, ['drink']),
         title: 'Drinks',
         href: '/recipes',
         onClick: () => {
           filterForTags(['drink'])
+        }
+      },
+      {
+        isActive: $page.url.pathname === '/editor',
+        title: 'Editor',
+        href: '/editor',
+        onClick: () => {
+          filterForTags([])
         }
       }
     ]}

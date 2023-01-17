@@ -1,4 +1,4 @@
-export const ingrediencePrefabs: Pair<string>[] = [
+export const INGREDIENCE_PREFABS: Pair<string>[] = [
   {
     key: '🍚',
     value: 'Reis'
@@ -131,4 +131,28 @@ export const ingrediencePrefabs: Pair<string>[] = [
     key: '🍷',
     value: 'Wein'
   }
+]
+
+export const SLUG_TRANSFORMATIONS: Pair<string>[] = [
+  { key: ' ', value: '-' },
+  { key: `:`, value: '-' },
+  { key: `\\.`, value: '-' },
+  { key: 'ü', value: 'ue' },
+  { key: 'ä', value: 'ae' },
+  { key: 'ö', value: 'oe' },
+  { key: 'ß', value: 'ss' }
+]
+
+export const UNITS: string[] = [
+  'Stck.',
+  'g',
+  'kg',
+  'ml',
+  'l',
+  'cl',
+  'TL',
+  'EL',
+  'Tasse(n)',
+  'Tropfen',
+  'Prise'
 ]

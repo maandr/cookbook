@@ -13,7 +13,7 @@
     {
       "quantity": {
         "amount": 2,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "große Tomate",
       "required": true
@@ -21,7 +21,7 @@
     {
       "quantity": {
         "amount": 1,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "kleine Zwiebel",
       "required": true
@@ -29,28 +29,32 @@
     {
       "quantity": {
         "amount": 1,
-        "unit": "Zehe(n)"
+        "unit": "Stck."
       },
-      "name": "Knoblauch",
+      "name": "Knoblauch Zehe(n)",
       "required": true
     },
     {
       "quantity": {
         "amount": 0.5,
-        "unit": "Bund"
+        "unit": "Stck."
       },
-      "name": "frischer Koriander",
+      "name": "frischer Koriander (Bund)",
       "required": true
     },
     {
       "quantity": {
         "amount": 1,
-        "unit": ""
+        "unit": "Stck."
       },
       "name": "Limette",
       "required": true
     },
     {
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      },
       "name": "Salz",
       "required": true
     }
