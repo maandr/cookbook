@@ -4,10 +4,10 @@
   import Clock from '$components/Icons/Clock.svelte'
   import Fish from '$components/Icons/Fish.svelte'
   import Gluten from '$components/Icons/Gluten.svelte'
-  import IngredienceInput from './IngredienceList.svelte'
-  import InputNumber from '$components/Forms/NumberInput.svelte'
+  import IngredienceInput from './IngredienceInput.svelte'
   import InstructionInput from './InstructionInput.svelte'
   import Meat from '$components/Icons/Meat.svelte'
+  import NumberInput from '$components/Forms/NumberInput.svelte'
   import Portion from '$components/Icons/Portion.svelte'
   import TagInput from '$components/Forms/TagInput.svelte'
   import TextInput from '$components/Forms/TextInput.svelte'
@@ -38,7 +38,7 @@
 
 <fieldset>
   <label for="amountOfServings">Portionen</label>
-  <InputNumber
+  <NumberInput
     tabindex={3}
     name="amountOfServings"
     bind:value={amountOfServings}
@@ -47,12 +47,12 @@
     step={1}
   >
     <Portion width={22} height={22} />
-  </InputNumber>
+  </NumberInput>
 </fieldset>
 
 <fieldset>
   <label for="amountOfMinutesRequired">Zubereitungszeit</label>
-  <InputNumber
+  <NumberInput
     tabindex={4}
     name="amountOfMinutesRequired"
     bind:value={amountOfMinutesRequired}
@@ -61,7 +61,7 @@
     step={1}
   >
     <Clock width={22} height={22} />
-  </InputNumber>
+  </NumberInput>
 </fieldset>
 
 <fieldset>
