@@ -9,3 +9,7 @@ export function containsAll(source: string[], keys: string[]): boolean {
     source.some((element) => isEqualTo(element, key, { ignoreCase: true }))
   )
 }
+
+export function distict<T>(source: T[]): T[] {
+  return [...new Set(source)]
+}
