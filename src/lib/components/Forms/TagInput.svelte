@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { distict } from '$lib/utils/arrayHelpers'
   import Close from '$components/Icons/Close.svelte'
   import Tags from '$components/Icons/Tags.svelte'
 
@@ -39,7 +40,7 @@
       on:focus={() => (hasFocus = true)}
       on:blur={() => (hasFocus = false)}
       on:change={() => {
-        tags = [...new Set([...tags, input])]
+        tags = distict([...tags, input])
         input = ''
         onChange && onChange(tags)
       }}
