@@ -25,6 +25,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         crafterIngredience: '1fr 220px 80px 64px',
+        crafterIngredienceMobile: '1fr 140px 64px 64px',
         crafterInstructions: '1fr 48px',
         formsQuantityInput: '1fr 1fr'
       }

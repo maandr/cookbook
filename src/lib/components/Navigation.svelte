@@ -21,18 +21,16 @@
   <title>{selectedEntry ? `${selectedEntry.title} | Cookbook` : 'Cookbook'}</title>
 </svelte:head>
 
-<div class="md:hidden">
-  <button
-    class="fixed top-6 right-6 z-navBarToggle cursor-pointer"
-    on:click={() => (isMenuShowing = !isMenuShowing)}
-  >
-    {#if isMenuShowing}
-      <Close width={32} height={32} />
-    {:else}
-      <Menu width={32} height={32} />
-    {/if}
-  </button>
-</div>
+<button
+  class="fixed top-6 right-6 z-navBarToggle cursor-pointer md:hidden"
+  on:click={() => (isMenuShowing = !isMenuShowing)}
+>
+  {#if isMenuShowing}
+    <Close width={32} height={32} />
+  {:else}
+    <Menu width={32} height={32} />
+  {/if}
+</button>
 
 <header
   class="fixed z-navBar h-screen w-full border-secondary bg-secondaryAccent p-8 text-center transition-transform md:relative md:col-span-3 md:h-full md:translate-x-0 md:border-r-[12px]"
@@ -40,10 +38,10 @@
   class:translate-x-0={isMenuShowing}
 >
   <Logo />
-  <nav class="list-none font-handwriting text-2xl font-bold">
+  <nav class="list-none font-handwriting text-xl font-bold md:text-2xl">
     <ul>
       {#each entries as entry}
-        <li class="py-4 text-primary" class:active={entry.isActive}>
+        <li class="py-2 text-primary md:py-4" class:active={entry.isActive}>
           <a
             href={entry.href}
             on:click={() => {

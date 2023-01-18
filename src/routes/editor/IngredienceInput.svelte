@@ -26,14 +26,14 @@
 </script>
 
 <div class="my-4">
-  <div class="grid grid-cols-crafterIngredience gap-2">
+  <div class="grid grid-cols-crafterIngredienceMobile gap-2 md:grid-cols-crafterIngredience">
     <h3>Zutat</h3>
     <h3>Menge</h3>
     <h3>Muss?</h3>
     <div />
   </div>
   {#each entries as entry, i}
-    <div class="my-2 grid grid-cols-crafterIngredience gap-2">
+    <div class="my-2 grid grid-cols-crafterIngredienceMobile gap-2 md:grid-cols-crafterIngredience">
       <TextInput
         name="ingredience"
         bind:value={entry.name}
