@@ -43,7 +43,7 @@
     2
   )
 
-  function paste(json: string) {
+  function parseJson(json: string) {
     const recipe = JSON.parse(json)
     title = recipe.title
     tags = recipe.tags
@@ -86,11 +86,12 @@
   <TabPanel>
     <Document
       {json}
+      onChange={(json) => parseJson(json)}
       onCopy={() => {
         navigator.clipboard.writeText(json)
       }}
       onPaste={async () => {
-        paste(await navigator.clipboard.readText())
+        parseJson(await navigator.clipboard.readText())
       }}
     />
   </TabPanel>
