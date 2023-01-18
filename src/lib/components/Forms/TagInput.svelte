@@ -40,7 +40,7 @@
       on:focus={() => (hasFocus = true)}
       on:blur={() => (hasFocus = false)}
       on:change={() => {
-        tags = distict([...tags, input])
+        tags = distict([...tags, input]).filter((t) => t.trim() !== '')
         input = ''
         onChange && onChange(tags)
       }}

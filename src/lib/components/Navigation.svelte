@@ -44,6 +44,7 @@
         <li class="py-2 text-primary md:py-4" class:active={entry.isActive}>
           <a
             href={entry.href}
+            tabindex="-1"
             on:click={() => {
               isMenuShowing = false
               selectedEntry = entry

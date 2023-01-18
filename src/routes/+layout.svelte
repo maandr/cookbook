@@ -1,11 +1,11 @@
 <script lang="ts">
+  import '../app.css'
+  import { containsAll } from '$lib/utils/arrayHelpers'
+  import { filter, recipes } from '$lib/stores'
+  import { onMount } from 'svelte'
   import { page } from '$app/stores'
   import LoadingSpinner from '$components/LoadingSpinner.svelte'
   import Navigation from '$components/Navigation.svelte'
-  import { filter, recipes } from '$lib/stores'
-  import { containsAll } from '$lib/utils/arrayHelpers'
-  import { onMount } from 'svelte'
-  import '../app.css'
 
   export let data: { recipes: Recipe[] }
 

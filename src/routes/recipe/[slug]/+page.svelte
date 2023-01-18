@@ -1,11 +1,12 @@
 <script lang="ts">
-  import NutritionalConcept from '$components/Recipe/NutritionalConcept.svelte'
+  import { onMount } from 'svelte'
+  import { recipesBySlug } from '$lib/stores'
+  import Edit from '$components/Icons/Edit.svelte'
   import Ingrediences from '$components/Recipe/Ingrediencs.svelte'
   import Instructions from '$components/Recipe/Instructions.svelte'
-  import PreperationTime from '$components/Recipe/PreperationTime.svelte'
-  import { recipesBySlug } from '$lib/stores'
-  import { onMount } from 'svelte'
+  import NutritionalConcept from '$components/Recipe/NutritionalConcept.svelte'
   import Portion from '$components/Icons/Portion.svelte'
+  import PreperationTime from '$components/Recipe/PreperationTime.svelte'
 
   export let data: { slug: string }
 
@@ -23,7 +24,10 @@
   <title>{recipe.title} | Cookbook</title>
 </svelte:head>
 
-<h1 class="my-6 font-handwriting text-3xl text-secondaryAccent">{recipe.title}</h1>
+<div class="items-middle my-6 flex flex-wrap gap-2">
+  <a href={`/editor/${recipe.slug}`} class="hover:scale-125"><Edit /></a>
+  <h1 class="font-handwriting text-3xl text-secondaryAccent">{recipe.title}</h1>
+</div>
 
 <div class="xl:float-right xl:m-6">
   <img

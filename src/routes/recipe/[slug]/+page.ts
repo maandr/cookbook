@@ -1,6 +1,6 @@
-import { error } from '@sveltejs/kit'
+import { error, type RequestEvent } from '@sveltejs/kit'
 
-export function load({ params }): { slug: string } {
-  if (params.slug) return { slug: params.slug }
+export function load(e: RequestEvent): { slug: string } {
+  if (e.params.slug) return { slug: e.params.slug }
   throw error(404, 'Not Found')
 }

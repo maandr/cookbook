@@ -11,6 +11,7 @@
 <button
   class:selected={$selectedTab === self}
   class="flex flex-wrap gap-2 bg-secondaryAccent px-6 py-3 font-handwriting text-secondary"
+  tabindex="-1"
   on:click={() => selectTab(self)}><slot /></button
 >
 

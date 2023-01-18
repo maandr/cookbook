@@ -25,3 +25,11 @@ function getImagePath(file: Dirent): string {
 
   return imagePath ? imagePath : IMAGES_FOLDER + 'default.jpg'
 }
+
+export function saveRecipe(recipe: Recipe) {
+  fs.writeFileSync(fileName(recipe), JSON.stringify(recipe, null, 2))
+}
+
+function fileName(recipe: Recipe): string {
+  return RECIPES_FOLDER + recipe.slug + '.json'
+}

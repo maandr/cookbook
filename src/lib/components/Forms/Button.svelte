@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let onClick: VoidFunction
+  export let onClick: VoidFunction | undefined = undefined
   export let disabled = false
   export let id: string | undefined = undefined
   export let name: string | undefined = undefined
