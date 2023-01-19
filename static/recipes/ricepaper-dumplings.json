@@ -1,9 +1,9 @@
 {
   "title": "Reispapier Dumplings",
   "slug": "reispapier-dumplings",
-  "tags": ["snack"],
-  "amountOfServings": 4,
-  "amountOfMinutesRequired": 25,
+  "tags": ["meal"],
+  "amountOfServings": 12,
+  "amountOfMinutesRequired": 40,
   "containsMeat": false,
   "containsFish": false,
   "containsGluten": false,
@@ -27,15 +27,15 @@
       }
     },
     {
-      "name": "Karotte (kleine)",
+      "name": "Karotte",
       "required": true,
       "quantity": {
-        "amount": "2",
+        "amount": "1",
         "unit": "Stck."
       }
     },
     {
-      "name": "Weißkohl",
+      "name": "Weißkohl oder Rotkohl",
       "required": true,
       "quantity": {
         "amount": "0.25",
@@ -64,22 +64,6 @@
       "quantity": {
         "amount": "20",
         "unit": "g"
-      }
-    },
-    {
-      "name": "Sojasauce",
-      "required": true,
-      "quantity": {
-        "amount": "2",
-        "unit": "EL"
-      }
-    },
-    {
-      "name": "Sesamöl",
-      "required": true,
-      "quantity": {
-        "amount": "1",
-        "unit": "TL"
       }
     },
     {
