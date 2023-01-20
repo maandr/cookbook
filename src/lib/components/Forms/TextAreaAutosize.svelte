@@ -8,20 +8,29 @@
   export let placeholder: string | undefined = undefined
   export let tabindex: number | undefined = undefined
   export let isValid: ((value: string) => boolean) | undefined = undefined
+  export let minRows = 1
+  export let maxRows: number | undefined = undefined
 
   const dispatch = createEventDispatcher()
 
   let hasFocus = false
+
+  $: minHeight = `${minRows * 1.2}em`
+  $: maxHeight = maxRows ? `${maxRows * 1.2}em` : 'auto'
 </script>
 
 <div
   class="relative flex w-full flex-row items-center gap-3 border-2 border-surfaceAccent bg-white pl-4"
   class:focus={hasFocus}
 >
-  <slot />
-  <input
-    class="w-full py-3 pr-5 text-lg outline-none"
-    type="text"
+  <pre
+    aria-hidden="true"
+    style="min-height: {minHeight}; max-height: {maxHeight}; opacity: 0;"
+    class="px-5 py-3 text-lg text-inherit">
+    {value}
+  </pre>
+  <textarea
+    class="absolute inset-0 px-5 py-3 text-lg outline-none"
     {id}
     {name}
     {tabindex}

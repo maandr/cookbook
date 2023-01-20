@@ -7,7 +7,9 @@
 </script>
 
 {#if isValid(value)}
-  <div class="center absolute top-0 right-4 h-full text-success opacity-60"><Check /></div>
+  <div class="center absolute top-0 right-4 h-full text-success opacity-60">
+    <Check />
+  </div>
 {:else}
   <div class="center absolute top-0 right-4 h-full text-attention opacity-60"><Close /></div>
 {/if}

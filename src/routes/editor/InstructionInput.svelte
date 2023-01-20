@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Delete from '$components/Icons/Delete.svelte'
+  import { isNotBlank } from '$lib/utils/validationHelpers'
   import Button from '$components/Forms/Button.svelte'
   import CirclePlus from '$components/Icons/CirclePlus.svelte'
-  import Input from '$components/Forms/Input.svelte'
-  import { isNotBlank } from '$lib/utils/validationHelpers'
+  import Delete from '$components/Icons/Delete.svelte'
+  import TextAreaAutosize from '$components/Forms/TextAreaAutosize.svelte'
 
   export let entries: string[]
   export let tabindex: number | undefined = undefined
@@ -22,12 +22,14 @@
     {#each entries as step, i}
       <li class="my-2 pl-3">
         <div class="grid grid-cols-crafterInstructions gap-2">
-          <Input
+          <TextAreaAutosize
             name="step"
             tabindex={tabindex ? tabindex + i + 1 : undefined}
-            bind:value={step}
+            maxRows={4}
             isValid={isNotBlank}
+            bind:value={step}
           />
+
           <Button on:click={() => remove(i)}>
             <Delete width={22} height={22} />
           </Button>
