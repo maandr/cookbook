@@ -7,15 +7,15 @@
     title: '',
     slug: '',
     tags: [],
-    amountOfServings: 1,
-    amountOfMinutesRequired: 30,
+    amountOfServings: undefined,
+    amountOfMinutesRequired: undefined,
     containsMeat: false,
     containsFish: false,
     containsGluten: false,
     containsLactose: false,
     containsAlcohol: false,
-    ingrediences: [{ name: '', quantity: { amount: 0, unit: '' }, required: true }],
-    instructions: [''],
+    ingrediences: [],
+    instructions: [],
     imagePath: ''
   }}
 />

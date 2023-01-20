@@ -65,14 +65,6 @@
         }
       },
       {
-        isActive: $page.url.pathname === '/recipes' && containsAll($filter.mustHaveTags, ['snack']),
-        title: 'Snacks',
-        href: '/recipes',
-        onClick: () => {
-          filterForTags(['snack'])
-        }
-      },
-      {
         isActive: $page.url.pathname === '/recipes' && containsAll($filter.mustHaveTags, ['drink']),
         title: 'Drinks',
         href: '/recipes',
@@ -92,7 +84,7 @@
   />
   {#if $recipes.length === 0}
     <div
-      class="absolute top-0 left-0 bottom-0 right-0 z-loadingSpinner flex items-center justify-center gap-6 bg-primary text-secondary"
+      class="center absolute top-0 left-0 bottom-0 right-0 z-loadingSpinner gap-6 bg-primary text-secondary"
     >
       <LoadingSpinner />
     </div>

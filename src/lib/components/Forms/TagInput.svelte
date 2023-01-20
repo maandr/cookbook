@@ -22,7 +22,7 @@
   <div class="flex flex-wrap gap-2 pl-2">
     {#each tags as tag}
       <button
-        class="flex items-center justify-center gap-1 rounded bg-primary px-2 text-background"
+        class="center gap-1 rounded bg-primary px-2 text-background"
         on:click={() => {
           tags = tags.filter((t) => t != tag)
         }}

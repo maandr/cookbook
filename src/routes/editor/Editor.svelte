@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { isPositive } from '$lib/utils/numberHelpers'
   import Alcohol from '$components/Icons/Alcohol.svelte'
   import Cheese from '$components/Icons/Cheese.svelte'
   import Clock from '$components/Icons/Clock.svelte'
@@ -28,7 +29,12 @@
 
 <fieldset>
   <label for="title">Title</label>
-  <TextInput tabindex={1} name="title" bind:value={title} />
+  <TextInput
+    tabindex={1}
+    name="title"
+    bind:value={title}
+    isValid={(value) => value.trim().length > 3}
+  />
 </fieldset>
 
 <fieldset>
@@ -45,6 +51,7 @@
     min={1}
     max={15}
     step={1}
+    isValid={isPositive}
   >
     <Portion width={22} height={22} />
   </NumberInput>
@@ -59,6 +66,7 @@
     min={1}
     max={500}
     step={1}
+    isValid={isPositive}
   >
     <Clock width={22} height={22} />
   </NumberInput>

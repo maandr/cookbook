@@ -9,7 +9,7 @@
 </script>
 
 <button
-  class="flex cursor-pointer items-center justify-center gap-2 rounded border-2 border-transparent bg-primary py-2 px-3 text-background outline-none focus:border-secondary"
+  class="center cursor-pointer gap-2 rounded border-2 border-transparent bg-primary py-2 px-3 text-background outline-none focus:border-secondary"
   class:off={!value}
   class:on={value}
   {id}

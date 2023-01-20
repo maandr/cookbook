@@ -1,9 +1,7 @@
 {
   "title": "Whiskey Sour",
   "slug": "whiskey-sour",
-  "tags": [
-    "drink"
-  ],
+  "tags": ["drink"],
   "amountOfServings": 1,
   "amountOfMinutesRequired": 5,
   "containsMeat": false,

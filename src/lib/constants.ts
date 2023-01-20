@@ -148,11 +148,10 @@ export const UNITS: string[] = [
   'g',
   'kg',
   'ml',
-  'l',
+  'Liter',
   'cl',
   'TL',
   'EL',
   'Tasse',
-  'Tropfen',
-  'Prise'
+  'Tropfen'
 ]

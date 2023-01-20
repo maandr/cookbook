@@ -5,6 +5,8 @@
   import QuantityInput from '$components/Forms/QuantityInput.svelte'
   import TextInput from '$components/Forms/TextInput.svelte'
   import ToggleButton from '$components/Forms/ToggleButton.svelte'
+  import { isNotBlank } from '$lib/utils/stringHelpers'
+  import CirclePlus from '$components/Icons/CirclePlus.svelte'
 
   export let entries: Ingredience[]
   export let tabindex: number | undefined = undefined
@@ -36,27 +38,32 @@
     <div class="my-2 grid grid-cols-crafterIngredienceMobile gap-2 md:grid-cols-crafterIngredience">
       <TextInput
         name="ingredience"
-        bind:value={entry.name}
         tabindex={tabindex ? tabindex + i * 4 + 1 : undefined}
+        bind:value={entry.name}
+        isValid={isNotBlank}
       >
         <Mortar width={22} height={22} />
       </TextInput>
       <QuantityInput
-        bind:value={entry.quantity}
         tabindex={tabindex ? tabindex + i * 4 + 2 : undefined}
+        bind:value={entry.quantity}
       />
       <ToggleButton
-        bind:value={entry.required}
         tabindex={tabindex ? tabindex + i * 4 + 4 : undefined}
+        bind:value={entry.required}
       />
       <Button onClick={() => remove(i)}>
         <Delete width={22} height={22} />
       </Button>
     </div>
   {/each}
-  <Button onClick={add} tabindex={tabindex ? tabindex + entries.length * 4 + 1 : undefined}>
-    ...
-  </Button>
+  <button
+    on:click={add}
+    tabindex={tabindex ? tabindex + entries.length * 4 + 1 : undefined}
+    class="my-2 flex w-full items-center gap-4 p-3 text-lg text-gray-600"
+  >
+    <CirclePlus /> Zutat hinzufügen
+  </button>
 </div>
 
 <style lang="postcss">

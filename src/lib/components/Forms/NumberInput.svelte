@@ -1,4 +1,6 @@
 <script lang="ts">
+  import IsValid from './IsValid.svelte'
+
   export let id: string | undefined = undefined
   export let name: string | undefined = undefined
   export let value: number
@@ -7,6 +9,7 @@
   export let max: number | undefined = undefined
   export let step: number | undefined = undefined
   export let onChange: ((value: number) => void) | undefined = undefined
+  export let isValid: ((value: number) => boolean) | undefined = undefined
 
   let hasFocus = false
 </script>
@@ -30,6 +33,9 @@
     on:focus={() => (hasFocus = true)}
     on:blur={() => (hasFocus = false)}
   />
+  {#if isValid}
+    <IsValid bind:value {isValid} />
+  {/if}
 </div>
 
 <style lang="postcss">

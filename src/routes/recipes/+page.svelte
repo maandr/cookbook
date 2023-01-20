@@ -1,11 +1,11 @@
 <script lang="ts">
   import { filter, filtered } from '$lib/stores'
   import Alcohol from '$components/Icons/Alcohol.svelte'
-  import IngredienceFilters from './IngredienceFilters.svelte'
   import Cheese from '$components/Icons/Cheese.svelte'
   import Fish from '$components/Icons/Fish.svelte'
   import Gluten from '$components/Icons/Gluten.svelte'
   import IngredienceFilterInput from './IngredienceFilterInput.svelte'
+  import IngredienceFilters from './IngredienceFilters.svelte'
   import Meat from '$components/Icons/Meat.svelte'
   import RecipeCard from './RecipeCard.svelte'
   import ToggleButton from '$components/Forms/ToggleButton.svelte'

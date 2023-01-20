@@ -1,27 +1,13 @@
 <script>
-  import Tab from '$components/Tab.svelte'
-  import TabPanel from '$components/TabPanel.svelte'
-  import TabBar from '$components/TabBar.svelte'
-  import Tabs from '$components/Tabs.svelte'
+  import Modal from '$components/Modal.svelte'
+
+  let isModalVisible = false
 </script>
 
-<h1 class="flex p-3 text-base font-bold underline">Cookbook</h1>
-<Tabs>
-  <TabBar>
-    <Tab>Document</Tab>
-    <Tab>Editor</Tab>
-  </TabBar>
-  <TabPanel><p>Document panel</p></TabPanel>
-  <TabPanel><h2>Editor</h2></TabPanel>
-</Tabs>
+<Modal isVisible={isModalVisible}>
+  <h2>Saved</h2>
+  <p>Deine Änderungen wurden gespeichert.</p>
+  <button on:click={() => (isModalVisible = false)}>OK</button>
+</Modal>
 
-<Tabs>
-  <TabBar>
-    <Tab>Auto</Tab>
-    <Tab>Mobil</Tab>
-    <Tab>Truck</Tab>
-  </TabBar>
-  <TabPanel><p>Document panel</p></TabPanel>
-  <TabPanel><h2>Editor</h2></TabPanel>
-  <TabPanel><h2>Poof</h2></TabPanel>
-</Tabs>
+<button on:click={() => (isModalVisible = true)}>???</button>

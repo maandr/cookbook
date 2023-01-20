@@ -2,6 +2,8 @@
   import Delete from '$components/Icons/Delete.svelte'
   import Button from '$components/Forms/Button.svelte'
   import TextInput from '$components/Forms/TextInput.svelte'
+  import { isNotBlank } from '$lib/utils/stringHelpers'
+  import CirclePlus from '$components/Icons/CirclePlus.svelte'
 
   export let entries: string[]
   export let tabindex: number | undefined = undefined
@@ -22,8 +24,9 @@
         <div class="grid grid-cols-crafterInstructions gap-2">
           <TextInput
             name="step"
-            bind:value={step}
             tabindex={tabindex ? tabindex + i + 1 : undefined}
+            bind:value={step}
+            isValid={isNotBlank}
           />
           <Button onClick={() => remove(i)}>
             <Delete width={22} height={22} />
@@ -32,5 +35,11 @@
       </li>
     {/each}
   </ol>
-  <Button onClick={add} tabindex={tabindex ? tabindex + entries.length + 1 : undefined}>...</Button>
+  <button
+    on:click={add}
+    tabindex={tabindex ? tabindex + entries.length * 4 + 1 : undefined}
+    class="my-2 flex w-full items-center gap-4 p-3 text-lg text-gray-600"
+  >
+    <CirclePlus /> Schritt hinzufügen
+  </button>
 </div>

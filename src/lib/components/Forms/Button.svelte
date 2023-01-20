@@ -7,7 +7,7 @@
 </script>
 
 <button
-  class="flex items-center justify-center gap-2 rounded bg-primaryAccent py-2 px-4 text-lg text-background hover:scale-110 hover:bg-primary"
+  class="center gap-2 rounded bg-primaryAccent py-2 px-4 text-lg text-background hover:scale-110 hover:bg-primary disabled:bg-slate-400"
   {id}
   {name}
   {disabled}
