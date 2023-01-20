@@ -1,58 +1,46 @@
 <script lang="ts">
-  import Scale from '$components/Icons/Scale.svelte'
-  import { UNITS } from '$lib/constants'
-  import { isNotNegative, isPositive } from '$lib/utils/numberHelpers'
-  import { isNotBlank } from '$lib/utils/stringHelpers'
+  import { createEventDispatcher } from 'svelte'
   import IsValid from './IsValid.svelte'
 
+  export let value: { amount: number; unit: string }
+  export let allowedUnits: string[]
   export let id: string | undefined = undefined
   export let name: string | undefined = undefined
-  export let value: Quantity
   export let tabindex: number | undefined = undefined
-  export let max: number | undefined = undefined
-  export let step: number | undefined = undefined
-  export let onChange: ((value: Quantity) => void) | undefined = undefined
+  export let isValid: ((value: any) => boolean) | undefined = undefined // eslint-disable-line @typescript-eslint/no-explicit-any
 
   let hasFocus = false
   let hasUnitInputFocus = false
+
+  const dispatch = createEventDispatcher()
 
   function unitSuffix(value: string | undefined): string | undefined {
     return value ? `${value}-unit` : value
   }
 
-  $: unitOptions = UNITS.filter((u) =>
+  $: unitOptions = allowedUnits.filter((u) =>
     u.toLocaleLowerCase().startsWith(value.unit.toLocaleLowerCase())
   )
 </script>
 
 <div
-  class="relative grid grid-cols-formsQuantityInput items-center gap-2 border-2 border-transparent bg-white"
+  class="relative grid grid-cols-formsQuantityInput items-center gap-2 border-2 border-surfaceAccent bg-white"
   class:focus={hasFocus}
 >
-  <div class="grid h-full grid-cols-3 items-center gap-2 bg-transparent pl-3">
-    <Scale width={22} height={22} />
+  <div class="relative flex h-full items-center gap-2 bg-transparent pl-3">
+    <slot />
     <input
-      class="h-full pl-2 text-lg outline-none"
+      class="h-full w-full pl-2 text-lg outline-none"
       type="text"
       {id}
       {name}
       {tabindex}
-      min={0}
-      {max}
-      {step}
       bind:value={value.amount}
       on:change={() => {
-        if (isNaN(value.amount)) {
-          value.amount = 0
-        }
-        onChange && onChange(value)
+        dispatch('change', { value: value })
       }}
       on:focus={() => (hasFocus = true)}
       on:blur={() => (hasFocus = false)}
-    />
-    <IsValid
-      bind:value={value.amount}
-      isValid={(v) => (isNotBlank(value.unit) ? isPositive(v) : isNotNegative(v))}
     />
   </div>
   <div class="relative h-full">
@@ -84,6 +72,9 @@
       {/if}
     </div>
   </div>
+  {#if isValid}
+    <IsValid bind:value {isValid} />
+  {/if}
 </div>
 
 <style lang="postcss">

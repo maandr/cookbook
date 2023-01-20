@@ -1,17 +1,16 @@
 <script lang="ts">
-  import { isPositive } from '$lib/utils/numberHelpers'
+  import { hasMinLength, isNumberBetween } from '$lib/utils/validationHelpers'
   import Alcohol from '$components/Icons/Alcohol.svelte'
   import Cheese from '$components/Icons/Cheese.svelte'
   import Clock from '$components/Icons/Clock.svelte'
   import Fish from '$components/Icons/Fish.svelte'
   import Gluten from '$components/Icons/Gluten.svelte'
   import IngredienceInput from './IngredienceInput.svelte'
+  import Input from '$components/Forms/Input.svelte'
   import InstructionInput from './InstructionInput.svelte'
   import Meat from '$components/Icons/Meat.svelte'
-  import NumberInput from '$components/Forms/NumberInput.svelte'
   import Portion from '$components/Icons/Portion.svelte'
   import TagInput from '$components/Forms/TagInput.svelte'
-  import TextInput from '$components/Forms/TextInput.svelte'
   import ToggleButton from '$components/Forms/ToggleButton.svelte'
 
   export let title: string
@@ -29,12 +28,7 @@
 
 <fieldset>
   <label for="title">Title</label>
-  <TextInput
-    tabindex={1}
-    name="title"
-    bind:value={title}
-    isValid={(value) => value.trim().length > 3}
-  />
+  <Input tabindex={1} name="title" bind:value={title} isValid={(value) => hasMinLength(value, 3)} />
 </fieldset>
 
 <fieldset>
@@ -44,32 +38,26 @@
 
 <fieldset>
   <label for="amountOfServings">Portionen</label>
-  <NumberInput
+  <Input
     tabindex={3}
     name="amountOfServings"
     bind:value={amountOfServings}
-    min={1}
-    max={15}
-    step={1}
-    isValid={isPositive}
+    isValid={(value) => isNumberBetween(value, 1, 16)}
   >
     <Portion width={22} height={22} />
-  </NumberInput>
+  </Input>
 </fieldset>
 
 <fieldset>
   <label for="amountOfMinutesRequired">Zubereitungszeit</label>
-  <NumberInput
+  <Input
     tabindex={4}
     name="amountOfMinutesRequired"
     bind:value={amountOfMinutesRequired}
-    min={1}
-    max={500}
-    step={1}
-    isValid={isPositive}
+    isValid={(value) => isNumberBetween(value, 1, 500)}
   >
     <Clock width={22} height={22} />
-  </NumberInput>
+  </Input>
 </fieldset>
 
 <fieldset>

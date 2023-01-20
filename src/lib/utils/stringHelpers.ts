@@ -23,11 +23,3 @@ export function toSlug(input: string): string {
     input.toLocaleLowerCase()
   )
 }
-
-export function isNotBlank(value: string): boolean {
-  return value.trim().length > 0
-}
-
-export function hasMinLength(value: string, length: number): boolean {
-  return value.trim().length >= length
-}

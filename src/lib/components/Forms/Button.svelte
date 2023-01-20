@@ -1,9 +1,12 @@
 <script lang="ts">
-  export let onClick: VoidFunction | undefined = undefined
+  import { createEventDispatcher } from 'svelte'
+
   export let disabled = false
   export let id: string | undefined = undefined
   export let name: string | undefined = undefined
   export let tabindex: number | undefined = undefined
+
+  const dispatch = createEventDispatcher()
 </script>
 
 <button
@@ -12,7 +15,7 @@
   {name}
   {disabled}
   {tabindex}
-  on:click={() => onClick && onClick()}
+  on:click={() => dispatch('click')}
 >
   <slot />
 </button>

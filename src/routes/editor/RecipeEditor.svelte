@@ -1,6 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
-  import { hasMinLength, isNotBlank, toSlug } from '$lib/utils/stringHelpers'
+  import { hasMinLength, isAPositiveNumber, isNotBlank } from '$lib/utils/validationHelpers'
+  import { toSlug } from '$lib/utils/stringHelpers'
   import Button from '$components/Forms/Button.svelte'
   import Close from '$components/Icons/Close.svelte'
   import Document from './Document.svelte'
@@ -12,7 +13,6 @@
   import TabBar from '$components/TabBar.svelte'
   import TabPanel from '$components/TabPanel.svelte'
   import Tabs from '$components/Tabs.svelte'
-  import { isPositive } from '$lib/utils/numberHelpers'
 
   export let recipe: Recipe
 
@@ -29,8 +29,8 @@
 
   $: isValid =
     hasMinLength(recipe.title, 3) &&
-    isPositive(recipe.amountOfServings) &&
-    isPositive(recipe.amountOfMinutesRequired) &&
+    isAPositiveNumber(recipe.amountOfServings) &&
+    isAPositiveNumber(recipe.amountOfMinutesRequired) &&
     recipe.ingrediences.filter((i) => isNotBlank(i.name)).length > 0 &&
     recipe.instructions.filter((i) => isNotBlank(i)).length > 0
 
@@ -70,7 +70,7 @@
 
     <div class="mt-3 flex w-full flex-wrap justify-end gap-2">
       <Button
-        onClick={() => {
+        on:click={() => {
           recipe.slug.length > 0 ? goto('/recipe/' + recipe.slug) : goto('/recipes')
         }}
       >

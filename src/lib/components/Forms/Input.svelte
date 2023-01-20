@@ -1,33 +1,45 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte'
   import IsValid from './IsValid.svelte'
 
+  export let value: string
   export let id: string | undefined = undefined
   export let name: string | undefined = undefined
   export let placeholder: string | undefined = undefined
-  export let value: string
   export let tabindex: number | undefined = undefined
-  export let onChange: ((value: string) => void) | undefined = undefined
   export let isValid: ((value: string) => boolean) | undefined = undefined
+
+  const dispatch = createEventDispatcher()
 
   let hasFocus = false
 </script>
 
 <div
-  class="flex items-center gap-2 border-2 border-transparent bg-white p-3"
+  class="relative flex w-full flex-row items-center gap-3 border-2 border-surfaceAccent bg-white pl-4"
   class:focus={hasFocus}
+  class:attention={!isValid}
 >
   <slot />
   <input
-    class="w-full pl-2 text-lg outline-none"
+    class="w-full py-3 pr-5 text-lg outline-none"
+    class:valid={isValid}
+    class:invalid={!isValid}
     type="text"
     {id}
     {name}
-    {placeholder}
     {tabindex}
+    {placeholder}
     bind:value
-    on:change={() => onChange && onChange(value)}
-    on:focus={() => (hasFocus = true)}
-    on:blur={() => (hasFocus = false)}
+    on:change={() => dispatch('change', { value })}
+    on:focus={() => {
+      hasFocus = true
+      dispatch('focus')
+    }}
+    on:blur={() => {
+      hasFocus = false
+      dispatch('blur')
+    }}
+    on:click={() => dispatch('click')}
   />
   {#if isValid}
     <IsValid bind:value {isValid} />

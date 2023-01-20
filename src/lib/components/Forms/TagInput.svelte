@@ -15,7 +15,7 @@
 </script>
 
 <div
-  class="flex items-center gap-2 border-2 border-transparent bg-white p-3"
+  class="flex items-center gap-2 border-2 border-surfaceAccent bg-white p-3"
   class:focus={hasFocus}
 >
   <Tags width={22} height={22} />

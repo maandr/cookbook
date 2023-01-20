@@ -1,11 +1,14 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte'
   import ThumbsDown from '$components/Icons/ThumbsDown.svelte'
   import ThumbsUp from '$components/Icons/ThumbsUp.svelte'
 
+  export let value: boolean
   export let id: string | undefined = undefined
   export let name: string | undefined = undefined
   export let tabindex: number | undefined = undefined
-  export let value: boolean
+
+  const dispatch = createEventDispatcher()
 </script>
 
 <button
@@ -15,7 +18,13 @@
   {id}
   {name}
   {tabindex}
-  on:click={() => (value = !value)}
+  on:click={() => {
+    value = !value
+    dispatch('click')
+  }}
+  on:change={() => {
+    dispatch('change', { value })
+  }}
 >
   <div class="flex gap-4">
     <slot />

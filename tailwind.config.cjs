@@ -23,12 +23,12 @@ module.exports = {
       zIndex: {
         navBar: 90,
         navBarToggle: 91,
-        loadingSpinner: 100,
-        overlay: 998,
-        modal: 999
+        overlay: 997,
+        modal: 998,
+        loadingSpinner: 999
       },
       gridTemplateColumns: {
-        crafterIngredience: '1fr 220px 80px 64px',
+        crafterIngredience: '1fr 180px 80px 64px',
         crafterIngredienceMobile: '1fr 140px 64px 64px',
         crafterInstructions: '1fr 48px',
         formsQuantityInput: '1fr 75px'
