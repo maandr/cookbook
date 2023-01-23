@@ -81,7 +81,7 @@ jobs:
             echo ${{ secrets.CONTAINER_REGISTRY_PAT }} | docker login ghcr.io --username ${{ github.repository_owner }} --password-stdin
             docker pull ghcr.io/${{ github.repository }}:main
             docker rm -f cookbook
-            docker run --detach --name cookbook --rm --network=infra-network --env VIRTUAL_HOST=cookbook.maandr.de --env LETSENCRYPT_HOST=cookbook.maandr.de ghcr.io/${{ github.repository }}:latest
+            docker run --detach --name cookbook --rm --network=infra-network --env VIRTUAL_HOST=cookbook.maandr.de --env LETSENCRYPT_HOST=cookbook.maandr.de ghcr.io/${{ github.repository }}:main
             docker image prune -f
 
   smoke-test:
