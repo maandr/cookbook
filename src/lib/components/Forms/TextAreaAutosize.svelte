@@ -26,7 +26,7 @@
   <div
     aria-hidden="true"
     style="min-height: {minHeight}; max-height: {maxHeight};"
-    class="break-words px-5 py-3 text-lg text-inherit opacity-0"
+    class="whitespace-pre-wrap break-words px-5 py-3 text-lg text-inherit opacity-0"
   >
     {value}
   </div>
