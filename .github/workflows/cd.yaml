@@ -12,24 +12,62 @@ on:
       - '.eslintignore'
       - '.prettier.config.cjs'
       - '.vscode/**'
+
 jobs:
-  build-publish-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         id: checkout-repository
         uses: actions/checkout@master
 
-      - name: Build and Publish Docker Image
-        id: build-docker-image
-        uses: elgohr/Publish-Docker-Github-Action@v5
+      - name: Docker meta
+        id: docker_meta
+        uses: crazy-max/ghaction-docker-meta@v1
         with:
-          registry: docker.pkg.github.com
-          name: ${{ github.repository }}/cookbook
-          username: ${{ github.actor }}
-          password: ${{ github.token }}
-          tags: 'latest'
+          images: ghcr.io/${{ github.repository_owner }}/cookbook
+          tag-sha: true
+          tag-latest: true
 
+      - name: Set up QEMU
+        id: setup_qemu
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        id: setup_buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Cache Docker Layers
+        id: chache_docker
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Login to GitHub Container Registry
+        id: ghcr_login
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.CONTAINER_REGISTRY_PAT }}
+
+      - name: Build and publish
+        id: docker_build_and_publish
+        uses: docker/build-push-action@v2.2.1
+        with:
+          push: true
+          context: ./
+          file: ./Dockerfile
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Deploy to Remote Host
         id: deploy
         uses: appleboy/ssh-action@v0.1.7
@@ -38,14 +76,15 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
-            docker login -u ${{ github.actor }} -p ${{ github.token }} docker.pkg.github.com
-            docker pull docker.pkg.github.com/${{ github.repository }}/cookbook:latest
+            docker login -u ${{ github.actor }} -p ${{ github.token }} ghcr.io
+            docker pull ghcr.io/${{ github.repository }}/cookbook:latest
             docker rm -f cookbook
-            docker run --detach --name cookbook --rm --network=infra-network --env VIRTUAL_HOST=cookbook.maandr.de --env LETSENCRYPT_HOST=cookbook.maandr.de docker.pkg.github.com/${{ github.repository }}/cookbook:latest
+            docker run --detach --name cookbook --rm --network=infra-network --env VIRTUAL_HOST=cookbook.maandr.de --env LETSENCRYPT_HOST=cookbook.maandr.de ghcr.io/${{ github.repository }}/cookbook:latest
             docker image prune -f
+
   smoke-test:
     runs-on: ubuntu-latest
-    needs: build-publish-and-deploy
+    needs: deploy
     steps:
       - name: smoke-test for cookbook.maandr.de
         id: smoke-test
