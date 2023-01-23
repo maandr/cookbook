@@ -15,22 +15,23 @@
 
   let hasFocus = false
 
-  $: minHeight = `${minRows * 1.2}em`
-  $: maxHeight = maxRows ? `${maxRows * 1.2}em` : 'auto'
+  $: minHeight = `${1 + minRows * 1.3}em`
+  $: maxHeight = maxRows ? `${1 + maxRows * 1.3}em` : 'auto'
 </script>
 
 <div
-  class="relative flex w-full flex-row items-center gap-3 border-2 border-surfaceAccent bg-white pl-4"
+  class="relative flex w-full flex-row items-center gap-3 border-2 border-surfaceAccent bg-white"
   class:focus={hasFocus}
 >
-  <pre
+  <div
     aria-hidden="true"
-    style="min-height: {minHeight}; max-height: {maxHeight}; opacity: 0;"
-    class="px-5 py-3 text-lg text-inherit">
+    style="min-height: {minHeight}; max-height: {maxHeight};"
+    class="break-words px-5 py-3 text-lg text-inherit opacity-0"
+  >
     {value}
-  </pre>
+  </div>
   <textarea
-    class="absolute inset-0 px-5 py-3 text-lg outline-none"
+    class="absolute inset-0 break-words px-5 py-3 text-lg outline-none"
     {id}
     {name}
     {tabindex}
