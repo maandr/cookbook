@@ -16,6 +16,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: Checkout Repository
         id: checkout-repository
@@ -66,6 +67,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    environment: production
     needs: build
     steps:
       - name: Deploy to Remote Host
@@ -84,6 +86,7 @@ jobs:
 
   smoke-test:
     runs-on: ubuntu-latest
+    environment: production
     needs: deploy
     steps:
       - name: smoke-test for cookbook.maandr.de
