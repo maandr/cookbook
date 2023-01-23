@@ -1,0 +1,96 @@
+{
+  "title": "Penne mit Pesto Genovese",
+  "slug": "penne-mit-pesto-genovese",
+  "tags": [
+    "meal"
+  ],
+  "amountOfServings": "2",
+  "amountOfMinutesRequired": "15",
+  "containsMeat": false,
+  "containsFish": false,
+  "containsGluten": true,
+  "containsLactose": true,
+  "containsAlcohol": false,
+  "ingrediences": [
+    {
+      "name": "Pasta (Spagetti, Penne, Conchiglie)",
+      "required": true,
+      "quantity": {
+        "amount": "150",
+        "unit": "g"
+      }
+    },
+    {
+      "name": "Pinienkerne (alternativ Cashew-Nüsse)",
+      "required": true,
+      "quantity": {
+        "amount": "3",
+        "unit": "EL"
+      }
+    },
+    {
+      "name": "Knoblauch-Zehe",
+      "required": true,
+      "quantity": {
+        "amount": "2",
+        "unit": "Stck."
+      }
+    },
+    {
+      "name": "Parmesan",
+      "required": true,
+      "quantity": {
+        "amount": "75",
+        "unit": "g"
+      }
+    },
+    {
+      "name": "Basilikum (Bund)",
+      "required": true,
+      "quantity": {
+        "amount": "2",
+        "unit": "Stck."
+      }
+    },
+    {
+      "name": "Olivenöl (kalt gepresst)",
+      "required": true,
+      "quantity": {
+        "amount": "100",
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Salz",
+      "required": true,
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      }
+    },
+    {
+      "name": "Pfeffer",
+      "required": true,
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      }
+    },
+    {
+      "name": "Cherry-Tomaten",
+      "required": false,
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      }
+    }
+  ],
+  "instructions": [
+    "Salzwasser in einem Topf zum kochen bringen und die Pasta darin je nach Packungsanleitung al-dente garen.",
+    "Pinienkerne in einer Pfanne auf geringer bis mittlerer Hitze langsam anbraten bis sie leicht gebräunt sind. Knoblauch in kleine Stücke schneiden. Basilikum waschen und gut trocken schleudern. Parmesan fein reiben.",
+    "Basilikum, Knoblauch, Pinienkerne und Parmesan in einen Food-Processor geben (alternativ Stabmixer verwenden) und kurz durchmixen. Dann Olivenöl in kleinen ration dazu geben und weiter durchmixen bis das Pesto eine cremige Konsistenz erreicht.",
+    "Pesto in eine Pfanne geben, Pasta abgießen und ebenfalls in die Pfanne geben. Die Pasta gründlich im Pesto wenden damit sie gleichmäßig von allen Seiten mit Pesto bedeckt ist. Bei Bedarf noch Cherry-Tomaten mit in die Pfanne geben und braten bis sie schrumplig werden.",
+    "Mit frischem Basilikum-Blättern und geriebenen Parmesan servieren."
+  ],
+  "imagePath": "/images/default.jpg"
+}
