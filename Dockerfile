@@ -2,7 +2,6 @@
 FROM node:18 AS build
 
 COPY package.json yarn.lock ./
-COPY /.svelte-kit ./.svelte-kit
 RUN yarn install --no-progress --no-audit --ignore-engines
 COPY . .
 
