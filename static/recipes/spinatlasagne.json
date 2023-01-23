@@ -1,0 +1,136 @@
+{
+  "title": "Spinatlasagne",
+  "slug": "spinatlasagne",
+  "tags": [
+    "meal"
+  ],
+  "amountOfServings": "4",
+  "amountOfMinutesRequired": "60",
+  "containsMeat": false,
+  "containsFish": false,
+  "containsGluten": true,
+  "containsLactose": true,
+  "containsAlcohol": false,
+  "ingrediences": [
+    {
+      "name": "Spinat",
+      "required": true,
+      "quantity": {
+        "amount": "400",
+        "unit": "g"
+      }
+    },
+    {
+      "name": "Schalotten (oder kleine Zwiebeln)",
+      "required": true,
+      "quantity": {
+        "amount": "2",
+        "unit": "Stck."
+      }
+    },
+    {
+      "name": "Knoblauch-Zehe",
+      "required": true,
+      "quantity": {
+        "amount": "2",
+        "unit": "Stck."
+      }
+    },
+    {
+      "name": "Pinienkerne",
+      "required": false,
+      "quantity": {
+        "amount": "80",
+        "unit": "g"
+      }
+    },
+    {
+      "name": "Lasagneblätter",
+      "required": true,
+      "quantity": {
+        "amount": "12",
+        "unit": "Stck."
+      }
+    },
+    {
+      "name": "Butter",
+      "required": true,
+      "quantity": {
+        "amount": "100",
+        "unit": "g"
+      }
+    },
+    {
+      "name": "Mehl",
+      "required": true,
+      "quantity": {
+        "amount": "80",
+        "unit": "g"
+      }
+    },
+    {
+      "name": "Milch",
+      "required": true,
+      "quantity": {
+        "amount": "800",
+        "unit": "ml"
+      }
+    },
+    {
+      "name": "Käse (Parmesan, Gouda oder ähnliches)",
+      "required": true,
+      "quantity": {
+        "amount": "80",
+        "unit": "g"
+      }
+    },
+    {
+      "name": "Cherry-Tomaten",
+      "required": true,
+      "quantity": {
+        "amount": "100",
+        "unit": "g"
+      }
+    },
+    {
+      "name": "Olivenöl",
+      "required": true,
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      }
+    },
+    {
+      "name": "geriebene Muskatnuss",
+      "required": true,
+      "quantity": {
+        "amount": 0,
+        "unit": ""
+      }
+    },
+    {
+      "name": "Salz",
+      "required": false,
+      "quantity": {
+        "amount": "0",
+        "unit": ""
+      }
+    },
+    {
+      "name": "Pfeffer",
+      "required": true,
+      "quantity": {
+        "amount": "0",
+        "unit": ""
+      }
+    }
+  ],
+  "instructions": [
+    "Den Spinat waschen und trocken schleudern. Die Schalotten (oder Zwiebeln) und den Knoblauch fein hacken. Cherry-Tomaten waschen und halbieren.",
+    "Für die Béchamelsauce die Butter in einem Topf erhitzen und das Mehl darin einrühren. Bei mittlerer Hitze das Mehl kurz anschwitzen. Mit der Milch ablöschen und die Sauce unter ständigem Rühren mit einem Schneebesen aufkochen, bis sie sämig wird. Dann den Herd ausstellen und die Béchamelsauce mit Salz, Pfeffer und Muskatnuss abschmecken.",
+    "Olivenöl in einem Topf erhitzen und die Schalotten und den Knoblauch darin bei mittlerer Hitze anschwitzen. Dann den Spinat dazugeben und mit Salz und Pfeffer würzen und mit geschlossenem Deckel kurz köcheln lassen bis der Spinat eingefallen ist.",
+    "Die Pinienkerne kurz in einer Pfanne ohne Öl bei mittlerer Hitze goldgelb rösten. Den Backofen auf 180 C° Umluft (oder 200 Grad Ober- und Unterhitze) vorheizen.",
+    "Die Lasagne nun in der Reihenfolge Béchamelsauce, Lasagneblätter, Béchamelsauce, Spinat, Pinienkerne und Cherry-Tomaten, Lasagneblätter, Béchamelsauce schichten. Zum Schluss geriebenen Käse darüberstreuen und die Spinatlasagne im Ofen für etwa 30 Minuten backen."
+  ],
+  "imagePath": "/images/default.jpg"
+}
