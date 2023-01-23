@@ -79,9 +79,9 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
             docker login -u ${{ github.actor }} -p ${{ github.token }} ghcr.io
-            docker pull ghcr.io/${{ github.repository }}/cookbook:latest
+            docker pull ghcr.io/${{ github.repository }}:main
             docker rm -f cookbook
-            docker run --detach --name cookbook --rm --network=infra-network --env VIRTUAL_HOST=cookbook.maandr.de --env LETSENCRYPT_HOST=cookbook.maandr.de ghcr.io/${{ github.repository }}/cookbook:latest
+            docker run --detach --name cookbook --rm --network=infra-network --env VIRTUAL_HOST=cookbook.maandr.de --env LETSENCRYPT_HOST=cookbook.maandr.de ghcr.io/${{ github.repository }}:latest
             docker image prune -f
 
   smoke-test:
