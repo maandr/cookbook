@@ -27,15 +27,20 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
 
-      - name: 🕵️ Run Linter
+      - name: 📦 Install Dependencies
+        id: install-dependencies
+        run: yarn install
+
+      - name: 🕵️ Lint Source Code
         id: lint-app
-        run: npm run lint
+        run: yarn lint
 
-      - name: 🧪 Run Tests
+      - name: 🧪 Tests Application
         id: test-app
-        run: npm run test
+        run: yarn test
 
       - name: 🏗️ Build Application
         id: build-app
-        run: npm run build
+        run: yarn build
