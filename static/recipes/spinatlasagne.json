@@ -1,9 +1,7 @@
 {
   "title": "Spinatlasagne",
   "slug": "spinatlasagne",
-  "tags": [
-    "meal"
-  ],
+  "tags": ["meal"],
   "amountOfServings": "4",
   "amountOfMinutesRequired": "60",
   "containsMeat": false,

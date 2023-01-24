@@ -1,9 +1,7 @@
 {
   "title": "Penne mit Pesto Genovese",
   "slug": "penne-mit-pesto-genovese",
-  "tags": [
-    "meal"
-  ],
+  "tags": ["meal"],
   "amountOfServings": "2",
   "amountOfMinutesRequired": "15",
   "containsMeat": false,
