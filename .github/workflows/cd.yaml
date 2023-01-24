@@ -14,8 +14,8 @@ on:
       - '.vscode/**'
 
 env:
-  - SUBDOMAIN: cookbook
-  - DOCKER_IMAGE: ghcr.io/${{ github.repository }}
+  SUBDOMAIN: cookbook
+  DOCKER_IMAGE: ghcr.io/${{ github.repository }}
 
 jobs:
   build:
