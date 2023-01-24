@@ -1,0 +1,41 @@
+name: CI
+on:
+  pull_request:
+    paths-ignore:
+      - 'README.md'
+      - '.editorconfig'
+      - '.gitignore'
+      - '.npmrc'
+      - '.eslintrc.cjs'
+      - '.eslintignore'
+      - '.prettier.config.cjs'
+      - '.vscode/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - name: 📥 Checkout Git Repository
+        id: checkout-git-repository
+        uses: actions/checkout@v3.3.0
+
+      - name: ⚙️ Setup Node.js ${{ matrix.node-version }}
+        id: setup-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: 🕵️ Run Linter
+        id: lint-app
+        run: npm run lint
+
+      - name: 🧪 Run Tests
+        id: test-app
+        run: npm run test
+
+      - name: 🏗️ Build Application
+        id: build-app
+        run: npm run build
