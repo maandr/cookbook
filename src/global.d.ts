@@ -29,7 +29,8 @@ type RecipeDictionary = {
   [id: string]: Recipe
 }
 
-interface MenuEntry {
+interface TagFilter {
+  icon: ConstructorOfATypedSvelteComponent
   isActive: boolean
   title: string
   href: string

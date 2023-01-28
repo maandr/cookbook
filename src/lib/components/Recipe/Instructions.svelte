@@ -2,8 +2,10 @@
   export let recipe: Recipe
 </script>
 
-<ol class="list-outside list-decimal pl-7">
+<ol class="list-outside list-decimal py-4 pl-8 md:pl-12">
   {#each recipe.instructions as instruction}
-    <li class="py-2 pl-4">{instruction}</li>
+    <li class="px-4 py-2">
+      {instruction}
+    </li>
   {/each}
 </ol>

@@ -1,3 +1,13 @@
+export const DEFAULT_FILTER = {
+  mustContainIngrediences: [],
+  mustHaveTags: [],
+  meatAllowed: true,
+  glutenAllowed: true,
+  lactoseAllowed: true,
+  fishAllowed: true,
+  alcoholAllowed: true
+}
+
 export const INGREDIENCE_PREFABS: Pair<string>[] = [
   {
     key: '🍚',

@@ -2,8 +2,8 @@
   import Portion from './Icons/Portion.svelte'
 </script>
 
-<div class="center my-10 text-secondary">
+<div class="center m-10 text-secondary">
   <a href="/" title="Cookbook" tabindex="-1">
-    <Portion width={140} height={140} />
+    <Portion width={90} height={90} />
   </a>
 </div>

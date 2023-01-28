@@ -2,7 +2,7 @@
   import NutritionalConcept from '$components/Recipe/NutritionalConcept.svelte'
   import IngredienceList from '$components/Recipe/Ingrediencs.svelte'
   import FlipCard from '$components/FlipCard.svelte'
-  import PreperationTime from '../../lib/components/Recipe/PreperationTime.svelte'
+  import PreperationTime from '$components/Recipe/PreperationTime.svelte'
 
   export let recipe: Recipe
 </script>

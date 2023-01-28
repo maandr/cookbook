@@ -3,26 +3,28 @@ module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     fontFamily: {
-      sansSerif: ['Source Sans Pro', 'sans-serif'],
+      sansSerif: ['Open Sans', 'sans-serif'],
       mono: ['Source Code Pro', 'monospace'],
       handwriting: ['Kalam', 'cursive']
     },
     extend: {
       colors: {
-        background: '#E3DCC2',
-        surface: '#E1E6E1',
-        surfaceAccent: '#D3DAD3',
-        primary: '#1B2021',
-        primaryAccent: '#151612',
-        secondary: '#FA850F',
-        secondaryAccent: '#BC5F04',
+        background: '#FFFFFF',
+        surface: '#EBEAEB',
+        surfaceAccent: '#EBEAEB',
+        primary: '#1F1C21',
+        primaryAccent: '#151316',
+        primaryContrast: '#F5F5F5',
+        secondary: '#BBB7B4',
+        secondaryAccent: '#7D777A',
+        secondaryContrast: '#F5F5F5',
         success: '#69DC9E',
         warning: '#F7EF99',
         attention: '#E63B2E'
       },
       zIndex: {
-        navBar: 90,
-        navBarToggle: 91,
+        filterBar: 90,
+        filterToggle: 91,
         overlay: 997,
         modal: 998,
         loadingSpinner: 999

@@ -1,8 +1,14 @@
-<script>
-  import BookOpen from '$components/Icons/BookOpen.svelte'
+<script lang="ts">
+  import { filtered } from '$lib/stores'
+  import RecipeCard from './RecipeCard.svelte'
 </script>
 
-<a href="/recipes" class="center h-full flex-col border-4 border-primary">
-  <BookOpen width={350} height={250} />
-  <h2 class="font-handwriting text-3xl">Open</h2>
-</a>
+<div class="mt-8 grid list-none grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+  {#if $filtered.length === 0}
+    <p>Leider keine Treffer 😢</p>
+  {:else}
+    {#each $filtered as recipe}
+      <RecipeCard {recipe} />
+    {/each}
+  {/if}
+</div>

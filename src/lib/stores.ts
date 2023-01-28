@@ -1,16 +1,9 @@
 import { derived, writable } from 'svelte/store'
+import { DEFAULT_FILTER } from './constants'
 import { containsAll, containsAllSubstrings } from './utils/arrayHelpers'
 
 export const recipes = writable<Recipe[]>([])
-export const filter = writable<RecipeFilter>({
-  mustContainIngrediences: [],
-  mustHaveTags: [],
-  meatAllowed: true,
-  glutenAllowed: true,
-  lactoseAllowed: true,
-  fishAllowed: true,
-  alcoholAllowed: true
-})
+export const filter = writable<RecipeFilter>({ ...DEFAULT_FILTER })
 export const recipesBySlug = derived(recipes, (recipes) =>
   Object.fromEntries(recipes.map((recipe) => [recipe.slug, recipe]))
 )

@@ -15,7 +15,7 @@
   export let entries: Ingredience[]
   export let tabindex: number | undefined = undefined
 
-  let hovering: number = -1
+  let hovering = -1
 
   function add() {
     entries = [

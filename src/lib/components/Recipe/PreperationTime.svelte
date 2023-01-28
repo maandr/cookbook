@@ -11,9 +11,7 @@
       : 'text-success'
 </script>
 
-<div
-  class="float-left rounded bg-primaryAccent px-2 py-1 {textColor} flex items-center gap-2 text-sm"
->
+<div class="rounded bg-primaryAccent px-2 py-1 {textColor} flex items-center gap-2 text-sm">
   <Clock width={16} height={16} />
   {recipe.amountOfMinutesRequired} Minuten
 </div>
