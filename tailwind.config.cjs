@@ -23,8 +23,8 @@ module.exports = {
         attention: '#E63B2E'
       },
       zIndex: {
-        filterBar: 90,
-        filterToggle: 91,
+        menu: 90,
+        menuBar: 91,
         overlay: 997,
         modal: 998,
         loadingSpinner: 999

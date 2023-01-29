@@ -1,12 +1,19 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { recipesBySlug } from '$lib/stores'
+  import Alcohol from '$components/Icons/Alcohol.svelte'
+  import Cheese from '$components/Icons/Cheese.svelte'
+  import ChevronLeft from '$components/Icons/ChevronLeft.svelte'
+  import Clock from '$components/Icons/Clock.svelte'
+  import ContextBar from '$components/ContextBar.svelte'
+  import Edit from '$components/Icons/Edit.svelte'
+  import Fish from '$components/Icons/Fish.svelte'
+  import Gluten from '$components/Icons/Gluten.svelte'
   import Ingrediences from '$components/Recipe/Ingrediencs.svelte'
   import Instructions from '$components/Recipe/Instructions.svelte'
-  import NutritionalConcept from '$components/Recipe/NutritionalConcept.svelte'
+  import Meat from '$components/Icons/Meat.svelte'
   import Portion from '$components/Icons/Portion.svelte'
-  import PreperationTime from '$components/Recipe/PreperationTime.svelte'
-  import Dots from '$components/Icons/Dots.svelte'
+  import WidthDelimiter from '$components/WidthDelimiter.svelte'
 
   export let data: { slug: string }
 
@@ -24,25 +31,51 @@
   <title>{recipe.title}</title>
 </svelte:head>
 
-<div class="relative">
-  <div class="items-middle my-4 flex flex-wrap justify-start gap-y-4 gap-x-2">
-    <h1 class="flex-grow font-handwriting text-3xl font-bold text-primary">{recipe.title}</h1>
-    <PreperationTime {recipe} />
-    <NutritionalConcept {recipe} />
-    <a href={`/editor/${recipe.slug}`}><Dots /></a>
-  </div>
+<ContextBar>
+  <WidthDelimiter>
+    <div class="grid grid-cols-12 place-items-center gap-2 p-4">
+      <div class="col-span-1">
+        <a href="/"><ChevronLeft /></a>
+      </div>
+      <div class="col-span-10 font-handwriting text-lg md:text-xl">
+        {recipe.title}
+      </div>
+      <div class="col-span-1">
+        <a href={`/editor/${recipe.slug}`}><Edit /></a>
+      </div>
+    </div>
+  </WidthDelimiter>
+</ContextBar>
 
-  <img
-    src={recipe.imagePath}
-    title={recipe.title}
-    alt={recipe.title}
-    class="my-8 max-w-full md:max-w-[1024px]"
-  />
-</div>
+<img
+  src={recipe.imagePath}
+  title={recipe.title}
+  alt={recipe.title}
+  class="my-6 max-w-full md:max-w-[1024px]"
+/>
 
 <div class="my-8 flex flex-col gap-8 md:grid md:grid-cols-12 md:gap-0">
   <div class="border-surface md:col-span-5 md:border-r-[1px]">
-    <h2>Zutaten</h2>
+    <div class="section-title">
+      <h2 class="float-left">Zutaten</h2>
+      <div class="float-right flex flex-row items-center justify-end gap-x-4">
+        {#if recipe.containsMeat}
+          <div title="Enthält Fleisch"><Meat width={16} height={16} /></div>
+        {/if}
+        {#if recipe.containsFish}
+          <div title="Enthält Fisch"><Fish width={16} height={16} /></div>
+        {/if}
+        {#if recipe.containsGluten}
+          <div title="Enthält Gluten"><Gluten width={16} height={16} /></div>
+        {/if}
+        {#if recipe.containsLactose}
+          <div title="Enthält Laktose"><Cheese width={16} height={16} /></div>
+        {/if}
+        {#if recipe.containsAlcohol}
+          <div title="Enthält Alkohol"><Alcohol width={16} height={16} /></div>
+        {/if}
+      </div>
+    </div>
     <div class="rounde my-5 flex items-center gap-2 p-2">
       <Portion width={20} height={20} />
       <input
@@ -52,7 +85,7 @@
         max="15"
         step="1"
         title="Portionen"
-        class="bg-transparent p-1 text-center outline-none"
+        class="outdivne-none bg-transparent p-1 text-center"
       />
       <input
         type="range"
@@ -66,13 +99,23 @@
     <Ingrediences {recipe} bind:factor />
   </div>
   <div class="md:col-span-7">
-    <h2>Anleitung</h2>
+    <div class="section-title">
+      <h2 class="float-left">Anleitung</h2>
+      <div class="float-right flex flex-row items-center gap-x-2 font-normal">
+        <Clock width={16} height={16} />
+        ca. {recipe.amountOfMinutesRequired} Minuten
+      </div>
+    </div>
     <Instructions {recipe} />
   </div>
 </div>
 
 <style lang="postcss">
+  .section-title {
+    @apply mb-4 h-[52px] border-t-[1px] border-b-[1px] border-surface p-4 text-sm;
+  }
+
   h2 {
-    @apply mb-4 border-t-[1px] border-b-[1px] border-surface p-4 text-sm font-bold;
+    @apply font-semibold;
   }
 </style>
