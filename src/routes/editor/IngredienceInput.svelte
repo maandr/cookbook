@@ -3,13 +3,12 @@
   import { isAPositiveNumber, isBlank, isNotBlank, isNumber } from '$lib/utils/validationHelpers'
   import { UNITS } from '$lib/constants'
   import AmountWithUnitInput from '$components/Forms/AmountWithUnitInput.svelte'
-  import Button from '$components/Forms/Button.svelte'
   import CirclePlus from '$components/Icons/CirclePlus.svelte'
   import Delete from '$components/Icons/Delete.svelte'
   import Input from '$components/Forms/Input.svelte'
   import Mortar from '$components/Icons/Mortar.svelte'
   import Scale from '$components/Icons/Scale.svelte'
-  import ToggleButton from '$components/Forms/ToggleButton.svelte'
+  import Toggle from '$components/Forms/Toggle.svelte'
   import UpDown from '$components/Icons/UpDown.svelte'
 
   export let entries: Ingredience[]
@@ -74,40 +73,48 @@
       on:drop|preventDefault={(event) => drop(event, i)}
       on:dragenter={() => (hovering = i)}
       on:dragover|preventDefault={() => false}
-      class="my-2 grid grid-cols-crafterIngredienceMobile gap-2 md:grid-cols-crafterIngredience"
+      class="ingredience-line"
       class:is-hovered={hovering === i}
     >
-      <div class="center cursor-pointer pl-[10px] text-gray-600">
-        <UpDown />
+      <div class="center move cursor-pointer text-secondary hover:text-primary">
+        <UpDown width={18} height={18} />
       </div>
-      <Input
-        name="ingredience"
-        tabindex={tabindex ? tabindex + i * 4 + 1 : undefined}
-        bind:value={entry.name}
-        isValid={isNotBlank}
-      >
-        <Mortar width={22} height={22} />
-      </Input>
-      <AmountWithUnitInput
-        tabindex={tabindex ? tabindex + i * 4 + 2 : undefined}
-        bind:value={entry.quantity}
-        allowedUnits={UNITS}
-        isValid={(value) =>
-          isNumber(value.amount)
-            ? value.amount == 0
-              ? isBlank(value.unit)
-              : isAPositiveNumber(value.amount) && isNotBlank(value.unit)
-            : false}
-      >
-        <Scale width={22} height={22} />
-      </AmountWithUnitInput>
-      <ToggleButton
-        tabindex={tabindex ? tabindex + i * 4 + 4 : undefined}
-        bind:value={entry.required}
-      />
-      <Button on:click={() => remove(i)}>
-        <Delete width={22} height={22} />
-      </Button>
+      <div class="ingredience">
+        <Input
+          name="ingredience"
+          tabindex={tabindex ? tabindex + i * 4 + 1 : undefined}
+          bind:value={entry.name}
+          isValid={isNotBlank}
+        >
+          <Mortar width={18} height={18} />
+        </Input>
+      </div>
+      <div class="quanity">
+        <AmountWithUnitInput
+          tabindex={tabindex ? tabindex + i * 4 + 2 : undefined}
+          bind:value={entry.quantity}
+          allowedUnits={UNITS}
+          isValid={(value) =>
+            isNumber(value.amount)
+              ? value.amount == 0
+                ? isBlank(value.unit)
+                : isAPositiveNumber(value.amount) && isNotBlank(value.unit)
+              : false}
+        >
+          <Scale width={18} height={18} />
+        </AmountWithUnitInput>
+      </div>
+      <div class="is-required">
+        <Toggle
+          tabindex={tabindex ? tabindex + i * 4 + 4 : undefined}
+          bind:value={entry.required}
+        />
+      </div>
+      <div class="delete center text-secondary hover:text-primary">
+        <button on:click={() => remove(i)}>
+          <Delete width={18} height={18} />
+        </button>
+      </div>
     </div>
   {/each}
   <button
@@ -126,5 +133,47 @@
 
   .is-hovered {
     @apply bg-slate-400 opacity-50;
+  }
+
+  .ingredience-line {
+    padding: 12px 0;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 24px 1fr 32px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      'move quantity is-required'
+      'delete ingredience ingredience';
+  }
+
+  @media (min-width: 1024px) {
+    .ingredience-line {
+      padding: 4px;
+      display: grid;
+      gap: 8px;
+      grid-template-columns: 24px 1fr 250px 24px 24px;
+      grid-template-rows: 1fr;
+      grid-template-areas: 'move ingredience quantity is-required delete';
+    }
+  }
+
+  .move {
+    grid-area: move;
+  }
+
+  .ingredience {
+    grid-area: ingredience;
+  }
+
+  .quantity {
+    gird-area: quantity;
+  }
+
+  .is-required {
+    grid-area: is-required;
+  }
+
+  .delete {
+    grid-area: delete;
   }
 </style>

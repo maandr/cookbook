@@ -24,13 +24,13 @@
 </script>
 
 <div
-  class="relative grid grid-cols-formsQuantityInput items-center gap-2 border-2 border-surfaceAccent bg-white"
+  class="relative grid h-full grid-cols-formsQuantityInput items-center gap-2 border-2 border-surfaceAccent bg-white"
   class:focus={hasFocus}
 >
-  <div class="relative flex h-full items-center gap-2 bg-transparent pl-3">
+  <div class="relative flex h-full items-center gap-2 bg-transparent px-3">
     <slot />
     <input
-      class="h-full w-full pl-2 text-lg outline-none"
+      class="h-full w-full text-sm outline-none"
       type="text"
       {id}
       {name}
@@ -45,7 +45,7 @@
   </div>
   <div class="relative h-full">
     <input
-      class="h-full w-full bg-slate-100 pl-2 text-left text-lg text-gray-600 outline-none"
+      class="h-full w-full bg-surfaceAccent pl-2 text-left text-sm text-secondaryAccent outline-none"
       type="text"
       id={unitSuffix(id)}
       name={unitSuffix(name)}
@@ -79,6 +79,6 @@
 
 <style lang="postcss">
   .focus {
-    @apply border-secondary;
+    @apply border-primary;
   }
 </style>

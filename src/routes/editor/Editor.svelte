@@ -44,7 +44,7 @@
     bind:value={amountOfServings}
     isValid={(value) => isNumberBetween(value, 1, 16)}
   >
-    <Portion width={22} height={22} />
+    <Portion width={18} height={18} />
   </Input>
 </fieldset>
 
@@ -56,7 +56,7 @@
     bind:value={amountOfMinutesRequired}
     isValid={(value) => isNumberBetween(value, 1, 500)}
   >
-    <Clock width={22} height={22} />
+    <Clock width={18} height={18} />
   </Input>
 </fieldset>
 

@@ -15,12 +15,12 @@
 </script>
 
 <div
-  class="relative flex w-full flex-row items-center gap-3 border-2 border-surfaceAccent bg-white pl-4"
+  class="relative flex w-full flex-row items-center gap-2 border-2 border-surfaceAccent bg-white px-2"
   class:focus={hasFocus}
 >
   <slot />
   <input
-    class="w-full py-3 pr-5 text-lg outline-none"
+    class="w-full py-3 pr-5 text-sm outline-none"
     type="text"
     {id}
     {name}
@@ -45,6 +45,6 @@
 
 <style lang="postcss">
   .focus {
-    @apply border-secondary;
+    @apply border-primary;
   }
 </style>

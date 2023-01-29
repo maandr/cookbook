@@ -13,6 +13,9 @@
   import TabBar from '$components/TabBar.svelte'
   import TabPanel from '$components/TabPanel.svelte'
   import Tabs from '$components/Tabs.svelte'
+  import ContextBar from '$components/ContextBar.svelte'
+  import WidthDelimiter from '$components/WidthDelimiter.svelte'
+  import ChevronLeft from '$components/Icons/ChevronLeft.svelte'
 
   export let recipe: Recipe
 
@@ -39,16 +42,20 @@
   }
 </script>
 
-<svelte:head>
-  <title>Rezept Crafter | {recipe.title} Cookbook</title>
-</svelte:head>
+<ContextBar>
+  <WidthDelimiter>
+    <div class="flex w-full items-start p-4">
+      <a href="/"><ChevronLeft /></a>
+    </div>
+  </WidthDelimiter>
+</ContextBar>
 
 <Tabs>
   <TabBar>
     <Tab><Edit /> Editor</Tab>
     <Tab><File /> Document</Tab>
   </TabBar>
-  <div class="border-2 border-t-0 border-surfaceAccent bg-surface p-5">
+  <div>
     <TabPanel>
       <Editor
         bind:title={recipe.title}
