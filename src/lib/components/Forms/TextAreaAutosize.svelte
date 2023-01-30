@@ -15,8 +15,8 @@
 
   let hasFocus = false
 
-  $: minHeight = `${1 + minRows * 1.3}em`
-  $: maxHeight = maxRows ? `${1 + maxRows * 1.3}em` : 'auto'
+  $: minHeight = `${1 + minRows * 1}em`
+  $: maxHeight = maxRows ? `${1 + maxRows * 1}em` : 'auto'
 </script>
 
 <div
@@ -31,7 +31,7 @@
     {value}
   </div>
   <textarea
-    class="absolute inset-0 break-words px-5 py-3 text-lg outline-none"
+    class="absolute inset-0 resize-none break-words px-3 py-2 text-sm outline-none"
     {id}
     {name}
     {tabindex}
@@ -55,6 +55,6 @@
 
 <style lang="postcss">
   .focus {
-    @apply border-secondary;
+    @apply border-primary;
   }
 </style>

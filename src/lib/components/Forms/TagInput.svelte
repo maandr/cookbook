@@ -15,11 +15,11 @@
 </script>
 
 <div
-  class="flex items-center gap-2 border-2 border-surfaceAccent bg-white p-3"
+  class="flex flex-row items-center gap-2 border-2 border-surface bg-white p-3"
   class:focus={hasFocus}
 >
-  <Tags width={22} height={22} />
-  <div class="flex flex-wrap gap-2 pl-2">
+  <Tags width={18} height={18} />
+  <div class="flex flex-row flex-wrap gap-2">
     {#each tags as tag}
       <button
         class="center gap-1 rounded bg-primary px-2 text-background"
@@ -31,7 +31,7 @@
       </button>
     {/each}
     <input
-      class="bg-transparent text-lg outline-none"
+      class="bg-transparenttext-sm max-w-[120px] flex-grow outline-none"
       {id}
       {name}
       {tabindex}
@@ -50,6 +50,6 @@
 
 <style lang="postcss">
   .focus {
-    @apply border-secondary;
+    @apply border-primary;
   }
 </style>

@@ -1,13 +1,9 @@
 <script lang="ts">
-  import { goto } from '$app/navigation'
   import { hasMinLength, isAPositiveNumber, isNotBlank } from '$lib/utils/validationHelpers'
   import { toSlug } from '$lib/utils/stringHelpers'
-  import Button from '$components/Forms/Button.svelte'
-  import Close from '$components/Icons/Close.svelte'
   import Document from './Document.svelte'
   import Edit from '$components/Icons/Edit.svelte'
   import Editor from './Editor.svelte'
-  import Export from '$components/Icons/Export.svelte'
   import File from '$components/Icons/File.svelte'
   import Tab from '$components/Tab.svelte'
   import TabBar from '$components/TabBar.svelte'
@@ -16,6 +12,7 @@
   import ContextBar from '$components/ContextBar.svelte'
   import WidthDelimiter from '$components/WidthDelimiter.svelte'
   import ChevronLeft from '$components/Icons/ChevronLeft.svelte'
+  import Save from '$components/Icons/Save.svelte'
 
   export let recipe: Recipe
 
@@ -44,16 +41,29 @@
 
 <ContextBar>
   <WidthDelimiter>
-    <div class="flex w-full items-start p-4">
-      <a href="/"><ChevronLeft /></a>
+    <div class="grid grid-cols-12 place-items-center gap-2 p-4">
+      <div class="col-span-1">
+        <a href="/"><ChevronLeft /></a>
+      </div>
+      <div class="col-span-10 font-handwriting text-lg md:text-xl">
+        {recipe.title}
+      </div>
+      <div class="col-span-1">
+        <form method="POST" action="/editor?/save">
+          <input type="hidden" name="recipe" value={json} />
+          <button disabled={!isValid}>
+            <Save />
+          </button>
+        </form>
+      </div>
     </div>
   </WidthDelimiter>
 </ContextBar>
 
 <Tabs>
   <TabBar>
-    <Tab><Edit /> Editor</Tab>
-    <Tab><File /> Document</Tab>
+    <Tab><Edit width={18} height={18} /> Editor</Tab>
+    <Tab><File width={18} height={18} /> Document</Tab>
   </TabBar>
   <div>
     <TabPanel>
@@ -74,21 +84,5 @@
     <TabPanel>
       <Document {json} onChange={(json) => parseJson(json)} />
     </TabPanel>
-
-    <div class="mt-3 flex w-full flex-wrap justify-end gap-2">
-      <Button
-        on:click={() => {
-          recipe.slug.length > 0 ? goto('/recipe/' + recipe.slug) : goto('/recipes')
-        }}
-      >
-        <Close /> Back
-      </Button>
-      <form method="POST" action="/editor?/save">
-        <input type="hidden" name="recipe" value={json} />
-        <Button disabled={!isValid}>
-          <Export /> Save
-        </Button>
-      </form>
-    </div>
   </div>
 </Tabs>

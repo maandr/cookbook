@@ -12,7 +12,7 @@
 </script>
 
 <button
-  class="center h-full w-full cursor-pointer border-2 border-surface bg-white outline-none"
+  class="center h-full w-full cursor-pointer border-2 border-surface px-2 text-xs outline-none focus:border-primary"
   class:off={!value}
   class:on={value}
   {id}
@@ -26,7 +26,7 @@
     dispatch('change', { value })
   }}
 >
-  <div class="flex flex-row gap-2">
+  <div class="flex flex-col items-center gap-2">
     <slot />
     {#if value}
       <ThumbsUp width={18} height={18} />

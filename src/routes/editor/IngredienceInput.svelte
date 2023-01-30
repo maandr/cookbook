@@ -8,7 +8,7 @@
   import Input from '$components/Forms/Input.svelte'
   import Mortar from '$components/Icons/Mortar.svelte'
   import Scale from '$components/Icons/Scale.svelte'
-  import Toggle from '$components/Forms/Toggle.svelte'
+  import ToggleButton from '$components/Forms/ToggleButton.svelte'
   import UpDown from '$components/Icons/UpDown.svelte'
 
   export let entries: Ingredience[]
@@ -59,12 +59,6 @@
 </script>
 
 <div class="my-4">
-  <div class="grid grid-cols-crafterIngredienceMobile gap-2 md:grid-cols-crafterIngredience">
-    <h3>Zutat</h3>
-    <h3>Menge</h3>
-    <h3>Muss?</h3>
-    <div />
-  </div>
   {#each entries as entry, i (entry.name + i)}
     <div
       draggable={true}
@@ -105,10 +99,10 @@
         </AmountWithUnitInput>
       </div>
       <div class="is-required">
-        <Toggle
+        <ToggleButton
           tabindex={tabindex ? tabindex + i * 4 + 4 : undefined}
-          bind:value={entry.required}
-        />
+          bind:value={entry.required}>Nötig</ToggleButton
+        >
       </div>
       <div class="delete center text-secondary hover:text-primary">
         <button on:click={() => remove(i)}>
@@ -120,9 +114,9 @@
   <button
     on:click={add}
     tabindex={tabindex ? tabindex + entries.length * 4 + 1 : undefined}
-    class="my-2 flex w-full items-center gap-4 p-3 text-lg text-gray-600"
+    class="my-2 flex w-full items-center gap-4 p-3 text-sm text-secondary hover:text-primary"
   >
-    <CirclePlus /> Zutat hinzufügen
+    <CirclePlus width={18} height={18} /> Zutat hinzufügen
   </button>
 </div>
 
@@ -132,28 +126,28 @@
   }
 
   .is-hovered {
-    @apply bg-slate-400 opacity-50;
+    @apply bg-secondary opacity-50;
   }
 
   .ingredience-line {
     padding: 12px 0;
     display: grid;
-    gap: 8px;
-    grid-template-columns: 24px 1fr 32px;
+    grid-template-columns: 24px 1fr 104px;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
-      'move quantity is-required'
-      'delete ingredience ingredience';
+      'move ingredience ingredience'
+      'delete quantity is-required';
+    gap: 4px;
   }
 
   @media (min-width: 1024px) {
     .ingredience-line {
       padding: 4px;
       display: grid;
-      gap: 8px;
-      grid-template-columns: 24px 1fr 250px 24px 24px;
+      grid-template-columns: 24px 1fr 250px 120px 24px;
       grid-template-rows: 1fr;
       grid-template-areas: 'move ingredience quantity is-required delete';
+      gap: 8px;
     }
   }
 

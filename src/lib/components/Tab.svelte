@@ -10,13 +10,13 @@
 
 <button
   class:selected={$selectedTab === self}
-  class="flex flex-wrap gap-2 bg-secondaryAccent px-6 py-3 font-handwriting text-secondary"
+  class="flex flex-wrap items-center gap-3 bg-surface px-6 py-3 text-sm text-secondary"
   tabindex="-1"
   on:click={() => selectTab(self)}><slot /></button
 >
 
 <style lang="postcss">
   .selected {
-    @apply bg-secondary text-primary;
+    @apply bg-primary text-primaryContrast;
   }
 </style>

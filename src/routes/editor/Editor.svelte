@@ -26,74 +26,83 @@
   export let instructions: string[]
 </script>
 
-<fieldset>
-  <label for="title">Title</label>
-  <Input tabindex={1} name="title" bind:value={title} isValid={(value) => hasMinLength(value, 3)} />
-</fieldset>
+<div class="mt-4">
+  <fieldset>
+    <label for="title">Title</label>
+    <Input
+      tabindex={1}
+      name="title"
+      bind:value={title}
+      isValid={(value) => hasMinLength(value, 3)}
+    />
+  </fieldset>
 
-<fieldset>
-  <label for="tags">Tags</label>
-  <TagInput tabindex={2} name="tags" bind:tags />
-</fieldset>
+  <fieldset>
+    <label for="tags">Tags</label>
+    <TagInput tabindex={2} name="tags" bind:tags />
+  </fieldset>
 
-<fieldset>
-  <label for="amountOfServings">Portionen</label>
-  <Input
-    tabindex={3}
-    name="amountOfServings"
-    bind:value={amountOfServings}
-    isValid={(value) => isNumberBetween(value, 1, 16)}
-  >
-    <Portion width={18} height={18} />
-  </Input>
-</fieldset>
+  <div class="grid grid-cols-1 gap-x-6 md:grid-cols-2">
+    <fieldset>
+      <label for="amountOfServings">Portionen</label>
+      <Input
+        tabindex={3}
+        name="amountOfServings"
+        bind:value={amountOfServings}
+        isValid={(value) => isNumberBetween(value, 1, 16)}
+      >
+        <Portion width={18} height={18} />
+      </Input>
+    </fieldset>
 
-<fieldset>
-  <label for="amountOfMinutesRequired">Zubereitungszeit</label>
-  <Input
-    tabindex={4}
-    name="amountOfMinutesRequired"
-    bind:value={amountOfMinutesRequired}
-    isValid={(value) => isNumberBetween(value, 1, 500)}
-  >
-    <Clock width={18} height={18} />
-  </Input>
-</fieldset>
-
-<fieldset>
-  <label for="nutrionalConcept">Ernährungshinweise</label>
-  <div class="mb-4 flex flex-wrap gap-2">
-    <ToggleButton tabindex={5} bind:value={containsMeat}>
-      <Meat />
-      <p class="hidden lg:block">Fleisch</p>
-    </ToggleButton>
-    <ToggleButton tabindex={6} bind:value={containsFish}>
-      <Fish />
-      <p class="hidden lg:block">Fisch</p>
-    </ToggleButton>
-    <ToggleButton tabindex={7} bind:value={containsGluten}>
-      <Gluten />
-      <p class="hidden lg:block">Gluten</p>
-    </ToggleButton>
-    <ToggleButton tabindex={8} bind:value={containsLactose}>
-      <Cheese />
-      <p class="hidden lg:block">Laktose</p>
-    </ToggleButton>
-    <ToggleButton tabindex={9} bind:value={containsAlcohol}>
-      <Alcohol />
-      <p class="hidden lg:block">Alkohol</p>
-    </ToggleButton>
+    <fieldset>
+      <label for="amountOfMinutesRequired">Zubereitungszeit</label>
+      <Input
+        tabindex={4}
+        name="amountOfMinutesRequired"
+        bind:value={amountOfMinutesRequired}
+        isValid={(value) => isNumberBetween(value, 1, 500)}
+      >
+        <Clock width={18} height={18} />
+      </Input>
+    </fieldset>
   </div>
-</fieldset>
 
-<IngredienceInput bind:entries={ingrediences} tabindex={10} />
+  <fieldset>
+    <label for="nutrionalConcept">Ernährungshinweise</label>
+    <div class="mb-4 flex flex-col gap-4 md:flex-row md:flex-wrap">
+      <ToggleButton tabindex={5} bind:value={containsMeat}>
+        <Meat width={18} height={18} />
+        Fleisch
+      </ToggleButton>
+      <ToggleButton tabindex={6} bind:value={containsFish}>
+        <Fish width={18} height={18} />
+        Fisch
+      </ToggleButton>
+      <ToggleButton tabindex={7} bind:value={containsGluten}>
+        <Gluten width={18} height={18} />
+        Gluten
+      </ToggleButton>
+      <ToggleButton tabindex={8} bind:value={containsLactose}>
+        <Cheese width={18} height={18} />
+        Laktose
+      </ToggleButton>
+      <ToggleButton tabindex={9} bind:value={containsAlcohol}>
+        <Alcohol width={18} height={18} />
+        Alkohol
+      </ToggleButton>
+    </div>
+  </fieldset>
 
-<label for="instructions">Anleitung</label>
-<InstructionInput bind:entries={instructions} tabindex={11 + ingrediences.length * 4} />
+  <IngredienceInput bind:entries={ingrediences} tabindex={10} />
+
+  <label for="instructions">Anleitung</label>
+  <InstructionInput bind:entries={instructions} tabindex={11 + ingrediences.length * 4} />
+</div>
 
 <style lang="postcss">
   fieldset {
-    @apply mb-4;
+    @apply mb-4 text-sm font-semibold;
   }
 
   label {
