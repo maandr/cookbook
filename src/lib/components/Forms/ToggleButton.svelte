@@ -25,7 +25,7 @@
   }}
 >
   <div class="flex w-full flex-row items-center justify-between gap-0">
-    <div class="flex flex-row items-center gap-2 p-3 text-xs md:px-5">
+    <div class="flex flex-row items-center gap-2 p-3 text-sm md:px-5">
       <slot />
     </div>
     <div class="p-[14px]" class:on={value} class:off={!value}>

@@ -132,7 +132,7 @@
   .ingredience-line {
     padding: 12px 0;
     display: grid;
-    grid-template-columns: 24px 1fr 104px;
+    grid-template-columns: 24px 1fr 109px;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
       'move ingredience ingredience'

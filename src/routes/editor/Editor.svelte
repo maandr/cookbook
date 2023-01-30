@@ -56,7 +56,7 @@
     </fieldset>
 
     <fieldset>
-      <label for="amountOfMinutesRequired">Zubereitungszeit</label>
+      <label for="amountOfMinutesRequired">Zubereitungszeit (in Minuten)</label>
       <Input
         tabindex={4}
         name="amountOfMinutesRequired"
@@ -94,18 +94,23 @@
     </div>
   </fieldset>
 
-  <IngredienceInput bind:entries={ingrediences} tabindex={10} />
+  <fieldset>
+    <label for="ingredience">Zutaten</label>
+    <IngredienceInput bind:entries={ingrediences} tabindex={10} />
+  </fieldset>
 
-  <label for="instructions">Anleitung</label>
-  <InstructionInput bind:entries={instructions} tabindex={11 + ingrediences.length * 4} />
+  <fieldset>
+    <label for="instructions">Anleitung</label>
+    <InstructionInput bind:entries={instructions} tabindex={11 + ingrediences.length * 4} />
+  </fieldset>
 </div>
 
 <style lang="postcss">
   fieldset {
-    @apply mb-4 text-sm font-semibold;
+    @apply mb-4;
   }
 
   label {
-    @apply my-2 font-bold;
+    @apply block py-2 text-sm font-semibold;
   }
 </style>
