@@ -2,7 +2,7 @@
   import { createEventDispatcher } from 'svelte'
   import IsValid from './IsValid.svelte'
 
-  export let value: string
+  export let value: string | number
   export let id: string | undefined = undefined
   export let name: string | undefined = undefined
   export let placeholder: string | undefined = undefined

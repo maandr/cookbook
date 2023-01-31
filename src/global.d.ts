@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 interface Recipe {
   slug: string
   title: string
@@ -52,8 +54,8 @@ type Pair<T> = {
   value: T
 }
 
-type Tab = any // eslint-disable-line @typescript-eslint/no-explicit-any
-type Panel = any // eslint-disable-line @typescript-eslint/no-explicit-any
+type Tab = any
+type Panel = any
 interface TabsContext {
   registerTab(tab: Tab)
   registerPanel(panel: Panel)
@@ -66,7 +68,12 @@ interface DragDropContext {
   drag(event: DragEvent, index: number)
   drop(event: DragEvent, toPosition: number)
   dragEnter(event: DragEvent, index: number)
-  items: any[] // eslint-disable-line @typescript-eslint/no-explicit-any
+  items: any[]
   isActive: Writable<boolean>
   hoveredPosition: Writable<number>
+}
+
+interface SwitchContext {
+  selected: any
+  select(option: any)
 }

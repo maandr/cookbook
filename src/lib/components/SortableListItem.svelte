@@ -2,12 +2,9 @@
   import { getContext } from 'svelte'
   import { DRAGDROP } from './SortableList.svelte'
 
-  export let value: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  export let index: number
 
-  let { isActive, items, drag, drop, dragEnter, hoveredPosition }: DragDropContext =
-    getContext(DRAGDROP)
-
-  $: index = items.indexOf(value)
+  let { isActive, drag, drop, dragEnter, hoveredPosition }: DragDropContext = getContext(DRAGDROP)
 </script>
 
 <div

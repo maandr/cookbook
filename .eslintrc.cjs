@@ -9,7 +9,8 @@ module.exports = {
       files: ['*.svelte'],
       processor: 'svelte3/svelte3',
       rules: {
-        'no-undef': 'off' // recommencted to disable this rule when using typescript
+        'no-undef': 'off', // recommencted to disable this rule when using typescript
+        '@typescript-eslint/no-explicit-any': 'off'
       }
     }
   ],

@@ -1,3 +1,5 @@
+import { CATEGORIES } from '$lib/constants'
+
 export function isOk(json: string) {
   try {
     const recipe = JSON.parse(json)
@@ -18,4 +20,8 @@ export function isOk(json: string) {
   } catch (e) {
     return false
   }
+}
+
+export function getCategory(tags: string[]) {
+  return tags.filter((tag) => CATEGORIES.includes(tag))[0]
 }

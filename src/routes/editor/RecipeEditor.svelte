@@ -1,18 +1,19 @@
 <script lang="ts">
+  import { getCategory } from '$lib/utils/recipeHelpers'
   import { hasMinLength, isAPositiveNumber, isNotBlank } from '$lib/utils/validationHelpers'
   import { toSlug } from '$lib/utils/stringHelpers'
+  import ChevronLeft from '$components/Icons/ChevronLeft.svelte'
+  import ContextBar from '$components/ContextBar.svelte'
   import Document from './Document.svelte'
   import Edit from '$components/Icons/Edit.svelte'
   import Editor from './Editor.svelte'
   import File from '$components/Icons/File.svelte'
+  import Save from '$components/Icons/Save.svelte'
   import Tab from '$components/Tab.svelte'
   import TabBar from '$components/TabBar.svelte'
   import TabPanel from '$components/TabPanel.svelte'
   import Tabs from '$components/Tabs.svelte'
-  import ContextBar from '$components/ContextBar.svelte'
   import WidthDelimiter from '$components/WidthDelimiter.svelte'
-  import ChevronLeft from '$components/Icons/ChevronLeft.svelte'
-  import Save from '$components/Icons/Save.svelte'
 
   export let recipe: Recipe
 
@@ -79,6 +80,7 @@
         bind:containsAlcohol={recipe.containsAlcohol}
         bind:ingrediences={recipe.ingrediences}
         bind:instructions={recipe.instructions}
+        category={getCategory(recipe.tags)}
       />
     </TabPanel>
     <TabPanel>

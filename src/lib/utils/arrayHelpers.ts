@@ -10,6 +10,10 @@ export function containsAll(source: string[], keys: string[]): boolean {
   )
 }
 
+export function containsAny(source: string[], keys: string[]): boolean {
+  return keys.some((key) => source.includes(key))
+}
+
 export function distict<T>(source: T[]): T[] {
   return [...new Set(source)]
 }

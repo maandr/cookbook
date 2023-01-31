@@ -1,3 +1,5 @@
+export const CATEGORIES = ['salad', 'meal', 'dessert', 'baking', 'drink']
+
 export const DEFAULT_FILTER = {
   mustContainIngrediences: [],
   mustHaveTags: [],

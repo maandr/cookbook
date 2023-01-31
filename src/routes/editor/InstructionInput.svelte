@@ -22,8 +22,14 @@
 <div class="my-4">
   <SortableList bind:items={entries}>
     {#each entries as step, i (i + step)}
-      <SortableListItem value={step}>
+      <SortableListItem index={i}>
         <div class="instruction-line">
+          <button
+            class="delete center text-secondary hover:text-primary"
+            on:click={() => remove(i)}
+          >
+            <Delete width={18} height={18} />
+          </button>
           <div class="move center cursor-pointer text-secondary hover:text-primary">
             <UpDown width={18} height={18} />
           </div>
@@ -33,15 +39,10 @@
               tabindex={tabindex ? tabindex + i + 1 : undefined}
               maxRows={4}
               isValid={isNotBlank}
-              bind:value={step}
+              value={step}
+              on:change={(event) => (entries[i] = event.detail.value)}
             />
           </div>
-          <button
-            class="delete center text-secondary hover:text-primary"
-            on:click={() => remove(i)}
-          >
-            <Delete width={18} height={18} />
-          </button>
         </div>
       </SortableListItem>
     {/each}
@@ -49,7 +50,7 @@
   <button
     on:click={add}
     tabindex={tabindex ? tabindex + entries.length * 4 + 1 : undefined}
-    class="my-2 flex w-full items-center gap-4 p-3 text-sm text-secondary"
+    class="my-2 flex w-full items-center gap-4 border-2 border-transparent p-3 text-sm text-secondary outline-none focus:border-primary"
   >
     <CirclePlus width={18} height={18} /> Schritt hinzufügen
   </button>
@@ -71,9 +72,9 @@
     .instruction-line {
       padding: 4px;
       display: grid;
-      grid-template-columns: 24px 1fr 24px;
+      grid-template-columns: 24px 24px 1fr;
       grid-template-rows: 1fr;
-      grid-template-areas: 'move text delete';
+      grid-template-areas: 'delete move text';
       gap: 8px;
     }
   }

@@ -6,7 +6,7 @@
   import { setContext } from 'svelte'
   import { writable } from 'svelte/store'
 
-  export let items: any[] // eslint-disable-line @typescript-eslint/no-explicit-any
+  export let items: any[]
 
   const isActive = writable<boolean>(false)
   const hoveredPosition = writable<number>(-1)

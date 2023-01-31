@@ -6,7 +6,7 @@
   recipe={{
     title: '',
     slug: '',
-    tags: [],
+    tags: ['meal'],
     amountOfServings: undefined,
     amountOfMinutesRequired: undefined,
     containsMeat: false,

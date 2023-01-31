@@ -2,8 +2,8 @@
   import Check from '$components/Icons/Check.svelte'
   import Close from '$components/Icons/Close.svelte'
 
-  export let value: any // eslint-disable-line @typescript-eslint/no-explicit-any
-  export let isValid: (value: any) => boolean // eslint-disable-line @typescript-eslint/no-explicit-any
+  export let value: any
+  export let isValid: (value: any) => boolean
 </script>
 
 {#if isValid(value)}

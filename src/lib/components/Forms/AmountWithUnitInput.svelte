@@ -7,7 +7,7 @@
   export let id: string | undefined = undefined
   export let name: string | undefined = undefined
   export let tabindex: number | undefined = undefined
-  export let isValid: ((value: any) => boolean) | undefined = undefined // eslint-disable-line @typescript-eslint/no-explicit-any
+  export let isValid: ((value: any) => boolean) | undefined = undefined
 
   let hasFocus = false
   let hasUnitInputFocus = false

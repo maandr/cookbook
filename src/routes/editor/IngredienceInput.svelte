@@ -31,13 +31,18 @@
   }
 </script>
 
-<div class="my-4">
+<div class="my-2">
   <SortableList bind:items={entries}>
     {#each entries as entry, i (entry.name + i)}
-      <SortableListItem value={entry}>
+      <SortableListItem index={i}>
         <div class="ingredience-line">
           <div class="center move cursor-pointer text-secondary hover:text-primary">
             <UpDown width={18} height={18} />
+          </div>
+          <div class="delete center text-secondary hover:text-primary">
+            <button on:click={() => remove(i)}>
+              <Delete width={18} height={18} />
+            </button>
           </div>
           <div class="ingredience">
             <Input
@@ -70,11 +75,6 @@
               bind:value={entry.required}>Nötig</ToggleButton
             >
           </div>
-          <div class="delete center text-secondary hover:text-primary">
-            <button on:click={() => remove(i)}>
-              <Delete width={18} height={18} />
-            </button>
-          </div>
         </div>
       </SortableListItem>
     {/each}
@@ -83,7 +83,7 @@
   <button
     on:click={add}
     tabindex={tabindex ? tabindex + entries.length * 4 + 1 : undefined}
-    class="my-2 flex w-full items-center gap-4 p-3 text-sm text-secondary hover:text-primary"
+    class="my-2 flex w-full items-center gap-4 border-2 border-transparent p-3 text-sm text-secondary outline-none hover:text-primary focus:border-primary"
   >
     <CirclePlus width={18} height={18} /> Zutat hinzufügen
   </button>
@@ -103,11 +103,11 @@
 
   @media (min-width: 1024px) {
     .ingredience-line {
-      padding: 4px;
+      padding: 4px 0;
       display: grid;
-      grid-template-columns: 24px 1fr 250px 120px 24px;
+      grid-template-columns: 24px 24px 1fr 250px 120px;
       grid-template-rows: 1fr;
-      grid-template-areas: 'move ingredience quantity is-required delete';
+      grid-template-areas: 'delete move ingredience quantity is-required';
       gap: 8px;
     }
   }

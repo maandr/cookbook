@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte'
   import { distict } from '$lib/utils/arrayHelpers'
   import Close from '$components/Icons/Close.svelte'
   import Tags from '$components/Icons/Tags.svelte'
@@ -8,7 +9,8 @@
   export let tabindex: number | undefined = undefined
   export let placeholder: string | undefined = undefined
   export let tags: string[]
-  export let onChange: ((value: string[]) => void) | undefined = undefined
+
+  const dispatch = createEventDispatcher()
 
   let input = ''
   let hasFocus = false
@@ -25,6 +27,7 @@
         class="center gap-1 rounded bg-primary px-2 text-background"
         on:click={() => {
           tags = tags.filter((t) => t != tag)
+          dispatch('change', { tags })
         }}
       >
         <Close width={12} height={12} />{tag}
@@ -40,9 +43,9 @@
       on:focus={() => (hasFocus = true)}
       on:blur={() => (hasFocus = false)}
       on:change={() => {
-        tags = distict([...tags, input]).filter((t) => t.trim() !== '')
+        tags = distict([...tags, input]).filter((tag) => tag.trim() !== '')
+        dispatch('change', { tags })
         input = ''
-        onChange && onChange(tags)
       }}
     />
   </div>
