@@ -1,5 +1,6 @@
-import { loadRecipes } from '$lib/server/recipes'
+import type { RequestEvent } from '@sveltejs/kit'
 
-export function load() {
-  return { recipes: loadRecipes() }
+export async function load(event: RequestEvent): Promise<{ recipes: Recipe[] }> {
+  const response = await event.fetch('/api/recipes')
+  return { recipes: response.ok ? await response.json() : [] }
 }

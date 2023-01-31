@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { recipesBySlug } from '$lib/stores'
   import Alcohol from '$components/Icons/Alcohol.svelte'
   import Cheese from '$components/Icons/Cheese.svelte'
   import ChevronLeft from '$components/Icons/ChevronLeft.svelte'
@@ -9,26 +8,25 @@
   import Edit from '$components/Icons/Edit.svelte'
   import Fish from '$components/Icons/Fish.svelte'
   import Gluten from '$components/Icons/Gluten.svelte'
-  import Ingrediences from '$components/Recipe/Ingrediencs.svelte'
-  import Instructions from '$components/Recipe/Instructions.svelte'
+  import Ingrediences from '$components/recipe/Ingrediencs.svelte'
+  import Instructions from '$components/recipe/Instructions.svelte'
   import Meat from '$components/Icons/Meat.svelte'
   import Portion from '$components/Icons/Portion.svelte'
   import WidthDelimiter from '$components/WidthDelimiter.svelte'
 
-  export let data: { slug: string }
+  export let data: Recipe
 
   let amountOfServings = 4
 
-  $: recipe = $recipesBySlug[data.slug]
-  $: factor = amountOfServings / recipe.amountOfServings
+  $: factor = amountOfServings / data.amountOfServings
 
   onMount(() => {
-    amountOfServings = recipe.amountOfServings
+    amountOfServings = data.amountOfServings
   })
 </script>
 
 <svelte:head>
-  <title>{recipe.title}</title>
+  <title>{data.title}</title>
 </svelte:head>
 
 <ContextBar>
@@ -38,19 +36,19 @@
         <a href="/"><ChevronLeft /></a>
       </div>
       <div class="col-span-10 font-handwriting text-lg md:text-xl">
-        {recipe.title}
+        {data.title}
       </div>
       <div class="col-span-1">
-        <a href={`/editor/${recipe.slug}`}><Edit /></a>
+        <a href={`/editor/${data.slug}`}><Edit /></a>
       </div>
     </div>
   </WidthDelimiter>
 </ContextBar>
 
 <img
-  src={recipe.imagePath}
-  title={recipe.title}
-  alt={recipe.title}
+  src={data.imagePath}
+  title={data.title}
+  alt={data.title}
   class="my-6 max-w-full md:max-w-[1024px]"
 />
 
@@ -59,19 +57,19 @@
     <div class="section-title">
       <h2 class="float-left">Zutaten</h2>
       <div class="float-right flex flex-row items-center justify-end gap-x-4">
-        {#if recipe.containsMeat}
+        {#if data.containsMeat}
           <div title="Enthält Fleisch"><Meat width={16} height={16} /></div>
         {/if}
-        {#if recipe.containsFish}
+        {#if data.containsFish}
           <div title="Enthält Fisch"><Fish width={16} height={16} /></div>
         {/if}
-        {#if recipe.containsGluten}
+        {#if data.containsGluten}
           <div title="Enthält Gluten"><Gluten width={16} height={16} /></div>
         {/if}
-        {#if recipe.containsLactose}
+        {#if data.containsLactose}
           <div title="Enthält Laktose"><Cheese width={16} height={16} /></div>
         {/if}
-        {#if recipe.containsAlcohol}
+        {#if data.containsAlcohol}
           <div title="Enthält Alkohol"><Alcohol width={16} height={16} /></div>
         {/if}
       </div>
@@ -96,17 +94,17 @@
         class="mx-2 w-40"
       />
     </div>
-    <Ingrediences {recipe} bind:factor />
+    <Ingrediences recipe={data} bind:factor />
   </div>
   <div class="md:col-span-7">
     <div class="section-title">
       <h2 class="float-left">Anleitung</h2>
       <div class="float-right flex flex-row items-center gap-x-2 font-normal">
         <Clock width={16} height={16} />
-        ca. {recipe.amountOfMinutesRequired} Minuten
+        ca. {data.amountOfMinutesRequired} Minuten
       </div>
     </div>
-    <Instructions {recipe} />
+    <Instructions recipe={data} />
   </div>
 </div>
 

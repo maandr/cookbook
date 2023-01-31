@@ -1,7 +1,6 @@
 import { saveRecipe } from '$lib/server/recipes'
 import type { RequestEvent } from '@sveltejs/kit'
 
-/** @type {import('./$types').Actions} */
 export const actions = {
   save: async (event: RequestEvent) => {
     try {
