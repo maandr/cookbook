@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:14.6
+    restart: unless-stopped
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-dev}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dev}
+      POSTGRES_DATABASE: ${POSTGRES_DB:-dev}
+    volumes:
+      - $PWD/postgres/data:/var/lib/postgresql/data

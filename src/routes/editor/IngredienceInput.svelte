@@ -48,8 +48,9 @@
             <Input
               name="ingredience"
               tabindex={tabindex ? tabindex + i * 4 + 1 : undefined}
-              bind:value={entry.name}
+              value={entry.name}
               isValid={isNotBlank}
+              on:change={(event) => (entry.name = event.detail.value)}
             >
               <Mortar width={18} height={18} />
             </Input>
