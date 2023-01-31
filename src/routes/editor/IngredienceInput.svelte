@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { flip } from 'svelte/animate'
   import { isAPositiveNumber, isBlank, isNotBlank, isNumber } from '$lib/utils/validationHelpers'
   import { UNITS } from '$lib/constants'
   import AmountWithUnitInput from '$components/Forms/AmountWithUnitInput.svelte'
   import CirclePlus from '$components/Icons/CirclePlus.svelte'
   import Delete from '$components/Icons/Delete.svelte'
+  import SortableList from '$components/SortableList.svelte'
+  import SortableListItem from '$components/SortableListItem.svelte'
   import Input from '$components/Forms/Input.svelte'
   import Mortar from '$components/Icons/Mortar.svelte'
   import Scale from '$components/Icons/Scale.svelte'
@@ -13,8 +14,6 @@
 
   export let entries: Ingredience[]
   export let tabindex: number | undefined = undefined
-
-  let hovering = -1
 
   function add() {
     entries = [
@@ -30,87 +29,57 @@
   function remove(atIndex: number) {
     entries = entries.filter((e, i) => i !== atIndex)
   }
-
-  function drop(event: DragEvent, toPosition: number) {
-    if (event.dataTransfer) {
-      event.dataTransfer.dropEffect = 'move'
-      const fromPosition = parseInt(event.dataTransfer.getData('text/plain'))
-      const sorted = entries
-
-      if (fromPosition < toPosition) {
-        sorted.splice(toPosition + 1, 0, sorted[fromPosition])
-        sorted.splice(fromPosition, 1)
-      } else {
-        sorted.splice(toPosition, 0, sorted[fromPosition])
-        sorted.splice(fromPosition + 1, 1)
-      }
-      entries = sorted
-      hovering = -1
-    }
-  }
-
-  function drag(event: DragEvent, index: number) {
-    if (event.dataTransfer) {
-      event.dataTransfer.effectAllowed = 'move'
-      event.dataTransfer.dropEffect = 'move'
-      event.dataTransfer.setData('text/plain', index.toString())
-    }
-  }
 </script>
 
 <div class="my-4">
-  {#each entries as entry, i (entry.name + i)}
-    <div
-      draggable={true}
-      animate:flip
-      on:dragstart={(event) => drag(event, i)}
-      on:drop|preventDefault={(event) => drop(event, i)}
-      on:dragenter={() => (hovering = i)}
-      on:dragover|preventDefault={() => false}
-      class="ingredience-line"
-      class:is-hovered={hovering === i}
-    >
-      <div class="center move cursor-pointer text-secondary hover:text-primary">
-        <UpDown width={18} height={18} />
-      </div>
-      <div class="ingredience">
-        <Input
-          name="ingredience"
-          tabindex={tabindex ? tabindex + i * 4 + 1 : undefined}
-          bind:value={entry.name}
-          isValid={isNotBlank}
-        >
-          <Mortar width={18} height={18} />
-        </Input>
-      </div>
-      <div class="quanity">
-        <AmountWithUnitInput
-          tabindex={tabindex ? tabindex + i * 4 + 2 : undefined}
-          bind:value={entry.quantity}
-          allowedUnits={UNITS}
-          isValid={(value) =>
-            isNumber(value.amount)
-              ? value.amount == 0
-                ? isBlank(value.unit)
-                : isAPositiveNumber(value.amount) && isNotBlank(value.unit)
-              : false}
-        >
-          <Scale width={18} height={18} />
-        </AmountWithUnitInput>
-      </div>
-      <div class="is-required">
-        <ToggleButton
-          tabindex={tabindex ? tabindex + i * 4 + 4 : undefined}
-          bind:value={entry.required}>Nötig</ToggleButton
-        >
-      </div>
-      <div class="delete center text-secondary hover:text-primary">
-        <button on:click={() => remove(i)}>
-          <Delete width={18} height={18} />
-        </button>
-      </div>
-    </div>
-  {/each}
+  <SortableList bind:items={entries}>
+    {#each entries as entry, i (entry.name + i)}
+      <SortableListItem value={entry}>
+        <div class="ingredience-line">
+          <div class="center move cursor-pointer text-secondary hover:text-primary">
+            <UpDown width={18} height={18} />
+          </div>
+          <div class="ingredience">
+            <Input
+              name="ingredience"
+              tabindex={tabindex ? tabindex + i * 4 + 1 : undefined}
+              bind:value={entry.name}
+              isValid={isNotBlank}
+            >
+              <Mortar width={18} height={18} />
+            </Input>
+          </div>
+          <div class="quanity">
+            <AmountWithUnitInput
+              tabindex={tabindex ? tabindex + i * 4 + 2 : undefined}
+              bind:value={entry.quantity}
+              allowedUnits={UNITS}
+              isValid={(value) =>
+                isNumber(value.amount)
+                  ? value.amount == 0
+                    ? isBlank(value.unit)
+                    : isAPositiveNumber(value.amount) && isNotBlank(value.unit)
+                  : false}
+            >
+              <Scale width={18} height={18} />
+            </AmountWithUnitInput>
+          </div>
+          <div class="is-required">
+            <ToggleButton
+              tabindex={tabindex ? tabindex + i * 4 + 4 : undefined}
+              bind:value={entry.required}>Nötig</ToggleButton
+            >
+          </div>
+          <div class="delete center text-secondary hover:text-primary">
+            <button on:click={() => remove(i)}>
+              <Delete width={18} height={18} />
+            </button>
+          </div>
+        </div>
+      </SortableListItem>
+    {/each}
+  </SortableList>
+
   <button
     on:click={add}
     tabindex={tabindex ? tabindex + entries.length * 4 + 1 : undefined}
@@ -121,14 +90,6 @@
 </div>
 
 <style lang="postcss">
-  h3 {
-    @apply font-bold;
-  }
-
-  .is-hovered {
-    @apply bg-secondary opacity-50;
-  }
-
   .ingredience-line {
     padding: 12px 0;
     display: grid;

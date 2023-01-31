@@ -61,3 +61,12 @@ interface TabsContext {
   selectedTab: Writable<Tab>
   selectedPanel: Writable<Panel>
 }
+
+interface DragDropContext {
+  drag(event: DragEvent, index: number)
+  drop(event: DragEvent, toPosition: number)
+  dragEnter(event: DragEvent, index: number)
+  items: any[] // eslint-disable-line @typescript-eslint/no-explicit-any
+  isActive: Writable<boolean>
+  hoveredPosition: Writable<number>
+}
