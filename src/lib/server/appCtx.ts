@@ -1,17 +1,20 @@
+import { config } from './appConfig'
 import { PostgresClient } from './database/PostgresClient'
 import { RecipesRepository } from './database/RecipeRepository'
 
-let _appCtx: App | undefined = undefined
+let _appCtx: AppContext | undefined = undefined
 
-export interface App {
+export interface AppContext {
+  config: AppConfig
   recipeRepository: RecipesRepository
 }
 
-async function appCtx(): Promise<App> {
+async function appCtx(): Promise<AppContext> {
   if (!_appCtx) {
     _appCtx = {
+      config,
       recipeRepository: new RecipesRepository(
-        await PostgresClient.create('postgresql://dev:dev@localhost:5432/dev')
+        await PostgresClient.create(config.database.connectionUrl)
       )
     }
   }

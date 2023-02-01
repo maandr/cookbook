@@ -1,10 +1,10 @@
 ## build application
 FROM node:18 AS build
 
+COPY .env.example ./.env
 COPY package.json yarn.lock ./
 RUN yarn install --no-progress --no-audit --ignore-engines
 COPY . .
-
 RUN yarn build
 
 # bundle application and runtime dependencies

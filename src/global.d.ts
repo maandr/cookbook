@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+interface AppConfig {
+  database: { connectionUrl: string }
+}
+
 interface Recipe {
   slug: string
   title: string
