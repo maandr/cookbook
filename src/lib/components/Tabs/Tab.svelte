@@ -10,7 +10,7 @@
 
 <button
   class:selected={$selectedTab === self}
-  class="flex flex-wrap items-center gap-3 bg-surface px-6 py-3 text-sm text-secondary"
+  class="flex flex-wrap items-center gap-3 bg-surface px-4 py-3 text-xs text-secondary"
   tabindex="-1"
   on:click={() => selectTab(self)}
 >

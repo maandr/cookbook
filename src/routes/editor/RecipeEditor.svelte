@@ -15,13 +15,18 @@
   import TabPanel from '$components/Tabs/TabPanel.svelte'
   import Tabs from '$components/Tabs/Tabs.svelte'
   import WidthDelimiter from '$components/WidthDelimiter.svelte'
+  import ImageUpload from '$components/Forms/ImageUpload.svelte'
+  import Image from '$components/Icons/Image.svelte'
 
   export let recipe: Recipe
 
+  $: imagePath = recipe.imagePath ? recipe.imagePath : '/images/default.jpg'
+  $: slug = recipe.slug ? recipe.slug : toSlug(recipe.title) // TODO: make sure its always unique
   $: json = JSON.stringify(
     {
       ...recipe,
-      slug: recipe.slug ? recipe.slug : toSlug(recipe.title), // TODO: make sure its always unique
+      slug,
+      imagePath,
       ingrediences: recipe.ingrediences.filter((i) => i.name.trim() !== ''),
       instructions: recipe.instructions.filter((i) => i.trim() !== '')
     },
@@ -69,6 +74,7 @@
 <Tabs>
   <TabBar>
     <Tab><Edit width={18} height={18} /> Editor</Tab>
+    <Tab><Image width={18} height={18} /> Bild</Tab>
     <Tab><File width={18} height={18} /> Document</Tab>
   </TabBar>
   <div>
@@ -87,6 +93,14 @@
         bind:instructions={recipe.instructions}
         category={getCategory(recipe.tags)}
       />
+    </TabPanel>
+    <TabPanel>
+      <div class="h-full w-full">
+        <ImageUpload
+          fileName={imagePath}
+          on:upload_succeeded={(event) => (imagePath = event.detail)}
+        />
+      </div>
     </TabPanel>
     <TabPanel>
       <Document {json} onChange={(json) => parseJson(json)} />

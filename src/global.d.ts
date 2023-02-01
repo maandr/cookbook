@@ -57,6 +57,11 @@ interface Result<T> {
   payload: T
 }
 
+interface ImageUploadRequestPayload {
+  fileName: string
+  dataBase64Encoded: string
+}
+
 type Pair<T> = {
   key: T
   value: T
