@@ -21,6 +21,7 @@
   import Portion from '$components/Icons/Portion.svelte'
   import TagToggle from '$components/Filter/TagToggle.svelte'
   import WidthDelimiter from '$components/WidthDelimiter.svelte'
+  import { clickOutside } from '$lib/actions/clickOutside'
 
   let isExpanded = false
 </script>
@@ -86,6 +87,7 @@
 <div
   class="max-h-[0px] overflow-hidden bg-background text-primary opacity-75 shadow-xl transition-all"
   class:expanded={isExpanded}
+  use:clickOutside={() => (isExpanded = false)}
 >
   <WidthDelimiter>
     <div
@@ -129,7 +131,7 @@
 
       <button
         class="center mb-2 mt-3 w-full p-2 text-secondary"
-        on:click={() => (isExpanded = false)}
+        on:click={(e) => (isExpanded = false)}
       >
         <ChevronUp />
       </button>
