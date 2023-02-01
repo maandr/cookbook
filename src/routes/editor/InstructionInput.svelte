@@ -4,8 +4,8 @@
   import Delete from '$components/Icons/Delete.svelte'
   import TextAreaAutosize from '$components/Forms/TextAreaAutosize.svelte'
   import UpDown from '$components/Icons/UpDown.svelte'
-  import SortableList from '$components/SortableList.svelte'
-  import SortableListItem from '$components/SortableListItem.svelte'
+  import SortableList from '$components/SortableList/SortableList.svelte'
+  import SortableListItem from '$components/SortableList/SortableListItem.svelte'
 
   export let entries: string[]
   export let tabindex: number | undefined = undefined

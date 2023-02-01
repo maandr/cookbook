@@ -1,4 +1,4 @@
-import appCtx from '$lib/server/applicationContext'
+import appCtx from '$lib/server/appCtx'
 import type { RequestEvent } from '@sveltejs/kit'
 
 export const actions = {
@@ -6,7 +6,8 @@ export const actions = {
     try {
       const data = await event.request.formData()
       const recipe = JSON.parse(data.get('recipe') as string)
-      await appCtx.recipeRepository.save(recipe)
+      const { recipeRepository } = await appCtx()
+      await recipeRepository.save(recipe)
     } catch (e: unknown) {
       console.error(`failed to parse recipe.\n`, e)
     }

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { getContext } from 'svelte'
-  import { TABS } from './Tabs.svelte'
+  import { TABS } from '$components/Tabs/Tabs.svelte'
 
   const self: Tab = {} // self reference
   const { selectedTab, selectTab, registerTab }: TabsContext = getContext(TABS)

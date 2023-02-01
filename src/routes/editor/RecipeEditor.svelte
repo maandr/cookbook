@@ -10,10 +10,10 @@
   import Editor from './Editor.svelte'
   import File from '$components/Icons/File.svelte'
   import Save from '$components/Icons/Save.svelte'
-  import Tab from '$components/Tab.svelte'
-  import TabBar from '$components/TabBar.svelte'
-  import TabPanel from '$components/TabPanel.svelte'
-  import Tabs from '$components/Tabs.svelte'
+  import Tab from '$components/Tabs/Tab.svelte'
+  import TabBar from '$components/Tabs/TabBar.svelte'
+  import TabPanel from '$components/Tabs/TabPanel.svelte'
+  import Tabs from '$components/Tabs/Tabs.svelte'
   import WidthDelimiter from '$components/WidthDelimiter.svelte'
 
   export let recipe: Recipe

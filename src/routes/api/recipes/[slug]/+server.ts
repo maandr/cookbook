@@ -1,4 +1,4 @@
-import appCtx from '$lib/server/applicationContext'
+import appCtx from '$lib/server/appCtx'
 import { error, json, type RequestEvent } from '@sveltejs/kit'
 
 export async function GET(event: RequestEvent) {

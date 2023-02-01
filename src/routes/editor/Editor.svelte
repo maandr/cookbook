@@ -16,8 +16,8 @@
   import InstructionInput from './InstructionInput.svelte'
   import Meat from '$components/Icons/Meat.svelte'
   import Portion from '$components/Icons/Portion.svelte'
-  import Switch from '$components/Forms/Switch.svelte'
-  import SwitchOption from '$components/Forms/SwitchOption.svelte'
+  import Switch from '$components/Forms/Switch/Switch.svelte'
+  import SwitchOption from '$components/Forms/Switch/SwitchOption.svelte'
   import TagInput from '$components/Forms/TagInput.svelte'
   import ToggleButton from '$components/Forms/ToggleButton.svelte'
 

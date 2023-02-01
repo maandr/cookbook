@@ -18,4 +18,6 @@ async function appCtx(): Promise<App> {
   return Promise.resolve(_appCtx)
 }
 
-export default await appCtx()
+export default async function () {
+  return await appCtx()
+}

@@ -25,6 +25,7 @@ module.exports = {
       zIndex: {
         menu: 90,
         menuBar: 91,
+        menuClearFilter: 92,
         overlay: 997,
         modal: 998,
         loadingSpinner: 996

@@ -2,7 +2,7 @@
   import { filtered, isLoading, recipes } from '$lib/stores'
   import ContextBar from '$components/ContextBar.svelte'
   import FilterMenu from '$components/Filter/FilterMenu.svelte'
-  import RecipeCard from './RecipeCard.svelte'
+  import RecipeCard from '../lib/components/Recipe/RecipeCard.svelte'
   import { onMount } from 'svelte'
 
   export let data: Result<Recipe[]>

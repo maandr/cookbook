@@ -1,7 +1,8 @@
-import appCtx from '$lib/server/applicationContext'
+import appCtx from '$lib/server/appCtx'
 import { json } from '@sveltejs/kit'
 
 export async function GET() {
-  const recipes = await appCtx.recipeRepository.findAll()
+  const { recipeRepository } = await appCtx()
+  const recipes = await recipeRepository.findAll()
   return json(recipes)
 }

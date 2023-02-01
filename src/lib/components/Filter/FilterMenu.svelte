@@ -13,7 +13,6 @@
   import FilterClear from '$components/Icons/FilterClear.svelte'
   import Fish from '$components/Icons/Fish.svelte'
   import Gluten from '$components/Icons/Gluten.svelte'
-  import HideOnMobile from '$components/HideOnMobile.svelte'
   import IceCream from '$components/Icons/IceCream.svelte'
   import Ingrediences from './Ingrediences.svelte'
   import Meat from '$components/Icons/Meat.svelte'
@@ -26,117 +25,125 @@
   let isExpanded = false
 </script>
 
-<WidthDelimiter>
-  <button class="grid w-full grid-cols-12 gap-2 p-4" on:click={() => (isExpanded = !isExpanded)}>
-    <div class="col-span-4 flex flex-row flex-wrap items-center gap-2">
-      {#if isExpanded}
-        <button on:click={() => filter.set({ ...DEFAULT_FILTER })}><FilterClear /> </button>
-      {:else}
-        <Filter />
-      {/if}
-      {#if $filter.mustHaveTags.includes('salad')}
-        Salat
-      {:else if $filter.mustHaveTags.includes('meal')}
-        Kochen
-      {:else if $filter.mustHaveTags.includes('dessert')}
-        Dessert
-      {:else if $filter.mustHaveTags.includes('baking')}
-        Backen
-      {:else if $filter.mustHaveTags.includes('drink')}
-        Drinks
-      {/if}
-    </div>
-
-    <div class="col-span-8 flex flex-row items-center justify-end gap-2">
-      {#if !$filter.meatAllowed}
-        <Ban>
-          <Meat width={16} height={16} />
-        </Ban>
-      {/if}
-      {#if !$filter.fishAllowed}
-        <Ban>
-          <Fish width={16} height={16} />
-        </Ban>
-      {/if}
-      {#if !$filter.glutenAllowed}
-        <Ban>
-          <Gluten width={16} height={16} />
-        </Ban>
-      {/if}
-      {#if !$filter.lactoseAllowed}
-        <Ban>
-          <Cheese width={16} height={16} />
-        </Ban>
-      {/if}
-      {#if !$filter.alcoholAllowed}
-        <Ban>
-          <Alcohol width={16} height={16} />
-        </Ban>
-      {/if}
-    </div>
-
-    {#if $filter.mustContainIngrediences.length > 0}
-      <div class="col-span-12 flex w-full flex-row flex-wrap gap-2 pt-2">
-        <Mortar width={12} height={12} />
-        {$filter.mustContainIngrediences.join(', ')}
-      </div>
-    {/if}
-  </button>
-</WidthDelimiter>
-
-<div
-  class="max-h-[0px] overflow-hidden bg-background text-primary opacity-75 shadow-xl transition-all"
-  class:expanded={isExpanded}
-  use:clickOutside={() => (isExpanded = false)}
->
+<div use:clickOutside={() => (isExpanded = false)}>
   <WidthDelimiter>
-    <div
-      class="m-auto flex w-full flex-col items-center justify-center px-4 md:w-[1024px] md:items-start md:px-0"
-    >
-      <h3>Kategorie</h3>
-      <div class="my-2 flex flex-row flex-wrap gap-1 md:my-4 md:gap-2">
-        <TagToggle tags={['salad']}><Bowl /> Salat</TagToggle>
-        <TagToggle tags={['meal']}><Portion /> Kochen</TagToggle>
-        <TagToggle tags={['dessert']}><IceCream />Dessert</TagToggle>
-        <TagToggle tags={['baking']}><Cake /> Backen</TagToggle>
-        <TagToggle tags={['drink']}><Drink /> Drinks</TagToggle>
+    <button class="grid w-full grid-cols-12 gap-2 p-4" on:click={() => (isExpanded = !isExpanded)}>
+      <div class="col-span-4 flex flex-row flex-wrap items-center gap-2">
+        {#if isExpanded}
+          <button
+            on:click={() => {
+              console.log('click')
+              filter.set({ ...DEFAULT_FILTER })
+            }}
+          >
+            <FilterClear />
+          </button>
+        {:else}
+          <Filter />
+        {/if}
+        {#if $filter.mustHaveTags.includes('salad')}
+          Salat
+        {:else if $filter.mustHaveTags.includes('meal')}
+          Kochen
+        {:else if $filter.mustHaveTags.includes('dessert')}
+          Dessert
+        {:else if $filter.mustHaveTags.includes('baking')}
+          Backen
+        {:else if $filter.mustHaveTags.includes('drink')}
+          Drinks
+        {/if}
       </div>
 
-      <h3>Ernährung</h3>
-      <div class="my-2 flex flex-row flex-wrap gap-1 md:my-4 md:gap-2">
-        <NutritionToggle bind:isEnabled={$filter.meatAllowed}>
-          <Meat />
-          <HideOnMobile>Fleisch</HideOnMobile>
-        </NutritionToggle>
-        <NutritionToggle bind:isEnabled={$filter.fishAllowed}>
-          <Fish />
-          <HideOnMobile>Fisch</HideOnMobile>
-        </NutritionToggle>
-        <NutritionToggle bind:isEnabled={$filter.glutenAllowed}>
-          <Gluten />
-          <HideOnMobile>Gluten</HideOnMobile>
-        </NutritionToggle>
-        <NutritionToggle bind:isEnabled={$filter.lactoseAllowed}>
-          <Cheese />
-          <HideOnMobile>Laktose</HideOnMobile>
-        </NutritionToggle>
-        <NutritionToggle bind:isEnabled={$filter.alcoholAllowed}>
-          <Alcohol />
-          <HideOnMobile>Alkohol</HideOnMobile>
-        </NutritionToggle>
+      <div class="col-span-8 flex flex-row items-center justify-end gap-2">
+        {#if !$filter.meatAllowed}
+          <Ban>
+            <Meat width={16} height={16} />
+          </Ban>
+        {/if}
+        {#if !$filter.fishAllowed}
+          <Ban>
+            <Fish width={16} height={16} />
+          </Ban>
+        {/if}
+        {#if !$filter.glutenAllowed}
+          <Ban>
+            <Gluten width={16} height={16} />
+          </Ban>
+        {/if}
+        {#if !$filter.lactoseAllowed}
+          <Ban>
+            <Cheese width={16} height={16} />
+          </Ban>
+        {/if}
+        {#if !$filter.alcoholAllowed}
+          <Ban>
+            <Alcohol width={16} height={16} />
+          </Ban>
+        {/if}
       </div>
 
-      <h3>Zutaten</h3>
-      <Ingrediences />
-
-      <button
-        class="center mb-2 mt-3 w-full p-2 text-secondary"
-        on:click={() => (isExpanded = false)}
-      >
-        <ChevronUp />
-      </button>
-    </div>
+      {#if $filter.mustContainIngrediences.length > 0}
+        <div class="col-span-12 flex w-full flex-row flex-wrap gap-2 pt-2">
+          <Mortar width={12} height={12} />
+          {$filter.mustContainIngrediences.join(', ')}
+        </div>
+      {/if}
+    </button>
   </WidthDelimiter>
+
+  <div
+    class="max-h-[0px] overflow-hidden bg-background text-primary opacity-75 shadow-xl transition-all"
+    class:expanded={isExpanded}
+  >
+    <WidthDelimiter>
+      <div
+        class="m-auto flex w-full flex-col items-center justify-center px-4 md:w-[1024px] md:items-start md:px-0"
+      >
+        <h3>Kategorie</h3>
+        <div class="my-2 flex flex-row flex-wrap gap-1 md:my-4 md:gap-2">
+          <TagToggle tags={['salad']}><Bowl /> Salat</TagToggle>
+          <TagToggle tags={['meal']}><Portion /> Kochen</TagToggle>
+          <TagToggle tags={['dessert']}><IceCream />Dessert</TagToggle>
+          <TagToggle tags={['baking']}><Cake /> Backen</TagToggle>
+          <TagToggle tags={['drink']}><Drink /> Drinks</TagToggle>
+        </div>
+
+        <h3>Ernährung</h3>
+        <div class="my-2 flex flex-row flex-wrap gap-1 md:my-4 md:gap-2">
+          <NutritionToggle bind:isEnabled={$filter.meatAllowed}>
+            <Meat />
+            Fleisch
+          </NutritionToggle>
+          <NutritionToggle bind:isEnabled={$filter.fishAllowed}>
+            <Fish />
+            Fisch
+          </NutritionToggle>
+          <NutritionToggle bind:isEnabled={$filter.glutenAllowed}>
+            <Gluten />
+            Gluten
+          </NutritionToggle>
+          <NutritionToggle bind:isEnabled={$filter.lactoseAllowed}>
+            <Cheese />
+            Laktose
+          </NutritionToggle>
+          <NutritionToggle bind:isEnabled={$filter.alcoholAllowed}>
+            <Alcohol />
+            Alkohol
+          </NutritionToggle>
+        </div>
+
+        <h3>Zutaten</h3>
+        <Ingrediences />
+
+        <button
+          class="center mb-2 mt-3 w-full p-2 text-secondary"
+          on:click={() => (isExpanded = false)}
+        >
+          <ChevronUp />
+        </button>
+      </div>
+    </WidthDelimiter>
+  </div>
 </div>
 
 <style lang="postcss">

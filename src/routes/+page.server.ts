@@ -1,9 +1,10 @@
 import { couldNotLoadData } from '$lib/errors'
-import appCtx from '$lib/server/applicationContext'
+import appCtx from '$lib/server/appCtx'
 
 export async function load(): Promise<Result<Recipe[]>> {
   try {
-    return { payload: await appCtx.recipeRepository.findAll() }
+    const { recipeRepository } = await appCtx()
+    return { payload: await recipeRepository.findAll() }
   } catch (e: unknown) {
     throw couldNotLoadData()
   }
