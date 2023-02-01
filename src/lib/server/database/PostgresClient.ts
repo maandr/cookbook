@@ -1,4 +1,5 @@
-import { Pool, type QueryResult } from 'pg'
+import pg from 'pg'
+import type { QueryResult, Pool } from 'pg'
 
 export class PostgresClient {
   static async create(connectionString: string): Promise<PostgresClient> {
@@ -9,7 +10,7 @@ export class PostgresClient {
 
   private constructor(
     private connectionString: string,
-    private pool: Pool = new Pool({ connectionString })
+    private pool: Pool = new pg.Pool({ connectionString })
   ) {}
 
   private async connect() {

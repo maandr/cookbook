@@ -55,7 +55,7 @@
               <Mortar width={18} height={18} />
             </Input>
           </div>
-          <div class="quanity">
+          <div class="quantity">
             <AmountWithUnitInput
               tabindex={tabindex ? tabindex + i * 4 + 2 : undefined}
               bind:value={entry.quantity}
@@ -122,7 +122,7 @@
   }
 
   .quantity {
-    gird-area: quantity;
+    grid-area: quantity;
   }
 
   .is-required {
