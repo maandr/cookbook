@@ -2,6 +2,7 @@
   import { getCategory } from '$lib/utils/recipeHelpers'
   import { hasMinLength, isAPositiveNumber, isNotBlank } from '$lib/utils/validationHelpers'
   import { toSlug } from '$lib/utils/stringHelpers'
+  import Attention from '$components/Icons/Attention.svelte'
   import ChevronLeft from '$components/Icons/ChevronLeft.svelte'
   import ContextBar from '$components/ContextBar.svelte'
   import Document from './Document.svelte'
@@ -52,8 +53,12 @@
       <div class="col-span-1">
         <form method="POST" action="/editor?/save">
           <input type="hidden" name="recipe" value={json} />
-          <button disabled={!isValid}>
-            <Save />
+          <button disabled={!isValid} class="disabled:text-attention">
+            {#if !isValid}
+              <Attention />
+            {:else}
+              <Save />
+            {/if}
           </button>
         </form>
       </div>

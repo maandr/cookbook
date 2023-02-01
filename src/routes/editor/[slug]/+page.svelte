@@ -1,14 +1,17 @@
 <script lang="ts">
-  import { recipesBySlug } from '$lib/stores'
+  import { isLoading } from '$lib/stores'
+  import { onMount } from 'svelte'
   import RecipeEditor from '../RecipeEditor.svelte'
 
-  export let data: { slug: string }
+  export let data: Result<Recipe>
 
-  $: recipe = $recipesBySlug[data.slug]
+  onMount(() => {
+    isLoading.set(false)
+  })
 </script>
 
 <svelte:head>
-  <title>Rezept Crafter | {recipe.title} Cookbook</title>
+  <title>Rezept Crafter | {data.payload.title} Cookbook</title>
 </svelte:head>
 
-<RecipeEditor {recipe} />
+<RecipeEditor recipe={data.payload} />

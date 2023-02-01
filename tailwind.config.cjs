@@ -27,7 +27,7 @@ module.exports = {
         menuBar: 91,
         overlay: 997,
         modal: 998,
-        loadingSpinner: 999
+        loadingSpinner: 996
       },
       gridTemplateColumns: {
         formsQuantityInput: '1fr 1fr'

@@ -7,7 +7,7 @@ export const actions = {
       const data = await event.request.formData()
       const recipe = JSON.parse(data.get('recipe') as string)
       await appCtx.recipeRepository.save(recipe)
-    } catch (e) {
+    } catch (e: unknown) {
       console.error(`failed to parse recipe.\n`, e)
     }
   }

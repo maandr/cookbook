@@ -49,6 +49,10 @@ interface RecipeFilter {
   alcoholAllowed: boolean
 }
 
+interface Result<T> {
+  payload: T
+}
+
 type Pair<T> = {
   key: T
   value: T

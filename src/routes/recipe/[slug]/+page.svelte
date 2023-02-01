@@ -8,25 +8,27 @@
   import Edit from '$components/Icons/Edit.svelte'
   import Fish from '$components/Icons/Fish.svelte'
   import Gluten from '$components/Icons/Gluten.svelte'
-  import Ingrediences from '$components/recipe/Ingrediencs.svelte'
-  import Instructions from '$components/recipe/Instructions.svelte'
+  import Ingrediences from '$components/Recipe/Ingrediencs.svelte'
+  import Instructions from '$components/Recipe/Instructions.svelte'
   import Meat from '$components/Icons/Meat.svelte'
   import Portion from '$components/Icons/Portion.svelte'
   import WidthDelimiter from '$components/WidthDelimiter.svelte'
+  import { isLoading } from '$lib/stores'
 
-  export let data: Recipe
+  export let data: Result<Recipe>
 
   let amountOfServings = 4
 
-  $: factor = amountOfServings / data.amountOfServings
+  $: factor = amountOfServings / data.payload.amountOfServings
 
   onMount(() => {
-    amountOfServings = data.amountOfServings
+    amountOfServings = data.payload.amountOfServings
+    isLoading.set(false)
   })
 </script>
 
 <svelte:head>
-  <title>{data.title}</title>
+  <title>{data.payload.title}</title>
 </svelte:head>
 
 <ContextBar>
@@ -36,19 +38,19 @@
         <a href="/"><ChevronLeft /></a>
       </div>
       <div class="col-span-10 font-handwriting text-lg md:text-xl">
-        {data.title}
+        {data.payload.title}
       </div>
       <div class="col-span-1">
-        <a href={`/editor/${data.slug}`}><Edit /></a>
+        <a href={`/editor/${data.payload.slug}`}><Edit /></a>
       </div>
     </div>
   </WidthDelimiter>
 </ContextBar>
 
 <img
-  src={data.imagePath}
-  title={data.title}
-  alt={data.title}
+  src={data.payload.imagePath}
+  title={data.payload.title}
+  alt={data.payload.title}
   class="my-6 max-w-full md:max-w-[1024px]"
 />
 
@@ -57,19 +59,19 @@
     <div class="section-title">
       <h2 class="float-left">Zutaten</h2>
       <div class="float-right flex flex-row items-center justify-end gap-x-4">
-        {#if data.containsMeat}
+        {#if data.payload.containsMeat}
           <div title="Enthält Fleisch"><Meat width={16} height={16} /></div>
         {/if}
-        {#if data.containsFish}
+        {#if data.payload.containsFish}
           <div title="Enthält Fisch"><Fish width={16} height={16} /></div>
         {/if}
-        {#if data.containsGluten}
+        {#if data.payload.containsGluten}
           <div title="Enthält Gluten"><Gluten width={16} height={16} /></div>
         {/if}
-        {#if data.containsLactose}
+        {#if data.payload.containsLactose}
           <div title="Enthält Laktose"><Cheese width={16} height={16} /></div>
         {/if}
-        {#if data.containsAlcohol}
+        {#if data.payload.containsAlcohol}
           <div title="Enthält Alkohol"><Alcohol width={16} height={16} /></div>
         {/if}
       </div>
@@ -94,17 +96,17 @@
         class="mx-2 w-40"
       />
     </div>
-    <Ingrediences recipe={data} bind:factor />
+    <Ingrediences recipe={data.payload} bind:factor />
   </div>
   <div class="md:col-span-7">
     <div class="section-title">
       <h2 class="float-left">Anleitung</h2>
       <div class="float-right flex flex-row items-center gap-x-2 font-normal">
         <Clock width={16} height={16} />
-        ca. {data.amountOfMinutesRequired} Minuten
+        ca. {data.payload.amountOfMinutesRequired} Minuten
       </div>
     </div>
-    <Instructions recipe={data} />
+    <Instructions recipe={data.payload} />
   </div>
 </div>
 

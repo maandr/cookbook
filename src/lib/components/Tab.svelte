@@ -12,8 +12,10 @@
   class:selected={$selectedTab === self}
   class="flex flex-wrap items-center gap-3 bg-surface px-6 py-3 text-sm text-secondary"
   tabindex="-1"
-  on:click={() => selectTab(self)}><slot /></button
+  on:click={() => selectTab(self)}
 >
+  <slot />
+</button>
 
 <style lang="postcss">
   .selected {

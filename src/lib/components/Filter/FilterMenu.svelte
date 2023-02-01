@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { clickOutside } from '$lib/actions/clickOutside'
   import { DEFAULT_FILTER } from '$lib/constants'
   import { filter } from '$lib/stores'
   import Alcohol from '$components/Icons/Alcohol.svelte'
@@ -21,7 +22,6 @@
   import Portion from '$components/Icons/Portion.svelte'
   import TagToggle from '$components/Filter/TagToggle.svelte'
   import WidthDelimiter from '$components/WidthDelimiter.svelte'
-  import { clickOutside } from '$lib/actions/clickOutside'
 
   let isExpanded = false
 </script>
@@ -131,7 +131,7 @@
 
       <button
         class="center mb-2 mt-3 w-full p-2 text-secondary"
-        on:click={(e) => (isExpanded = false)}
+        on:click={() => (isExpanded = false)}
       >
         <ChevronUp />
       </button>

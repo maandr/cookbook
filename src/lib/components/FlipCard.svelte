@@ -1,11 +1,10 @@
 <script lang="ts">
   export let speed: 'slow' | 'normal' | 'fast' = 'normal'
-  export let addClass = ''
 
   $: secondsPerFlip = speed === 'slow' ? 1.6 : speed === 'normal' ? 0.8 : 0.4
 </script>
 
-<div class="flip-card {addClass}">
+<div class="flip-card h-full w-full">
   <div class="flip-card-inner" style="transition: transform {secondsPerFlip}s">
     <div class="flip-card-front">
       <slot name="front" />

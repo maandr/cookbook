@@ -10,7 +10,7 @@ export class RecipesRepository {
     )
   }
 
-  async findAll(): Promise<Recipe[] | null> {
+  async findAll(): Promise<Recipe[]> {
     const result = await this.client.query('SELECT payload FROM recipes')
     return Promise.resolve(result.rows.map((row) => row['payload'] as Recipe))
   }
