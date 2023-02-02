@@ -35,6 +35,7 @@
         </a>
         {#if isExpanded}
           <button
+            title="Filter zurücksetzen"
             on:click={() => {
               console.log('click')
               filter.set({ ...DEFAULT_FILTER })
@@ -43,7 +44,9 @@
             <FilterClear />
           </button>
         {:else}
-          <Filter />
+          <button title="Filter setzen">
+            <Filter />
+          </button>
         {/if}
         {#if $filter.mustHaveTags.includes('salad')}
           Salat
@@ -101,7 +104,7 @@
   >
     <WidthDelimiter>
       <div
-        class="m-auto flex w-full flex-col items-center justify-center px-4 md:w-[1024px] md:items-start md:px-0"
+        class="m-auto flex w-full flex-col items-center justify-center px-4 lg:items-start lg:px-0"
       >
         <h3>Kategorie</h3>
         <div class="my-2 flex flex-row flex-wrap gap-1 md:my-4 md:gap-2">

@@ -33,15 +33,15 @@
 
 <ContextBar>
   <WidthDelimiter>
-    <div class="grid grid-cols-12 place-items-center gap-2 p-4">
+    <div class="grid grid-cols-12 place-content-center gap-2 p-4">
       <div class="col-span-1">
         <a href="/"><ChevronLeft /></a>
       </div>
-      <div class="col-span-10 font-handwriting text-lg md:text-xl">
+      <div class="col-span-10 text-center font-handwriting text-lg md:text-xl">
         {data.payload.title}
       </div>
-      <div class="col-span-1">
-        <a href={`/editor/${data.payload.id}`}><Edit /></a>
+      <div class="col-span-1 flex justify-end">
+        <a href={`/editor/${data.payload.id}`} title="Rezept bearbeiten"><Edit /></a>
       </div>
     </div>
   </WidthDelimiter>

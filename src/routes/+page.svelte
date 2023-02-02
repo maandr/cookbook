@@ -17,9 +17,11 @@
   <FilterMenu />
 </ContextBar>
 
-<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+<div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
   {#if $filtered.length === 0}
-    <p>Leider keine Treffer 😢</p>
+    <p class="col-span-1 w-full text-center text-secondary md:col-span-2 xl:grid-cols-3">
+      Es gab leider keine Treffer für die aktuelle Suche.
+    </p>
   {:else}
     {#each $filtered as recipe}
       <RecipeCard {recipe} />

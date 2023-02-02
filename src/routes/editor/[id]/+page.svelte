@@ -10,8 +10,4 @@
   })
 </script>
 
-<svelte:head>
-  <title>Rezept Crafter | {data.payload.title} Cookbook</title>
-</svelte:head>
-
 <RecipeEditor recipe={data.payload} />
