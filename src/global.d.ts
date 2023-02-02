@@ -5,7 +5,7 @@ interface AppConfig {
 }
 
 interface Recipe {
-  slug: string
+  id: srring
   title: string
   tags: string[]
   imagePath: string

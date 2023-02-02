@@ -17,6 +17,7 @@ async function appCtx(): Promise<AppContext> {
         await PostgresClient.create(config.database.connectionUrl)
       )
     }
+    await _appCtx.recipeRepository.initalizeSchema()
   }
   return Promise.resolve(_appCtx)
 }

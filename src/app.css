@@ -21,4 +21,8 @@
   .center {
     @apply flex items-center justify-center;
   }
+
+  .button-primary {
+    @apply my-4 flex flex-row items-center justify-center gap-2 bg-primary px-3 py-2 text-sm text-primaryContrast hover:bg-primaryAccent;
+  }
 }

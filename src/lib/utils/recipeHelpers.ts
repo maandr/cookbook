@@ -5,7 +5,7 @@ export function isOk(json: string) {
     const recipe = JSON.parse(json)
     return (
       typeof recipe.title == 'string' &&
-      typeof recipe.slug == 'string' &&
+      typeof recipe.id == 'string' &&
       Array.isArray(recipe.tags) &&
       (!recipe.amountOfServings || !isNaN(recipe.amountOfServings)) &&
       (!recipe.amountOfMinutesRequired || !isNaN(recipe.amountOfMinutesRequired)) &&

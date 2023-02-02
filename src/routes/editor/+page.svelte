@@ -2,6 +2,7 @@
   import { isLoading } from '$lib/stores'
   import { onMount } from 'svelte'
   import RecipeEditor from './RecipeEditor.svelte'
+  import { v4 } from 'uuid'
 
   onMount(() => {
     isLoading.set(false)
@@ -10,8 +11,8 @@
 
 <RecipeEditor
   recipe={{
+    id: v4(),
     title: '',
-    slug: '',
     tags: ['meal'],
     amountOfServings: undefined,
     amountOfMinutesRequired: undefined,

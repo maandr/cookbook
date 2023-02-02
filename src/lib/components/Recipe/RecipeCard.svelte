@@ -7,7 +7,7 @@
   export let recipe: Recipe
 </script>
 
-<a href="/recipe/{recipe.slug}" title={recipe.title} class="block h-[380px]">
+<a href="/recipe/{recipe.id}" title={recipe.title} class="block h-[380px]">
   <FlipCard speed="fast">
     <!-- frontside -->
     <div

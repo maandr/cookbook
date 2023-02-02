@@ -14,6 +14,8 @@ ENV PORT 80
 
 EXPOSE 80
 
+WORKDIR /home/app/
+
 COPY --from=build /node_modules ./node_modules
 COPY --from=build /build ./
 COPY --from=build /package.json /yarn.lock ./

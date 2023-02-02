@@ -101,7 +101,7 @@ jobs:
 
       - name: 🚀 (SSH) Start the new container
         id: remote-start-docker-container
-        run: ssh remote 'docker run --detach --name ${{ env.CONTAINER_NAME }} --rm --network=infra-network --env COOKBOOK_DB_CONNECTION_URL=${{ secrets.DATABASE_CONNECTION_URL }} --env VIRTUAL_HOST=${{ env.HOST }} --env LETSENCRYPT_HOST=${{ env.HOST }} ${{ env.DOCKER_IMAGE }}:main'
+        run: ssh remote 'docker run --detach --name ${{ env.CONTAINER_NAME }} --rm --network=infra-network --env COOKBOOK_DB_CONNECTION_URL=${{ secrets.DATABASE_CONNECTION_URL }} --env VIRTUAL_HOST=${{ env.HOST }} --env LETSENCRYPT_HOST=${{ env.HOST }} --mount type=bind,source=/home/${{ secrets.DEPLOY_USERNAME }}/static/cookbook/images,destination=/home/app/static/images ${{ env.DOCKER_IMAGE }}:main'
 
       - name: 🧹 (SSH) Prune docker images
         id: remote-prune-images

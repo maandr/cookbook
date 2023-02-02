@@ -21,6 +21,7 @@
   import Portion from '$components/Icons/Portion.svelte'
   import TagToggle from '$components/Filter/TagToggle.svelte'
   import WidthDelimiter from '$components/WidthDelimiter.svelte'
+  import CirclePlus from '$components/Icons/CirclePlus.svelte'
 
   let isExpanded = false
 </script>
@@ -29,6 +30,9 @@
   <WidthDelimiter>
     <button class="grid w-full grid-cols-12 gap-2 p-4" on:click={() => (isExpanded = !isExpanded)}>
       <div class="col-span-4 flex flex-row flex-wrap items-center gap-2">
+        <a href="/editor" title="Rezept erstellen">
+          <CirclePlus />
+        </a>
         {#if isExpanded}
           <button
             on:click={() => {

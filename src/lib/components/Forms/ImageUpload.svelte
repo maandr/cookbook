@@ -3,6 +3,7 @@
   import { createEventDispatcher } from 'svelte'
 
   export let fileName: string
+  export let imagePath: string | undefined = undefined
 
   let fileInput: HTMLInputElement
   let files: FileList
@@ -17,33 +18,36 @@
       // data:[<mediatype>][;base64],<data>
       const dataUrl: string = event.target?.result as string
       if (dataUrl) {
-        await upload(dataUrl)
-        fileName = '/images/' + fileNameWithExtension(dataUrl)
-        dispatch('upload_succeeded', fileName)
+        imagePath = '/images/default.jpg'
+        imagePath = await upload(dataUrl)
+        dispatch('upload_succeeded', imagePath)
       }
     }
   }
 
-  async function upload(dataUrl: string) {
+  async function upload(dataUrl: string): Promise<string> {
     try {
+      const payload: ImageUploadRequestPayload = {
+        fileName: targetImagePath(dataUrl),
+        dataBase64Encoded: base64Payload(dataUrl)
+      }
       await fetch('/api/upload-image', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json'
         },
-        body: JSON.stringify({
-          fileName: fileNameWithExtension(dataUrl),
-          dataBase64Encoded: base64Payload(dataUrl)
-        } as ImageUploadRequestPayload)
+        body: JSON.stringify(payload)
       })
+      return Promise.resolve(payload.fileName)
     } catch (e: unknown) {
       console.error(e)
+      return Promise.reject(e)
     }
   }
 
-  function fileNameWithExtension(imageBase64: string): string {
-    return `${fileName}.${mineType(imageBase64).split('/')[1]}`
+  function targetImagePath(imageBase64: string): string {
+    return `/images/${fileName}.${mineType(imageBase64).split('/')[1]}`
   }
 
   function mineType(imageBase64: string): string {
@@ -56,8 +60,8 @@
 </script>
 
 <button class="min-h-[300px] w-full bg-surface text-secondary" on:click={() => fileInput.click()}>
-  {#if fileName}
-    <img src={fileName} alt="Uploaded File" />
+  {#if imagePath && imagePath !== '/images/default.jpg'}
+    <img src={imagePath} alt={fileName} />
   {:else}
     <div class="flex items-center justify-center gap-4"><Image /> Bild hochladen</div>
   {/if}

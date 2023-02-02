@@ -41,7 +41,7 @@
         {data.payload.title}
       </div>
       <div class="col-span-1">
-        <a href={`/editor/${data.payload.slug}`}><Edit /></a>
+        <a href={`/editor/${data.payload.id}`}><Edit /></a>
       </div>
     </div>
   </WidthDelimiter>

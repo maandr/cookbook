@@ -1,7 +1,6 @@
 <script lang="ts">
   import { getCategory } from '$lib/utils/recipeHelpers'
   import { hasMinLength, isAPositiveNumber, isNotBlank } from '$lib/utils/validationHelpers'
-  import { toSlug } from '$lib/utils/stringHelpers'
   import Attention from '$components/Icons/Attention.svelte'
   import ChevronLeft from '$components/Icons/ChevronLeft.svelte'
   import ContextBar from '$components/ContextBar.svelte'
@@ -17,15 +16,18 @@
   import WidthDelimiter from '$components/WidthDelimiter.svelte'
   import ImageUpload from '$components/Forms/ImageUpload.svelte'
   import Image from '$components/Icons/Image.svelte'
+  import { goto } from '$app/navigation'
+  import Portal from '$components/Portal.svelte'
+  import Modal from '$components/Modal.svelte'
+  import Refresh from '$components/Icons/Refresh.svelte'
 
   export let recipe: Recipe
+  let imagePath = recipe.imagePath ? recipe.imagePath : '/images/default.jpg'
+  let saveAttemptFailed = false
 
-  $: imagePath = recipe.imagePath ? recipe.imagePath : '/images/default.jpg'
-  $: slug = recipe.slug ? recipe.slug : toSlug(recipe.title) // TODO: make sure its always unique
   $: json = JSON.stringify(
     {
       ...recipe,
-      slug,
       imagePath,
       ingrediences: recipe.ingrediences.filter((i) => i.name.trim() !== ''),
       instructions: recipe.instructions.filter((i) => i.trim() !== '')
@@ -44,6 +46,22 @@
   function parseJson(json: string) {
     recipe = JSON.parse(json)
   }
+
+  async function save() {
+    const response = await fetch('/api/recipes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: json
+    })
+
+    if (response.ok) {
+      goto('/recipe/' + recipe.id)
+    } else {
+      saveAttemptFailed = true
+    }
+  }
 </script>
 
 <ContextBar>
@@ -56,16 +74,14 @@
         {recipe.title}
       </div>
       <div class="col-span-1">
-        <form method="POST" action="/editor?/save">
-          <input type="hidden" name="recipe" value={json} />
-          <button disabled={!isValid} class="disabled:text-attention">
-            {#if !isValid}
-              <Attention />
-            {:else}
-              <Save />
-            {/if}
-          </button>
-        </form>
+        <input type="hidden" name="recipe" value={json} />
+        <button disabled={!isValid} class="disabled:text-attention" on:click={() => save()}>
+          {#if !isValid}
+            <Attention />
+          {:else}
+            <Save />
+          {/if}
+        </button>
       </div>
     </div>
   </WidthDelimiter>
@@ -96,10 +112,7 @@
     </TabPanel>
     <TabPanel>
       <div class="h-full w-full">
-        <ImageUpload
-          fileName={imagePath}
-          on:upload_succeeded={(event) => (imagePath = event.detail)}
-        />
+        <ImageUpload fileName={recipe.id} bind:imagePath />
       </div>
     </TabPanel>
     <TabPanel>
@@ -107,3 +120,13 @@
     </TabPanel>
   </div>
 </Tabs>
+
+<Portal>
+  <Modal bind:isVisible={saveAttemptFailed}>
+    <h2 class="my-2 text-sm font-semibold text-attention">Fehler</h2>
+    <p class="text-sm">Die Änderungen konnten nicht gespeichert werden. asasdadda</p>
+    <button class="button-primary" on:click={() => save()}
+      ><Refresh width={18} height={18} /> Nochmal versuchen</button
+    >
+  </Modal>
+</Portal>
