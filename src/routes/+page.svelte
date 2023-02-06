@@ -13,6 +13,10 @@
   })
 </script>
 
+<svelte:head>
+  <title>Cookbook</title>
+</svelte:head>
+
 <ContextBar>
   <FilterMenu />
 </ContextBar>
