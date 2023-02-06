@@ -2,6 +2,7 @@
 
 interface AppConfig {
   database: { connectionUrl: string }
+  imageDir: string
 }
 
 interface Recipe {
