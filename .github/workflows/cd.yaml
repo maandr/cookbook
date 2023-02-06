@@ -97,7 +97,7 @@ jobs:
 
       - name: ✋ (SSH) Stop the running container
         id: remote-stop-docker-container
-        run: ssh remote 'docker rm -f ${{ env.CONTAINER_NAME }}'
+        run: ssh remote 'docker rm -f ${{ env.CONTAINER_NAME }} || true'
 
       - name: 🚀 (SSH) Start the new container
         id: remote-start-docker-container
