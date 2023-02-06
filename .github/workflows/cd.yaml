@@ -73,7 +73,7 @@ jobs:
     env:
       CONTAINER_NAME: cookbook
     steps:
-      - name: ⚙️ Setup SSH
+      - name: 🔑 Setup SSH
         id: worker-setup-ssh
         run: |
           mkdir -p ~/.ssh/
