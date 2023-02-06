@@ -4,23 +4,28 @@
 
   export let fileName: string
   export let imagePath: string | undefined = undefined
+  export let maxFileSizeInKilobytes = 1024
 
   let fileInput: HTMLInputElement
-  let files: FileList
+  let files: FileList | undefined
 
   const dispatch = createEventDispatcher()
 
   async function getBase64(image: Blob) {
-    const reader = new FileReader()
-    reader.readAsDataURL(image)
-    reader.onload = async (event: ProgressEvent<FileReader>) => {
-      // https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
-      // data:[<mediatype>][;base64],<data>
-      const dataUrl: string = event.target?.result as string
-      if (dataUrl) {
-        imagePath = '/images/default.jpg'
-        imagePath = await upload(dataUrl)
-        dispatch('upload_succeeded', imagePath)
+    if (image.size * 0.001 > maxFileSizeInKilobytes) {
+      dispatch('upload_failed')
+    } else {
+      const reader = new FileReader()
+      reader.readAsDataURL(image)
+      reader.onload = async (event: ProgressEvent<FileReader>) => {
+        // https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
+        // data:[<mediatype>][;base64],<data>
+        const dataUrl: string = event.target?.result as string
+        if (dataUrl) {
+          imagePath = '/images/default.jpg'
+          imagePath = await upload(dataUrl)
+          dispatch('upload_succeeded', imagePath)
+        }
       }
     }
   }
@@ -63,7 +68,14 @@
   {#if imagePath && imagePath !== '/images/default.jpg'}
     <img src={imagePath} alt={fileName} />
   {:else}
-    <div class="flex items-center justify-center gap-4"><Image /> Bild hochladen</div>
+    <div class="flex items-center justify-center gap-4">
+      <Image />
+      <p class="flex flex-col">
+        Bild hochladen<span class="text-xs"
+          >(max. Dateigröße {Math.round(maxFileSizeInKilobytes * 0.001)} MB)</span
+        >
+      </p>
+    </div>
   {/if}
 </button>
 <input
@@ -72,5 +84,5 @@
   accept=".png,.jpg"
   bind:this={fileInput}
   bind:files
-  on:change={() => getBase64(files[0])}
+  on:change={() => files && files.length > 0 && getBase64(files[0])}
 />

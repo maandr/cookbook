@@ -24,6 +24,7 @@
   export let recipe: Recipe
   let imagePath = recipe.imagePath ? recipe.imagePath : '/images/default.jpg'
   let saveAttemptFailed = false
+  let uploadAttemptFailed = false
 
   $: json = JSON.stringify(
     {
@@ -119,7 +120,13 @@
     </TabPanel>
     <TabPanel>
       <div class="h-full w-full">
-        <ImageUpload fileName={recipe.id} bind:imagePath />
+        <ImageUpload
+          fileName={recipe.id}
+          bind:imagePath
+          on:upload_failed={() => {
+            uploadAttemptFailed = true
+          }}
+        />
       </div>
     </TabPanel>
     <TabPanel>
@@ -129,9 +136,25 @@
 </Tabs>
 
 <Portal>
+  <Modal bind:isVisible={uploadAttemptFailed}>
+    <h2 class="my-2 text-sm font-semibold text-attention">Bild konnte nicht gespeichert werden</h2>
+    <p class="text-sm">
+      Das Bild entspricht nicht den Größenvorgaben. Stelle sicher, dass das Bild eine Dateigröße von
+      1 MB nicht überschreitet.
+    </p>
+    <button class="button-primary" on:click={() => (uploadAttemptFailed = false)}>
+      Versanden
+    </button>
+  </Modal>
+
   <Modal bind:isVisible={saveAttemptFailed}>
-    <h2 class="my-2 text-sm font-semibold text-attention">Fehler</h2>
-    <p class="text-sm">Die Änderungen konnten nicht gespeichert werden.</p>
+    <h2 class="my-2 text-sm font-semibold text-attention">
+      Änderungen konnten nicht gespeichert werden
+    </h2>
+    <p class="text-sm">
+      Entweder stimmt etwas mit der Internet verbindung nicht oder der Server hat grade ein problem.
+      Versuche es am besten etwas später nochmal.
+    </p>
     <button class="button-primary" on:click={() => save()}>
       <Refresh width={18} height={18} /> Nochmal versuchen
     </button>
