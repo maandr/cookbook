@@ -131,9 +131,9 @@
 <Portal>
   <Modal bind:isVisible={saveAttemptFailed}>
     <h2 class="my-2 text-sm font-semibold text-attention">Fehler</h2>
-    <p class="text-sm">Die Änderungen konnten nicht gespeichert werden. asasdadda</p>
-    <button class="button-primary" on:click={() => save()}
-      ><Refresh width={18} height={18} /> Nochmal versuchen</button
-    >
+    <p class="text-sm">Die Änderungen konnten nicht gespeichert werden.</p>
+    <button class="button-primary" on:click={() => save()}>
+      <Refresh width={18} height={18} /> Nochmal versuchen
+    </button>
   </Modal>
 </Portal>

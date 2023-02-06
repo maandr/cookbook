@@ -31,7 +31,7 @@
         fileName: targetImagePath(dataUrl),
         dataBase64Encoded: base64Payload(dataUrl)
       }
-      await fetch('/api/upload-image', {
+      await fetch('/api/images/upload', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +39,7 @@
         },
         body: JSON.stringify(payload)
       })
-      return Promise.resolve(payload.fileName)
+      return Promise.resolve('/api/images/' + payload.fileName)
     } catch (e: unknown) {
       console.error(e)
       return Promise.reject(e)
@@ -47,7 +47,7 @@
   }
 
   function targetImagePath(imageBase64: string): string {
-    return `/images/${fileName}.${mineType(imageBase64).split('/')[1]}`
+    return `${fileName}.${mineType(imageBase64).split('/')[1]}`
   }
 
   function mineType(imageBase64: string): string {
