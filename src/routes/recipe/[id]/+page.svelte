@@ -1,22 +1,26 @@
 <script lang="ts">
+  import { isLoading } from '$lib/stores'
   import { onMount } from 'svelte'
   import Alcohol from '$components/Icons/Alcohol.svelte'
   import Cheese from '$components/Icons/Cheese.svelte'
   import ChevronLeft from '$components/Icons/ChevronLeft.svelte'
   import Clock from '$components/Icons/Clock.svelte'
-  import ContextBar from '$components/ContextBar.svelte'
+  import Dots from '$components/Icons/Dots.svelte'
   import Edit from '$components/Icons/Edit.svelte'
   import Fish from '$components/Icons/Fish.svelte'
   import Gluten from '$components/Icons/Gluten.svelte'
   import Ingrediences from '$components/Recipe/Ingrediencs.svelte'
   import Instructions from '$components/Recipe/Instructions.svelte'
   import Meat from '$components/Icons/Meat.svelte'
+  import Menu from '$components/Menu/Menu.svelte'
+  import MenuBar from '$components/Menu/MenuBar.svelte'
+  import MenuOptions from '$components/Menu/MenuOptions.svelte'
   import Portion from '$components/Icons/Portion.svelte'
-  import WidthDelimiter from '$components/WidthDelimiter.svelte'
-  import { isLoading } from '$lib/stores'
+  import { goto } from '$app/navigation'
 
   export let data: Result<Recipe>
 
+  let isExpanded = false
   let amountOfServings = 4
 
   $: factor = amountOfServings / data.payload.amountOfServings
@@ -31,21 +35,34 @@
   <title>{data.payload.title}</title>
 </svelte:head>
 
-<ContextBar>
-  <WidthDelimiter>
-    <div class="grid grid-cols-12 place-content-center gap-2 p-4">
-      <div class="col-span-1">
-        <a href="/"><ChevronLeft /></a>
+<Menu bind:isExpanded>
+  <div slot="bar">
+    <MenuBar>
+      <div slot="left">
+        <a href="/"><ChevronLeft width={18} height={18} /></a>
       </div>
-      <div class="col-span-10 text-center font-handwriting text-lg md:text-xl">
+      <div slot="center" class="text-center font-handwriting text-lg md:text-xl">
         {data.payload.title}
       </div>
-      <div class="col-span-1 flex justify-end">
-        <a href={`/editor/${data.payload.id}`} title="Rezept bearbeiten"><Edit /></a>
+      <div slot="right" class="flex justify-end">
+        <button on:click={() => (isExpanded = true)}><Dots width={18} height={18} /></button>
       </div>
-    </div>
-  </WidthDelimiter>
-</ContextBar>
+    </MenuBar>
+  </div>
+  <div slot="menu" class="w-full">
+    <MenuOptions
+      options={[
+        {
+          icon: Edit,
+          title: 'Rezept bearbeiten',
+          onClick: () => {
+            goto('/editor/' + data.payload.id)
+          }
+        }
+      ]}
+    />
+  </div>
+</Menu>
 
 <img
   src={data.payload.imagePath}

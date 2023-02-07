@@ -1,30 +1,32 @@
 <script lang="ts">
   import { getCategory } from '$lib/utils/recipeHelpers'
+  import { goto } from '$app/navigation'
   import { hasMinLength, isAPositiveNumber, isNotBlank } from '$lib/utils/validationHelpers'
-  import Attention from '$components/Icons/Attention.svelte'
+  import Check from '$components/Icons/Check.svelte'
   import ChevronLeft from '$components/Icons/ChevronLeft.svelte'
-  import ContextBar from '$components/ContextBar.svelte'
+  import Close from '$components/Icons/Close.svelte'
   import Document from './Document.svelte'
   import Edit from '$components/Icons/Edit.svelte'
   import Editor from './Editor.svelte'
   import File from '$components/Icons/File.svelte'
+  import Image from '$components/Icons/Image.svelte'
+  import ImageUpload from '$components/Forms/ImageUpload.svelte'
+  import Menu from '$components/Menu/Menu.svelte'
+  import MenuBar from '$components/Menu/MenuBar.svelte'
+  import Modal from '$components/Modal.svelte'
+  import Portal from '$components/Portal.svelte'
+  import Refresh from '$components/Icons/Refresh.svelte'
   import Save from '$components/Icons/Save.svelte'
   import Tab from '$components/Tabs/Tab.svelte'
   import TabBar from '$components/Tabs/TabBar.svelte'
   import TabPanel from '$components/Tabs/TabPanel.svelte'
   import Tabs from '$components/Tabs/Tabs.svelte'
-  import WidthDelimiter from '$components/WidthDelimiter.svelte'
-  import ImageUpload from '$components/Forms/ImageUpload.svelte'
-  import Image from '$components/Icons/Image.svelte'
-  import { goto } from '$app/navigation'
-  import Portal from '$components/Portal.svelte'
-  import Modal from '$components/Modal.svelte'
-  import Refresh from '$components/Icons/Refresh.svelte'
 
   export let recipe: Recipe
   let imagePath = recipe.imagePath ? recipe.imagePath : '/images/default.jpg'
   let saveAttemptFailed = false
   let uploadAttemptFailed = false
+  let isExpanded = false
 
   $: json = JSON.stringify(
     {
@@ -69,31 +71,32 @@
   <title>Edit: {recipe.title}</title>
 </svelte:head>
 
-<ContextBar>
-  <WidthDelimiter>
-    <div class="grid grid-cols-12 place-content-center gap-2 p-4">
-      <div class="col-span-1">
-        <a href="/"><ChevronLeft /></a>
+<Menu bind:isExpanded>
+  <div slot="bar">
+    <MenuBar>
+      <div slot="left"><a href="/"><ChevronLeft width={18} height={18} /></a></div>
+      <div slot="center">
+        {#if !isValid}
+          <div class="center gap-2 text-attention">
+            Eingaben sind nicht ok<Close width={18} height={18} />
+          </div>
+        {:else}
+          <div class="center gap-2 text-success">
+            Eingaben sind ok<Check width={18} height={18} />
+          </div>
+        {/if}
       </div>
-      <div class="col-span-9 font-handwriting text-lg md:text-xl">
-        {recipe.title}
-      </div>
-      <div class="col-span-2 flex justify-end">
-        <button
-          disabled={!isValid}
-          class="flex flex-row items-center gap-2 disabled:text-attention"
-          on:click={() => save()}
-        >
-          {#if !isValid}
-            Fülle alle Felder aus <Attention />
-          {:else}
-            Speichern <Save />
+      <div slot="right" class="flex justify-end">
+        <button disabled={!isValid} class="center" on:click={() => save()}>
+          {#if isValid}
+            <Save width={18} height={18} />
           {/if}
         </button>
       </div>
-    </div>
-  </WidthDelimiter>
-</ContextBar>
+    </MenuBar>
+  </div>
+  <div slot="menu" />
+</Menu>
 
 <Tabs>
   <TabBar>

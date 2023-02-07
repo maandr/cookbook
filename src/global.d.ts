@@ -58,6 +58,12 @@ interface Result<T> {
   payload: T
 }
 
+interface MenuOption {
+  icon: ConstructorOfATypedSvelteComponent
+  title: string
+  onClick: () => void
+}
+
 interface ImageUploadRequestPayload {
   fileName: string
   dataBase64Encoded: string

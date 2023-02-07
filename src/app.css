@@ -18,6 +18,10 @@
 }
 
 @layer utilities {
+  .menu-bar {
+    @apply flex min-h-[60px] flex-row items-center justify-start gap-3 px-4 md:px-0;
+  }
+
   .center {
     @apply flex items-center justify-center;
   }
