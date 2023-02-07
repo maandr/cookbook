@@ -23,7 +23,7 @@
   class="relative min-h-screen bg-background lg:m-auto lg:max-w-[1024px]"
   style={`padding-top: ${paddingTop}`}
 >
-  <main class="mt-8 px-6 md:px-0">
+  <main class="mt-8 px-6 pb-8 md:px-0">
     <slot />
   </main>
 </div>
