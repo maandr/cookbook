@@ -12,35 +12,13 @@ on:
       - '.vscode/**'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
-    steps:
-      - name: 📥 Checkout Git Repository
-        id: checkout-git-repository
-        uses: actions/checkout@v3.3.0
+  ci-node:
+    uses: maandr/github-actions/.github/workflows/ci-node.yaml@v2.0.0
+    with:
+      nodeVersion: '18.x'
 
-      - name: ⚙️ Setup Node.js ${{ matrix.node-version }}
-        id: setup-node
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
-
-      - name: 📦 Install Dependencies
-        id: install-dependencies
-        run: yarn install
-
-      - name: 🕵️ Lint Source Code
-        id: lint-app
-        run: yarn lint
-
-      - name: 🧪 Tests Application
-        id: test-app
-        run: yarn test
-
-      - name: 🏗️ Build Application
-        id: build-app
-        run: yarn build
+  ci-docker-image:
+    uses: maandr/github-actions/.github/workflows/ci-docker-image.yaml@v2.0.0
+    with:
+      file: './Dockerfile'
+      context: './'
