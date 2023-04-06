@@ -1,0 +1,56 @@
+name: Deploy
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [CD]
+    types: [completed]
+
+env:
+  HOST: cookbook.${{ secrets.DEPLOY_HOST }}
+  DOCKER_IMAGE: ghcr.io/${{ github.repository }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch'}}
+    environment: production
+    env:
+      CONTAINER_NAME: cookbook
+    steps:
+      - name: ⚙️ Setup SSH on runner
+        id: setup-ssh-on-runner
+        uses: maandr/github-actions/.github/actions/setup-ssh@v2.0.0
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USERNAME }}
+          privateKey: ${{ secrets.DEPLOY_KEY }}
+
+      - name: 🔐 (SSH) Login to GitHub Container Registry
+        id: remote-ghcr-login
+        run: ssh ${{ secrets.DEPLOY_HOST }} 'echo ${{ secrets.CONTAINER_REGISTRY_PAT }} | docker login ghcr.io --username ${{ github.repository_owner }} --password-stdin'
+
+      - name: 🐳 (SSH) Pull Docker Image
+        id: remote-pull-docker-image
+        run: ssh ${{ secrets.DEPLOY_HOST }} 'docker pull ${{ env.DOCKER_IMAGE }}:main'
+
+      - name: ✋ (SSH) Stop the running container
+        id: remote-stop-docker-container
+        run: ssh ${{ secrets.DEPLOY_HOST }} 'docker rm -f ${{ env.CONTAINER_NAME }}'
+
+      - name: 🚀 (SSH) Start the new container
+        id: remote-start-docker-container
+        run: ssh ${{ secrets.DEPLOY_HOST }} 'docker run --detach --name ${{ env.CONTAINER_NAME }} --rm --network=infra-network --env COOKBOOK_DB_CONNECTION_URL=${{ secrets.DATABASE_CONNECTION_URL }} --env COOKBOOK_IMAGE_DIR=/home/app/images/ --env VIRTUAL_HOST=${{ env.HOST }} --env LETSENCRYPT_HOST=${{ env.HOST }} --mount type=bind,source=/home/${{ secrets.DEPLOY_USERNAME }}/static/cookbook/images,destination=/home/app/images/ ${{ env.DOCKER_IMAGE }}:main'
+
+      - name: 🧹 (SSH) Prune docker images
+        id: remote-prune-images
+        run: ssh ${{ secrets.DEPLOY_HOST }} 'docker image prune -f'
+
+  smoke-test:
+    runs-on: ubuntu-latest
+    environment: production
+    needs: deploy
+    steps:
+      - name: 🧪 GET Ensure app is accessible
+        uses: maandr/github-actions/.github/actions/http-get@v2.0.0
+        with:
+          host: ${{ env.HOST }}

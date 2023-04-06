@@ -1,8 +1,9 @@
 name: CD
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [main]
+    tags: [v*]
     paths-ignore:
       - 'README.md'
       - '.editorconfig'
@@ -12,106 +13,19 @@ on:
       - '.eslintignore'
       - '.prettier.config.cjs'
       - '.vscode/**'
-
-env:
-  HOST: cookbook.${{ secrets.DEPLOY_HOST }}
-  DOCKER_IMAGE: ghcr.io/${{ github.repository }}
+      - '.github/**'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - name: 📥 Checkout Git Repository
-        id: checkout-git-repository
-        uses: actions/checkout@v3.3.0
+  generate-image-tags:
+    uses: maandr/github-actions/.github/workflows/cd-image-tags.yaml@v2.0.0
+    with:
+      image: ghcr.io/${{ github.repository }}
 
-      - name: ⚙️ Setup QEMU
-        id: setup-qemu
-        uses: docker/setup-qemu-action@v2.1.0
-
-      - name: ⚙️ Setup Docker Buildx
-        id: setup-buildx
-        uses: docker/setup-buildx-action@v2.2.1
-
-      - name: 🔐 Login to GitHub Container Registry
-        id: ghcr-login
-        uses: docker/login-action@v2.1.0
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.CONTAINER_REGISTRY_PAT }}
-
-      - name: 🐳 Docker Metadata
-        id: docker-meta
-        uses: docker/metadata-action@v4.3.0
-        with:
-          images: ${{ env.DOCKER_IMAGE }}
-          tags: |
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=ref,event=branch
-            type=sha
-
-      - name: 🏗️ Build and publish
-        id: docker-build-and-push
-        uses: docker/build-push-action@v3.3.0
-        with:
-          push: true
-          context: ./
-          file: ./Dockerfile
-          tags: ${{ steps.docker-meta.outputs.tags }}
-          labels: ${{ steps.docker-meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-  deploy:
-    runs-on: ubuntu-latest
-    environment: production
-    needs: build
-    env:
-      CONTAINER_NAME: cookbook
-    steps:
-      - name: 🔑 Setup SSH
-        id: worker-setup-ssh
-        run: |
-          mkdir -p ~/.ssh/
-          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/remote.key
-          chmod 600 ~/.ssh/remote.key
-          cat >> ~/.ssh/config <<END
-          Host remote
-            HostName ${{ secrets.DEPLOY_HOST }}
-            User ${{ secrets.DEPLOY_USERNAME }}
-            IdentityFile ~/.ssh/remote.key
-            StrictHostKeyChecking no
-          END
-
-      - name: 🔐 (SSH) Login to GitHub Container Registry
-        id: remote-ghcr-login
-        run: ssh remote 'echo ${{ secrets.CONTAINER_REGISTRY_PAT }} | docker login ghcr.io --username ${{ github.repository_owner }} --password-stdin'
-
-      - name: 🐳 (SSH) Pull Docker Image
-        id: remote-pull-docker-image
-        run: ssh remote 'docker pull ${{ env.DOCKER_IMAGE }}:main'
-
-      - name: ✋ (SSH) Stop the running container
-        id: remote-stop-docker-container
-        run: ssh remote 'docker rm -f ${{ env.CONTAINER_NAME }} || true'
-
-      - name: 🚀 (SSH) Start the new container
-        id: remote-start-docker-container
-        run: ssh remote 'docker run --detach --name ${{ env.CONTAINER_NAME }} --rm --network=infra-network --env COOKBOOK_DB_CONNECTION_URL=${{ secrets.DATABASE_CONNECTION_URL }} --env COOKBOOK_IMAGE_DIR=/home/app/images/ --env VIRTUAL_HOST=${{ env.HOST }} --env LETSENCRYPT_HOST=${{ env.HOST }} --mount type=bind,source=/home/${{ secrets.DEPLOY_USERNAME }}/static/cookbook/images,destination=/home/app/images/ ${{ env.DOCKER_IMAGE }}:main'
-
-      - name: 🧹 (SSH) Prune docker images
-        id: remote-prune-images
-        run: ssh remote 'docker image prune -f'
-
-  smoke-test:
-    runs-on: ubuntu-latest
-    environment: production
-    needs: deploy
-    steps:
-      - name: 🧪 Ensure app is accessible under subdomain
-        id: curl-smoke-test
-        run: curl -X GET "https://${{ env.HOST }}"
+  build-and-push-to-ghcr:
+    needs: generate-image-tags
+    uses: maandr/github-actions/.github/workflows/cd-ghcr.yaml@v2.0.0
+    with:
+      tags: ${{ needs.generate-image-tags.outputs.tags }}
+      labels: ${{ needs.generate-image-tags.outputs.labels }}
+    secrets:
+      GHCR_PAT: ${{ secrets.CONTAINER_REGISTRY_PAT }}
