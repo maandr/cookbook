@@ -15,6 +15,10 @@ on:
       - '.vscode/**'
       - '.github/**'
 
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   generate-image-tags:
     uses: maandr/github-actions/.github/workflows/cd-image-tags.yaml@v2.0.0
