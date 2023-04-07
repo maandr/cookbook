@@ -15,7 +15,7 @@
     "format": "prettier --plugin-search-dir . --write ."
   },
   "dependencies": {
-    "pg": "^8.9.0",
+    "pg": "^8.10.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
