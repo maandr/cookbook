@@ -1,11 +1,8 @@
 ## build application
 FROM node:18@sha256:33f306d574d22a441f6473d09c851763ff0d44459af682a2ff23b6ec8a06b03e AS build
 
-ENV COOKBOOK_DB_CONNECTION_URL="build"
-ENV COOKBOOK_IMAGE_DIR="build"
-
 RUN corepack enable
-COPY package.json pnpm-lock.yaml .npmrc ./
+COPY package.json pnpm-lock.yaml .npmrc .env ./
 RUN pnpm install
 COPY . .
 
