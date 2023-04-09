@@ -1,24 +1,26 @@
 ## build application
-FROM node:18@sha256:0d8bf0e743a752d8d01e9ff8aba21ac15a0ad1a3d2a2b8df90764d427618c791 AS build
+FROM node:18@sha256:33f306d574d22a441f6473d09c851763ff0d44459af682a2ff23b6ec8a06b03e AS build
 
-COPY .env.example ./.env
-COPY package.json yarn.lock ./
-RUN yarn install --no-progress --no-audit --ignore-engines
+ENV COOKBOOK_DB_CONNECTION_URL="build"
+ENV COOKBOOK_IMAGE_DIR="build"
+
+RUN corepack enable
+COPY package.json pnpm-lock.yaml .npmrc ./
+RUN pnpm install
 COPY . .
-RUN yarn build
+
+RUN pnpm build
 
 # bundle application and runtime dependencies
-FROM node:18-alpine@sha256:bc329c7332cffc30c2d4801e38df03cbfa8dcbae2a7a52a449db104794f168a3 AS bundle
+FROM node:18-alpine@sha256:a3f2350bd3eb48525f801b57934300c11aa3610086b708854ab1c1045c018519 AS bundle
 
 ENV PORT 80
 
 EXPOSE 80
 
-WORKDIR /home/app/
-
 COPY --from=build /node_modules ./node_modules
 COPY --from=build /build ./
-COPY --from=build /package.json /yarn.lock ./
+COPY --from=build /package.json /pnpm-lock.yaml ./
 COPY --from=build /static ./static
 
 ENTRYPOINT [ "node", "." ]
