@@ -11,6 +11,10 @@ on:
       - '.prettier.config.cjs'
       - '.vscode/**'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   ci-node:
     uses: maandr/github-actions/.github/workflows/ci-node.yaml@v2.0.2

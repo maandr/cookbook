@@ -16,7 +16,7 @@ on:
       - '.github/**'
 
 concurrency:
-  group: ${{ github.head_ref }}
+  group: ${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
