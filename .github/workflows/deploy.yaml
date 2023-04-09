@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: ⚙️ Setup SSH on runner
         id: setup-ssh-on-runner
-        uses: maandr/github-actions/.github/actions/setup-ssh@v2.0.0
+        uses: maandr/github-actions/.github/actions/setup-ssh@v2.0.2
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USERNAME }}
@@ -51,6 +51,6 @@ jobs:
     needs: deploy
     steps:
       - name: 🧪 GET Ensure app is accessible
-        uses: maandr/github-actions/.github/actions/http-get@v2.0.0
+        uses: maandr/github-actions/.github/actions/http-get@v2.0.2
         with:
           host: ${{ env.HOST }}
