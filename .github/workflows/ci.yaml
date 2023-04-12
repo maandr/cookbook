@@ -17,12 +17,12 @@ concurrency:
 
 jobs:
   ci-node:
-    uses: maandr/github-actions/.github/workflows/ci-node.yaml@v2.0.2
+    uses: maandr/github-actions/.github/workflows/ci-node.yaml@v2.0.3
     with:
       nodeVersion: '18.x'
 
   ci-docker-image:
-    uses: maandr/github-actions/.github/workflows/ci-docker-image.yaml@v2.0.2
+    uses: maandr/github-actions/.github/workflows/ci-docker-image.yaml@v2.0.3
     with:
       file: './Dockerfile'
       context: './'
